@@ -4,7 +4,7 @@ import { globSync } from 'tinyglobby'
 import { GROCERY_STORE_PATH } from '../src/config'
 import { log } from '../src/utils'
 
-const elements = globSync(`${GROCERY_STORE_PATH}/**/*`, {
+const paths = globSync(`${GROCERY_STORE_PATH}/**/*`, {
   cwd: process.cwd(),
   dot: true,
   absolute: false,
@@ -16,7 +16,7 @@ interface Catalog {
 }
 
 /**
- * Transform elements to catalog format
+ * Transform paths to catalog format
  *
  * from:
  *
@@ -46,7 +46,7 @@ interface Catalog {
  *   }
  * }
  */
-const catalogs = elements.reduce<Catalog>((acc, path) => {
+const catalogs = paths.reduce<Catalog>((acc, path) => {
   const parts = path.split('/')
   let current = acc
   parts.forEach((part, index) => {

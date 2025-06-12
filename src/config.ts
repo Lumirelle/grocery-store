@@ -2,8 +2,14 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { env } from 'node:process'
 
+/**
+ * The keys of the boolean parameters
+ */
 export const BOOLEAN_PARAMETER_KEYS = ['-?', '--help', '-h', '--version', '-v', '--override', '-o']
 
+/**
+ * The path to the grocery store, relative to the project root
+ */
 export const GROCERY_STORE_PATH = 'grocery-store'
 
 export interface InstallableMatcher {

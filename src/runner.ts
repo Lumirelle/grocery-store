@@ -35,7 +35,7 @@ export async function runCli(fn: Runner): Promise<void> {
  * @param parameters - The parameters received from cli
  */
 export async function run(fn: Runner, parameters: Parameter[]): Promise<void> {
-  const debug = extract<boolean>(parameters, { matches: ['-?'] })
+  const debug = extract(parameters, { matches: ['-?'] })
 
   const context: RunnerContext = {
     cwd: process.cwd(),

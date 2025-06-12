@@ -15,7 +15,7 @@
 import type { Parameter } from '../parse'
 import type { RunnerContext } from '../runner'
 import { getCommandRoot } from '../fs'
-import { extract } from '../parse'
+import { extractBoolean, extractString } from '../parse'
 import { copyPreference } from '../preferences'
 import { runCli } from '../runner'
 
@@ -24,9 +24,9 @@ runCli(async (context: RunnerContext, parameters: Parameter[]) => {
 
   const root = getCommandRoot(import.meta.url)
 
-  const sourceName = extract<string>(parameters, { matches: ['-s', '--source'], position: 0, required: true })
-  const targetPath = extract<string>(parameters, { matches: ['-t', '--target'], position: 1 })
-  const override = extract<boolean>(parameters, { matches: ['-o', '--override'] })
+  const sourceName = extractString(parameters, { matches: ['-s', '--source'], position: 0, required: true })
+  const targetPath = extractString(parameters, { matches: ['-t', '--target'], position: 1 })
+  const override = extractBoolean(parameters, { matches: ['-o', '--override'] })
 
   await copyPreference(root, cwd, sourceName, targetPath, override)
 })

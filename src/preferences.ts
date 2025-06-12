@@ -50,7 +50,7 @@ export async function processPreferenceCollection(
 
       for (const installFolderPath of installFolders) {
         if (action === 'install' && !existsSync(installFolderPath)) {
-          log.warn(`Install folder not exists, may be you haven't install the program who uses preference ${format.path(preferenceName)} yet, skip`)
+          log.warn(`Install folder ${format.path(installFolderPath)} not exists, may be you haven't install the program who uses preference ${format.path(preferenceName)} yet, skip`)
           continue
         }
         else if (action === 'uninstall' && !existsSync(installFolderPath)) {

@@ -1,34 +1,42 @@
-import { BOOLEAN_PARAMETER_KEYS } from '.'
+import { BOOLEAN_PARAMETER_KEYS as BOOLEAN_ARG_LIST } from '.'
 
+type ParameterType = 'string' | 'boolean'
 type ParameterKey = string
 type ParameterValue = string | boolean | null
 
 export interface Parameter {
+  type: ParameterType
   key: ParameterKey
   position?: number
   value: ParameterValue
 }
 
-export class UnsupportedCommand extends Error {
+export class UnsupportedCommandError extends Error {
   constructor(command: string) {
     super(`Unsupported command: ${command}`)
   }
 }
 
-export class MissingValueParameter extends Error {
+export class MissingParameterValueError extends Error {
   constructor(parameter: string) {
-    super(`Missing value for parameter: ${parameter}`)
+    super(`Missing parameter value: ${parameter}`)
   }
 }
 
-export class MissingParameter extends Error {
+export class MissingParameterError extends Error {
   constructor(parameter: string) {
     super(`Missing parameter: ${parameter}`)
   }
 }
 
-export function parseType(arg: string): 'boolean' | 'string' {
-  if (BOOLEAN_PARAMETER_KEYS.includes(arg))
+export class InvalidParameterValueError extends Error {
+  constructor(parameter: string) {
+    super(`Invalid parameter value: ${parameter}`)
+  }
+}
+
+export function typeOfArg(arg: string): ParameterType {
+  if (BOOLEAN_ARG_LIST.includes(arg))
     return 'boolean'
   return 'string'
 }
@@ -37,36 +45,35 @@ export function parseType(arg: string): 'boolean' | 'string' {
  * Parse the arguments to parameters
  * @param args - The arguments received from `process.argv`
  * @returns The parsed parameters
- * @throws If you provide a string value parameter without a value
+ * @throws If a string value parameter is provided without a value
  */
 export function parse(args: string[]): Parameter[] {
   const parameters: Parameter[] = []
 
-  let positionIndex = 0
+  let parameterPosition = 0
   for (let i = 0; i < args.length; i++) {
     const arg = args[i]
     // specify parameter
     if (arg.startsWith('-')) {
-      const type = parseType(arg)
+      const type = typeOfArg(arg)
       // boolean value parameter
       if (type === 'boolean') {
-        parameters.push({ key: arg, value: true })
+        parameters.push({ type, key: arg, value: true })
       }
       // string value parameter
       else if (type === 'string') {
-        if (i + 1 < args.length && !args[i + 1].startsWith('-')) {
-          parameters.push({ key: arg, value: args[i + 1] })
-          i++
+        // If this parameter doesn't have a value, throw an error
+        if (i + 1 >= args.length || args[i + 1].startsWith('-')) {
+          throw new MissingParameterValueError(arg)
         }
-        else {
-          throw new MissingValueParameter(arg)
-        }
+        parameters.push({ type, key: arg, value: args[i + 1] })
+        i++
       }
     }
     // position parameter
     else {
-      parameters.push({ key: '', value: arg, position: positionIndex })
-      positionIndex++
+      parameters.push({ type: 'string', key: '', value: arg, position: parameterPosition })
+      parameterPosition++
     }
   }
   return parameters
@@ -80,38 +87,60 @@ export interface ExtractOptions {
 }
 
 /**
- * Extract a value from an array
- * @param arr - The array to extract from
+ * Extract specified parameter value from parameter list
+ * @param parameters - The parameter list to extract from
  * @param extractOptions - The options to extract
  * @returns The extracted value
- * @throws If you don't provide a required parameter
+ * @throws If the required parameter is not provided
  */
-export function extract<T>(arr: Parameter[], extractOptions: ExtractOptions): T {
+export function extract(parameters: Parameter[], extractOptions: ExtractOptions): ParameterValue {
   const { matches, position = -1, required = false } = extractOptions
 
+  let type: ParameterType = 'string'
   let result: ParameterValue = null
 
-  // extract by matches
-  if (matches.length > 0) {
-    const index = arr.findIndex(item => matches.includes(item.key))
-    if (index >= 0) {
-      result = arr[index].value
-      arr.splice(index, 1)
+  // Process all parameters
+  for (let i = 0; i < parameters.length; i++) {
+    const parameter = parameters[i]
+    // Key parameter
+    if (parameter.key !== '' && matches.includes(parameter.key)) {
+      result = parameter.value
+      type = parameter.type
+      parameters.splice(i, 1)
+    }
+    // Position parameter
+    else if (position === parameter.position) {
+      result = parameter.value
+      type = parameter.type
+      parameters.splice(i, 1)
     }
   }
 
-  // extract by position
-  if (result === null && position >= 0) {
-    const index = arr.findIndex(item => item.position === position)
-    if (index >= 0) {
-      result = arr[index].value
-      arr.splice(index, 1)
-    }
-  }
-
-  // throw if required and no result
+  // Throw if a required parameter is not provided
   if (required && result === null)
-    throw new MissingParameter(matches.join(', '))
+    throw new MissingParameterError(matches.join(', '))
 
-  return result as T
+  // Type conversion
+  if (type === 'string')
+    return String(result)
+  else if (type === 'boolean')
+    return Boolean(result)
+  else
+    return result
+}
+
+export function extractString(parameters: Parameter[], extractOptions: ExtractOptions): string {
+  const { matches } = extractOptions
+  const result = extract(parameters, extractOptions)
+  if (typeof result !== 'string')
+    throw new InvalidParameterValueError(matches.join(', '))
+  return result
+}
+
+export function extractBoolean(parameters: Parameter[], extractOptions: ExtractOptions): boolean {
+  const { matches } = extractOptions
+  const result = extract(parameters, extractOptions)
+  if (typeof result !== 'boolean')
+    throw new InvalidParameterValueError(matches.join(', '))
+  return result
 }
