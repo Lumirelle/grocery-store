@@ -211,6 +211,7 @@ tsrm = tag-sync-remote-multiple
 # remote: re
 rel = remote-list
 re = remote add
+rex = remote remove
 # fetch: f
 f = fetch-prune-tags
 # pull: l
