@@ -1,8 +1,22 @@
+/**
+ * Paste the preference collection to the target path.
+ *
+ * @example
+ * ```bash
+ * pp -s <source-name> -t <target-path>
+ * ```
+ *
+ * @example
+ * ```bash
+ * pp <source-name> <target-path>
+ * ```
+ */
+
 import type { Parameter } from '../parse'
 import type { RunnerContext } from '../runner'
 import { getCommandRoot } from '../fs'
 import { extract } from '../parse'
-import { copyProfile } from '../profile'
+import { copyPreference } from '../preferences'
 import { runCli } from '../runner'
 
 runCli(async (context: RunnerContext, parameters: Parameter[]) => {
@@ -14,5 +28,5 @@ runCli(async (context: RunnerContext, parameters: Parameter[]) => {
   const targetPath = extract<string>(parameters, { matches: ['-t', '--target'], position: 1 })
   const override = extract<boolean>(parameters, { matches: ['-o', '--override'] })
 
-  await copyProfile(root, cwd, sourceName, targetPath, override)
+  await copyPreference(root, cwd, sourceName, targetPath, override)
 })

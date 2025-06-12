@@ -1,13 +1,14 @@
 import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { globSync } from 'tinyglobby'
+import { GROCERY_STORE_PATH } from '../src/config'
 import { log } from '../src/utils'
 
-const elements = globSync('profiles/**/*', {
+const elements = globSync(`${GROCERY_STORE_PATH}/**/*`, {
   cwd: process.cwd(),
   dot: true,
   absolute: false,
-  ignore: ['profiles/work/**/*'],
+  ignore: [`${GROCERY_STORE_PATH}/work/**/*`],
 })
 
 interface Catalog {

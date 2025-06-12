@@ -1,9 +1,23 @@
+/**
+ * Install the preference collection to the target path.
+ *
+ * @example
+ * ```bash
+ * pi
+ * ```
+ *
+ * @example
+ * ```bash
+ * pi -o
+ * ```
+ */
+
 import type { Parameter } from '../parse'
 import type { RunnerContext } from '../runner'
-import { SUPPORTED_PROFILE_COLLECTIONS } from '.'
+import { SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
 import { getCommandRoot } from '../fs'
 import { extract } from '../parse'
-import { processProfileCollection } from '../profile'
+import { processPreferenceCollection } from '../preferences'
 import { runCli } from '../runner'
 import { format, log } from '../utils'
 
@@ -12,9 +26,9 @@ runCli(async (context: RunnerContext, parameters: Parameter[]) => {
 
   const override = extract<boolean>(parameters, { matches: ['-o', '--override'] })
 
-  log.info(`Starting to install profiles ${override ? format.highlight('in override mode ') : ''}...`)
+  log.info(`Starting to install preferences ${override ? format.highlight('in override mode ') : ''}...`)
 
-  for (const collection of SUPPORTED_PROFILE_COLLECTIONS) {
-    await processProfileCollection(root, collection, 'install', override)
+  for (const collection of SUPPORTED_PREFERENCE_COLLECTIONS) {
+    await processPreferenceCollection(root, collection, 'install', override)
   }
 })

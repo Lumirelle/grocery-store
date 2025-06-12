@@ -99,7 +99,7 @@ BypassNRO.cmd
   fnm i 22
 
   # 安装个人配置
-  npm i lumirelle-profiles -g
+  npm i lumirelle-grocery-store -g
   sudo pi -o
   ```
 

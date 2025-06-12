@@ -1,5 +1,5 @@
 {
-  "profiles": {
+  "grocery-store": {
     "personal": {
       "docs": {
         ".obsidian": {
@@ -69,6 +69,7 @@
         "editor": {
           ".editorconfig": null,
           "idea": {
+            "outdated": null,
             "plugins-installed.txt": null
           },
           "neovim": {
@@ -82,7 +83,8 @@
             }
           },
           "vs": {
-            "backup.vssettings": null
+            "backup.vssettings": null,
+            "outdated": null
           },
           "vscode": {
             "extensions.json": null,
@@ -151,9 +153,6 @@
             "vue": {
               "stylelint.config.mjs": null
             }
-          },
-          "webhint": {
-            ".hintrc": null
           }
         },
         "package-manager": {
@@ -192,7 +191,8 @@
             "settings.json": null
           },
           "zsh": {
-            ".zshrc": null
+            ".zshrc": null,
+            "outdated": null
           }
         },
         "vcs": {

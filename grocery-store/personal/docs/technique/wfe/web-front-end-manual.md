@@ -82,7 +82,7 @@
 - 代码规范：使用 editorconfig + eslint + stylelint
 - 提交规范：使用 simple-git-hook + commitlint
 - 开发环境规范：使用 fnm + corepack + npm/pnpm/yarn
-- 配置文件：<https://github.com/Lumirelle/profiles>
+- 配置文件：<https://github.com/Lumirelle/grocery-store>
 
 ## 🚀 前端技术发展 / Development of Front End Techniques <a name="dev-of-front-end"></a>
 

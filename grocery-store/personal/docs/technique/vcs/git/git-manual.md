@@ -44,7 +44,7 @@ git ac "init: init project"
 ```shell
 # 添加远程
 # 格式：`git re <远程名> <远程库 URL>`
-git re origin https://github.com/Lumirelle/profiles.git
+git re origin https://github.com/Lumirelle/grocery-store.git
 
 # 首次推送分支，需要设置上游
 # 格式：`git pu <远程名> <本地分支名>:<远程分支名>`

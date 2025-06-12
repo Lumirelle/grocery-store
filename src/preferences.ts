@@ -1,43 +1,43 @@
-import type { ProfileCollection } from '.'
+import type { PreferenceCollection } from '.'
 import { basename, dirname, join, normalize, relative } from 'node:path'
 import process from 'node:process'
 import prompts from '@posva/prompts'
 import { globSync } from 'tinyglobby'
-import { SUPPORTED_PROFILE_COLLECTIONS } from '.'
+import { IGNORE_FILES_WHEN_PASTE, SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
 import { copyFile, createSymlink, ensureDir, existsSync, isDirectory, removeFile, removeSymlink } from './fs'
 import { format, log } from './utils'
 
 /**
- * Process a profile collection, install or uninstall the profiles in the collection.
+ * Process a preference collection, install or uninstall the preferences in the collection.
  * @param root - The root path of this package
- * @param collection - The profile collection to process
+ * @param collection - The preference collection to process
  * @param action - The action to perform, `install` or `uninstall`
- * @param override - Whether to override the existing profile
- * @returns A promise that resolves when the profile collection is processed
+ * @param override - Whether to override the existing preference
+ * @returns A promise that resolves when the preference collection is processed
  */
-export async function processProfileCollection(
+export async function processPreferenceCollection(
   root: string,
-  collection: ProfileCollection,
+  collection: PreferenceCollection,
   action: 'install' | 'uninstall',
   override = false,
 ): Promise<void> {
   const collectionPath = join(root, collection.source)
   if (!existsSync(collectionPath)) {
-    log.warn(`Profile collection path not found: ${format.path(collectionPath)}, skip`)
+    log.warn(`Preference collection path not found: ${format.path(collectionPath)}, skip`)
     return Promise.resolve()
   }
 
   for (const matcher of collection.installMatchers) {
     log.progress(`Processing matcher ${format.highlight(matcher.match)} in ${format.highlight(matcher.installMode || 'symlink')} mode ...`)
 
-    const installableProfilePaths = globSync(matcher.match, {
+    const installablePreferencePaths = globSync(matcher.match, {
       cwd: collectionPath,
       absolute: true,
       dot: true,
-    }).map(profile => normalize(profile))
+    }).map(preference => normalize(preference))
 
-    for (const profilePath of installableProfilePaths) {
-      const profileName = basename(profilePath)
+    for (const preferencePath of installablePreferencePaths) {
+      const preferenceName = basename(preferencePath)
 
       // Support multiple install folders
       let installFolders
@@ -50,21 +50,21 @@ export async function processProfileCollection(
 
       for (const installFolderPath of installFolders) {
         if (action === 'install' && !existsSync(installFolderPath)) {
-          log.warn(`Install folder not exists, may be you haven't install the program who uses profile ${format.path(profileName)} yet, skip`)
+          log.warn(`Install folder not exists, may be you haven't install the program who uses preference ${format.path(preferenceName)} yet, skip`)
           continue
         }
         else if (action === 'uninstall' && !existsSync(installFolderPath)) {
           continue
         }
 
-        const installProfilePath = join(installFolderPath, profileName)
+        const installPreferencePath = join(installFolderPath, preferenceName)
         // Install
         if (action === 'install') {
           // Copy mode
           if (matcher.installMode === 'copy') {
             try {
-              copyFile(profilePath, installProfilePath, override)
-              log.success(`Copied file: ${format.path(relative(root, profilePath))} >> ${format.path(installProfilePath)}`)
+              copyFile(preferencePath, installPreferencePath, override)
+              log.success(`Copied file: ${format.path(relative(root, preferencePath))} >> ${format.path(installPreferencePath)}`)
             }
             catch (error) {
               log.error(`Failed to copy file: ${error}`)
@@ -73,8 +73,8 @@ export async function processProfileCollection(
           // Symlink mode
           else {
             try {
-              await createSymlink(root, profilePath, installProfilePath, override)
-              log.success(`Created symlink: ${format.path(installProfilePath)} -> ${format.path(relative(root, profilePath))}`)
+              await createSymlink(root, preferencePath, installPreferencePath, override)
+              log.success(`Created symlink: ${format.path(installPreferencePath)} -> ${format.path(relative(root, preferencePath))}`)
             }
             catch (error) {
               log.error(`Failed to create symlink: ${error}`)
@@ -86,8 +86,8 @@ export async function processProfileCollection(
           // Copy mode
           if (matcher.installMode === 'copy') {
             try {
-              removeFile(installProfilePath)
-              log.success(`Removed file: ${format.path(installProfilePath)}`)
+              removeFile(installPreferencePath)
+              log.success(`Removed file: ${format.path(installPreferencePath)}`)
             }
             catch (error) {
               log.error(`Failed to remove file: ${error}`)
@@ -96,8 +96,8 @@ export async function processProfileCollection(
           // Symlink mode
           else {
             try {
-              removeSymlink(installProfilePath)
-              log.success(`Removed symlink: ${format.path(installProfilePath)}`)
+              removeSymlink(installPreferencePath)
+              log.success(`Removed symlink: ${format.path(installPreferencePath)}`)
             }
             catch (error) {
               log.error(`Failed to remove symlink: ${error}`)
@@ -112,51 +112,51 @@ export async function processProfileCollection(
 }
 
 /**
- * Find a profile in a profile collection.
+ * Find a preference in a preference collection.
  * @param root - The root path of this package
- * @param collection - The profile collection to search
- * @param sourceName - The name of the profile to find
- * @returns A promise that resolves with the path of the profile, or `null` if not found
+ * @param collection - The preference collection to search
+ * @param sourceName - The name of the preference to find
+ * @returns A promise that resolves with the path of the preference, or `null` if not found
  */
-export async function findProfile(root: string, collection: ProfileCollection, sourceName: string): Promise<string | null> {
+export async function findPreference(root: string, collection: PreferenceCollection, sourceName: string): Promise<string | null> {
   const collectionPath = join(root, collection.source)
   if (!existsSync(collectionPath)) {
-    log.warn(`Profile collection path not found: ${format.path(collectionPath)}, skip`)
+    log.warn(`Preference collection path not found: ${format.path(collectionPath)}, skip`)
     return Promise.resolve(null)
   }
 
-  const matchedProfiles = globSync(`**/${sourceName}`, {
+  const matchedPreferences = globSync(`**/${sourceName}`, {
     cwd: collectionPath,
     absolute: true,
     dot: true,
-    ignore: ['**/*.md'],
-  }).map(profile => normalize(profile))
+    ignore: IGNORE_FILES_WHEN_PASTE,
+  }).map(preference => normalize(preference))
 
-  if (matchedProfiles.length === 1) {
-    return Promise.resolve(matchedProfiles[0])
+  if (matchedPreferences.length === 1) {
+    return Promise.resolve(matchedPreferences[0])
   }
-  else if (matchedProfiles.length > 1) {
-    const { profile } = await prompts({
+  else if (matchedPreferences.length > 1) {
+    const { preference } = await prompts({
       type: 'select',
-      name: 'profile',
-      message: `Select a certain profile named ${format.highlight(sourceName)}:`,
-      choices: matchedProfiles.map(profile => ({
-        title: relative(collectionPath, profile),
-        value: profile,
+      name: 'preference',
+      message: `Select a certain preference named ${format.highlight(sourceName)}:`,
+      choices: matchedPreferences.map(preference => ({
+        title: relative(collectionPath, preference),
+        value: preference,
       })),
     })
-    return Promise.resolve(profile)
+    return Promise.resolve(preference)
   }
 
   return Promise.resolve(null)
 }
 
 /**
- * Copy a profile to a target path.
+ * Copy a preference to a target path.
  *
  * If the target path is not specified, it will be copied to the current working directory.
  *
- * If the target path is a directory, the profile will be copied to the directory with the same name as the profile.
+ * If the target path is a directory, the preference will be copied to the directory with the same name as the preference.
  *
  * If the target path is a file, it behaves like copy and rename.
  *
@@ -164,12 +164,12 @@ export async function findProfile(root: string, collection: ProfileCollection, s
  *
  * @param root - The root path of this package
  * @param cwd - The current working directory
- * @param sourceName - The name of the profile to copy
- * @param targetPath - The target path to copy the profile to
- * @param override - Whether to override the existing profile
- * @returns A promise that resolves when the profile is copied
+ * @param sourceName - The name of the preference to copy
+ * @param targetPath - The target path to copy the preference to
+ * @param override - Whether to override the existing preference
+ * @returns A promise that resolves when the preference is copied
  */
-export async function copyProfile(root: string, cwd: string, sourceName: string, targetPath: string, override: boolean): Promise<void> {
+export async function copyPreference(root: string, cwd: string, sourceName: string, targetPath: string, override: boolean): Promise<void> {
   if (!sourceName) {
     const { source } = await prompts({
       type: 'text',
@@ -186,15 +186,15 @@ export async function copyProfile(root: string, cwd: string, sourceName: string,
   }
 
   let sourcePath: string | null = null
-  for (const collection of SUPPORTED_PROFILE_COLLECTIONS) {
-    sourcePath = await findProfile(root, collection, sourceName)
+  for (const collection of SUPPORTED_PREFERENCE_COLLECTIONS) {
+    sourcePath = await findPreference(root, collection, sourceName)
     if (sourcePath) {
       break
     }
   }
 
   if (!sourcePath) {
-    log.error(`Source file not found in any profile collection: ${format.highlight(sourceName)}`)
+    log.error(`Source file not found in any preference collection: ${format.highlight(sourceName)}`)
     process.exitCode = 1
     return Promise.resolve()
   }

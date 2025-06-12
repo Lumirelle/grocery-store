@@ -2,16 +2,18 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { env } from 'node:process'
 
-export const BOOLEAN_PARAMETER_KEYS = ['-?', '-h', '-v', '-o']
+export const BOOLEAN_PARAMETER_KEYS = ['-?', '--help', '-h', '--version', '-v', '--override', '-o']
+
+export const GROCERY_STORE_PATH = 'grocery-store'
 
 export interface InstallableMatcher {
   /**
-   * The glob pattern to match the profile collection, relative to the `source` path
+   * The glob pattern to match the preference collection, relative to the `source` path
    */
   match: string
 
   /**
-   * The folder to install the profile collection
+   * The folder to install the preference collection
    */
   installFolder: string | string[]
 
@@ -21,28 +23,28 @@ export interface InstallableMatcher {
   installMode?: 'symlink' | 'copy'
 }
 
-export interface ProfileCollection {
+export interface PreferenceCollection {
   /**
-   * The source path of the profile collection, relative to project root
+   * The source path of the preference collection, relative to project root
    */
   source: string
 
   /**
-   * The install matchers for installing the profile collection.
+   * The install matchers for installing the preference collection.
    *
-   * Profiles not matched by any matcher will not be installed.
+   * Preferences not matched by any matcher will not be installed.
    */
   installMatchers: InstallableMatcher[]
 }
 
 /**
- * Supported profile collections
+ * Supported preference collections
  *
  * FIXME: Need test `installFolder` in unix & linux like system
  */
-export const SUPPORTED_PROFILE_COLLECTIONS: ProfileCollection[] = [
+export const SUPPORTED_PREFERENCE_COLLECTIONS: PreferenceCollection[] = [
   {
-    source: 'profiles/personal/preferences',
+    source: `${GROCERY_STORE_PATH}/personal/preferences`,
     installMatchers: [
       {
         match: 'editor/neovim/**/*',
@@ -110,7 +112,7 @@ export const SUPPORTED_PROFILE_COLLECTIONS: ProfileCollection[] = [
     ],
   },
   {
-    source: 'profiles/work/preferences',
+    source: `${GROCERY_STORE_PATH}/work/preferences`,
     installMatchers: [
       {
         match: 'linter/cspell/.cspell.wrk.txt',
@@ -119,3 +121,8 @@ export const SUPPORTED_PROFILE_COLLECTIONS: ProfileCollection[] = [
     ],
   },
 ]
+
+/**
+ * The files to ignore when paste the preference collection (Command `pp`).
+ */
+export const IGNORE_FILES_WHEN_PASTE = ['**/*.md', '**/outdated']
