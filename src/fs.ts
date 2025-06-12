@@ -1,7 +1,7 @@
 import { constants, copyFileSync, promises as fsPromises, lstatSync, mkdirSync, unlinkSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { format, log } from './utils'
+import { format, log } from './logger'
 
 /**
  * Get the root directory of the command `.ts` file.

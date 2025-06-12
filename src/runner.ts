@@ -3,8 +3,8 @@ import type { Parameter } from './parse'
 import process from 'node:process'
 import c from 'ansis'
 import { version } from '../package.json'
+import { format, log } from './logger'
 import { extractBoolean, parse } from './parse'
-import { format, log } from './utils'
 
 export interface RunnerContext {
   cwd: string

@@ -9,9 +9,9 @@
 
 import { SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
 import { getRoot } from '../fs'
+import { log } from '../logger'
 import { processPreferenceCollection } from '../preferences'
 import { runCli } from '../runner'
-import { log } from '../utils'
 
 runCli(async () => {
   const root = getRoot(import.meta.url)

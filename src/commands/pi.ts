@@ -16,10 +16,10 @@ import type { Parameter } from '../parse'
 import type { RunnerContext } from '../runner'
 import { SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
 import { getRoot } from '../fs'
+import { format, log } from '../logger'
 import { extractBoolean } from '../parse'
 import { processPreferenceCollection } from '../preferences'
 import { runCli } from '../runner'
-import { format, log } from '../utils'
 
 runCli(async (context: RunnerContext, parameters: Parameter[]) => {
   const root = getRoot(import.meta.url)

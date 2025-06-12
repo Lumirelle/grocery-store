@@ -5,7 +5,8 @@ import prompts from '@posva/prompts'
 import { globSync } from 'tinyglobby'
 import { IGNORE_FILES_WHEN_PASTE, SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
 import { copyFile, createSymlink, ensureDir, existsSync, isDirectory, removeFile, removeSymlink } from './fs'
-import { format, log } from './utils'
+import { format, log } from './logger'
+import { isAdmin } from './permission'
 
 /**
  * Process a preference collection, install or uninstall the preferences in the collection.
@@ -21,6 +22,15 @@ export async function processPreferenceCollection(
   action: 'install' | 'uninstall',
   override = false,
 ): Promise<void> {
+  // Require administrator permission
+  if (override) {
+    if (!isAdmin()) {
+      log.error('Override mode requires administrator permission')
+      process.exitCode = 1
+      return Promise.resolve()
+    }
+  }
+
   const collectionPath = join(root, collection.source)
   if (!existsSync(collectionPath)) {
     log.warn(`Preference collection path not found: ${format.path(collectionPath)}, skip`)

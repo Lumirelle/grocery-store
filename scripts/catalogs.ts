@@ -2,7 +2,7 @@ import { writeFileSync } from 'node:fs'
 import process from 'node:process'
 import { globSync } from 'tinyglobby'
 import { GROCERY_STORE_PATH } from '../src/config'
-import { log } from '../src/utils'
+import { log } from '../src/logger'
 
 const paths = globSync(`${GROCERY_STORE_PATH}/**/*`, {
   cwd: process.cwd(),
