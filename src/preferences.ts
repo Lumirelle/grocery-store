@@ -1,6 +1,5 @@
 import type { PreferenceCollection } from '.'
 import { basename, dirname, join, normalize, relative } from 'node:path'
-import process from 'node:process'
 import prompts from '@posva/prompts'
 import { globSync } from 'tinyglobby'
 import { IGNORE_FILES_WHEN_PASTE, SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
@@ -14,7 +13,7 @@ import { isAdmin } from './permission'
  * @param collection - The preference collection to process
  * @param action - The action to perform, `install` or `uninstall`
  * @param override - Whether to override the existing preference
- * @returns Always return Promise.resolve()
+ * @returns A promise that resolves when the preference collection is processed, or rejects with an error
  */
 export async function processPreferenceCollection(
   root: string,
@@ -25,9 +24,7 @@ export async function processPreferenceCollection(
   // Require administrator permission
   if (override) {
     if (!isAdmin()) {
-      log.error('Override mode requires administrator permission')
-      process.exitCode = 1
-      return Promise.resolve()
+      return Promise.reject(new Error('Override mode requires administrator permission'))
     }
   }
 
@@ -181,7 +178,7 @@ export async function findPreference(root: string, collection: PreferenceCollect
  * @param sourceName - The name of the preference to copy
  * @param targetPath - The target path to copy the preference to
  * @param override - Whether to override the existing preference
- * @returns Always return Promise.resolve()
+ * @returns A promise that resolves when the preference is copied, or rejects with an error
  */
 export async function copyPreference(root: string, cwd: string, sourceName: string | null, targetPath: string | null, override: boolean): Promise<void> {
   if (!sourceName) {
@@ -194,9 +191,7 @@ export async function copyPreference(root: string, cwd: string, sourceName: stri
   }
 
   if (!sourceName) {
-    log.error('No source file provided, operation cancelled')
-    process.exitCode = 1
-    return Promise.resolve()
+    return Promise.reject(new Error('No source file provided, operation cancelled'))
   }
 
   let sourcePath: string | null = null
@@ -208,9 +203,7 @@ export async function copyPreference(root: string, cwd: string, sourceName: stri
   }
 
   if (!sourcePath) {
-    log.error(`Source file not found in any preference collection: ${format.highlight(sourceName)}`)
-    process.exitCode = 1
-    return Promise.resolve()
+    return Promise.reject(new Error(`Source file not found in any preference collection: ${format.highlight(sourceName)}`))
   }
 
   if (!targetPath) {
