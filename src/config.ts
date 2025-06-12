@@ -1,3 +1,4 @@
+import type { ParameterKey } from './parse'
 import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { env } from 'node:process'
@@ -5,12 +6,12 @@ import { env } from 'node:process'
 /**
  * The keys of the boolean parameters
  */
-export const BOOLEAN_PARAMETER_KEYS = ['-?', '--help', '-h', '--version', '-v', '--override', '-o']
+export const BOOLEAN_PARAMETER_KEYS: ParameterKey[] = ['-?', '--help', '-h', '--version', '-v', '--override', '-o']
 
 /**
  * The path to the grocery store, relative to the project root
  */
-export const GROCERY_STORE_PATH = 'grocery-store'
+export const GROCERY_STORE_PATH: string = 'grocery-store'
 
 export interface InstallableMatcher {
   /**
@@ -131,4 +132,4 @@ export const SUPPORTED_PREFERENCE_COLLECTIONS: PreferenceCollection[] = [
 /**
  * The files to ignore when paste the preference collection (Command `pp`).
  */
-export const IGNORE_FILES_WHEN_PASTE = ['**/*.md', '**/outdated']
+export const IGNORE_FILES_WHEN_PASTE: string[] = ['**/*.md', '**/outdated']

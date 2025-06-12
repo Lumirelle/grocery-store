@@ -3,7 +3,7 @@ import type { Parameter } from './parse'
 import process from 'node:process'
 import c from 'ansis'
 import { version } from '../package.json'
-import { extract, parse } from './parse'
+import { extractBoolean, parse } from './parse'
 import { format, log } from './utils'
 
 export interface RunnerContext {
@@ -35,7 +35,7 @@ export async function runCli(fn: Runner): Promise<void> {
  * @param parameters - The parameters received from cli
  */
 export async function run(fn: Runner, parameters: Parameter[]): Promise<void> {
-  const debug = extract(parameters, { matches: ['-?'] })
+  const debug = extractBoolean(parameters, { keys: ['-?'] })
 
   const context: RunnerContext = {
     cwd: process.cwd(),

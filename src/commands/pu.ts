@@ -8,13 +8,13 @@
  */
 
 import { SUPPORTED_PREFERENCE_COLLECTIONS } from '.'
-import { getCommandRoot } from '../fs'
+import { getRoot } from '../fs'
 import { processPreferenceCollection } from '../preferences'
 import { runCli } from '../runner'
 import { log } from '../utils'
 
 runCli(async () => {
-  const root = getCommandRoot(import.meta.url)
+  const root = getRoot(import.meta.url)
 
   log.info('Starting to remove preferences...')
 

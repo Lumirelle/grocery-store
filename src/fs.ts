@@ -6,16 +6,21 @@ import { format, log } from './utils'
 /**
  * Get the root directory of the command `.ts` file.
  *
- * @param metaUrl - The meta URL of the command `.ts` file
+ * @param importMetaUrl - The `import.meta.url` of the command `.ts` file
  * @returns The root directory of the command `.ts` file
  */
-export function getCommandRoot(metaUrl: string): string {
-  const grandParentDir = resolve(dirname(fileURLToPath(metaUrl)), '..')
-  // Compatible with stubbed build mode
-  if (grandParentDir.includes('src')) {
-    return resolve(grandParentDir, '..')
+export function getRoot(importMetaUrl: string): string {
+  const parentDir = dirname(fileURLToPath(importMetaUrl))
+  let root = parentDir
+  // Compatible with build mode
+  if (parentDir.includes('bin') || parentDir.includes('dist')) {
+    root = resolve(parentDir, '..')
   }
-  return grandParentDir
+  // Compatible with stubbed build mode
+  else if (parentDir.includes('src')) {
+    root = resolve(parentDir, '..', '..')
+  }
+  return root
 }
 
 /**
@@ -48,49 +53,53 @@ export function ensureDir(dirPath: string): void {
   }
 }
 
-export async function createSymlink(root: string, sourcePath: string, targetPath: string, force = false): Promise<void> {
+export async function createSymlink(sourcePath: string, targetPath: string, force = false): Promise<boolean> {
   if (existsSync(targetPath)) {
     if (force) {
       unlinkSync(targetPath)
     }
     else {
       log.warn(`File already exists: ${format.path(targetPath)}, skip`)
-      return
+      return false
     }
   }
 
   await fsPromises.symlink(sourcePath, targetPath, 'file')
+  return true
 }
 
-export function removeSymlink(targetPath: string): void {
+export function removeSymlink(targetPath: string): boolean {
   if (!existsSync(targetPath)) {
     log.warn(`Target file not found: ${format.path(targetPath)}, skip`)
-    return
+    return false
   }
 
   const stats = lstatSync(targetPath)
-  if (stats.isSymbolicLink()) {
-    unlinkSync(targetPath)
-  }
-  else {
+  if (!stats.isSymbolicLink()) {
     log.warn(`Target file is not a symlink: ${format.path(targetPath)}, skip`)
-  }
-}
-
-export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): void {
-  if (existsSync(targetPath) && !force) {
-    log.warn(`File already exists: ${format.path(targetPath)}, skip`)
-    return
-  }
-
-  copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : 0)
-}
-
-export function removeFile(targetPath: string): void {
-  if (!existsSync(targetPath)) {
-    log.warn(`Target file not found: ${format.path(targetPath)}, skip`)
-    return
+    return false
   }
 
   unlinkSync(targetPath)
+  return true
+}
+
+export function copyFile(sourcePath: string, targetPath: string, force: boolean = false): boolean {
+  if (existsSync(targetPath) && !force) {
+    log.warn(`File already exists: ${format.path(targetPath)}, skip`)
+    return false
+  }
+
+  copyFileSync(sourcePath, targetPath, force ? constants.COPYFILE_FICLONE : 0)
+  return true
+}
+
+export function removeFile(targetPath: string): boolean {
+  if (!existsSync(targetPath)) {
+    log.warn(`Target file not found: ${format.path(targetPath)}, skip`)
+    return false
+  }
+
+  unlinkSync(targetPath)
+  return true
 }

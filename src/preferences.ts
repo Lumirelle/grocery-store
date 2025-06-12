@@ -13,7 +13,7 @@ import { format, log } from './utils'
  * @param collection - The preference collection to process
  * @param action - The action to perform, `install` or `uninstall`
  * @param override - Whether to override the existing preference
- * @returns A promise that resolves when the preference collection is processed
+ * @returns Always return Promise.resolve()
  */
 export async function processPreferenceCollection(
   root: string,
@@ -63,8 +63,9 @@ export async function processPreferenceCollection(
           // Copy mode
           if (matcher.installMode === 'copy') {
             try {
-              copyFile(preferencePath, installPreferencePath, override)
-              log.success(`Copied file: ${format.path(relative(root, preferencePath))} >> ${format.path(installPreferencePath)}`)
+              if (copyFile(preferencePath, installPreferencePath, override)) {
+                log.success(`Copied file: ${format.path(relative(root, preferencePath))} >> ${format.path(installPreferencePath)}`)
+              }
             }
             catch (error) {
               log.error(`Failed to copy file: ${error}`)
@@ -73,8 +74,9 @@ export async function processPreferenceCollection(
           // Symlink mode
           else {
             try {
-              await createSymlink(root, preferencePath, installPreferencePath, override)
-              log.success(`Created symlink: ${format.path(installPreferencePath)} -> ${format.path(relative(root, preferencePath))}`)
+              if (await createSymlink(preferencePath, installPreferencePath, override)) {
+                log.success(`Created symlink: ${format.path(installPreferencePath)} -> ${format.path(relative(root, preferencePath))}`)
+              }
             }
             catch (error) {
               log.error(`Failed to create symlink: ${error}`)
@@ -86,8 +88,9 @@ export async function processPreferenceCollection(
           // Copy mode
           if (matcher.installMode === 'copy') {
             try {
-              removeFile(installPreferencePath)
-              log.success(`Removed file: ${format.path(installPreferencePath)}`)
+              if (removeFile(installPreferencePath)) {
+                log.success(`Removed file: ${format.path(installPreferencePath)}`)
+              }
             }
             catch (error) {
               log.error(`Failed to remove file: ${error}`)
@@ -96,8 +99,9 @@ export async function processPreferenceCollection(
           // Symlink mode
           else {
             try {
-              removeSymlink(installPreferencePath)
-              log.success(`Removed symlink: ${format.path(installPreferencePath)}`)
+              if (removeSymlink(installPreferencePath)) {
+                log.success(`Removed symlink: ${format.path(installPreferencePath)}`)
+              }
             }
             catch (error) {
               log.error(`Failed to remove symlink: ${error}`)
@@ -167,9 +171,9 @@ export async function findPreference(root: string, collection: PreferenceCollect
  * @param sourceName - The name of the preference to copy
  * @param targetPath - The target path to copy the preference to
  * @param override - Whether to override the existing preference
- * @returns A promise that resolves when the preference is copied
+ * @returns Always return Promise.resolve()
  */
-export async function copyPreference(root: string, cwd: string, sourceName: string, targetPath: string, override: boolean): Promise<void> {
+export async function copyPreference(root: string, cwd: string, sourceName: string | null, targetPath: string | null, override: boolean): Promise<void> {
   if (!sourceName) {
     const { source } = await prompts({
       type: 'text',
@@ -209,7 +213,9 @@ export async function copyPreference(root: string, cwd: string, sourceName: stri
 
   ensureDir(dirname(targetPath))
 
-  copyFile(sourcePath, targetPath, override)
+  if (copyFile(sourcePath, targetPath, override)) {
+    log.success(`Copied file: ${format.path(relative(root, sourcePath))} >> ${format.path(targetPath)}`)
+  }
 
   return Promise.resolve()
 }
