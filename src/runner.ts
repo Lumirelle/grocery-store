@@ -4,7 +4,7 @@ import process from 'node:process'
 import c from 'ansis'
 import { version } from '../package.json'
 import { format, log } from './logger'
-import { extractBoolean, parse } from './parse'
+import { extractBoolean, parseArgsToParameters } from './parse'
 
 export interface RunnerContext {
   cwd: string
@@ -18,7 +18,7 @@ export type Runner = (context: RunnerContext, parameters: Parameter[]) => Promis
  */
 export async function runCli(fn: Runner): Promise<void> {
   const args = process.argv.slice(2)
-  const parameters = parse(args)
+  const parameters = parseArgsToParameters(args)
   try {
     await run(fn, parameters)
   }

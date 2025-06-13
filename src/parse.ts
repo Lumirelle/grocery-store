@@ -46,7 +46,7 @@ export function typeOfParameter(key: ParameterKey): ParameterType {
  * @returns The parsed parameters
  * @throws If a string value parameter is provided without a value
  */
-export function parse(args: string[]): Parameter[] {
+export function parseArgsToParameters(args: string[]): Parameter[] {
   const parameters: Parameter[] = []
 
   let parameterPosition = 0
