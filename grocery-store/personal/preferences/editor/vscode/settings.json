@@ -184,7 +184,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[powershell]": { "editor.defaultFormatter": "ms-vscode.powershell" },
-  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-docker" },
+  "[dockerfile]": { "editor.defaultFormatter": "ms-azuretools.vscode-containers" },
   "[dotenv]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
   "[ignore]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
   "[properties]": { "editor.defaultFormatter": "foxundermoon.shell-format" },
