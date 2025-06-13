@@ -1,0 +1,18 @@
+{
+  // cspell:disable
+  // PROFILE_VUE VSCODE EXTENSIONS, BASED ON PROFILE_JS
+  "recommendations": [
+    // ↓↓ language & file support, formatter, linter, snippets
+    // -- language & file support
+    "vue.volar",
+    "lokalise.i18n-ally",
+
+    // ↓↓ coding helper
+    // -- dev
+    "dariofuzinato.vue-peek"
+
+    // ↓↓ extension count
+    // vscode: {PROFILE_VUE: 3 + {PROFILE_JS: 58} = 61}
+    // cursor: {PROFILE_VUE: 3 + {PROFILE_JS: 56} = 59}
+  ]
+}

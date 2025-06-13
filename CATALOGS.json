@@ -87,13 +87,18 @@
             "outdated": null
           },
           "vscode": {
-            "extensions.json": null,
             "keybindings.json": null,
             "profiles": {
+              "default": {
+                "extensions.json": null
+              },
               "js": {
                 "extensions.json": null
               },
               "uniapp": {
+                "extensions.json": null
+              },
+              "vue": {
                 "extensions.json": null
               },
               "vue2": {

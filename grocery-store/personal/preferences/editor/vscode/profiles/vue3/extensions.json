@@ -1,104 +1,16 @@
 {
   // cspell:disable
+  // PROFILE_VUE3 VSCODE EXTENSIONS, BASED ON PROFILE_VUE
   "recommendations": [
-    // ↓↓ ui
-    "antfu.theme-vitesse",
-    "antfu.icons-carbon",
-    "pkief.material-icon-theme",
-    "subframe7536.custom-ui-style",
-
-    // ↓↓ project management
-    // -- general
-    "alefragnani.project-manager",
-    "antfu.where-am-i",
-    // -- remote
-    "ms-vscode.remote-repositories",
-    "github.remotehub",
-    "ms-vscode.azure-repos",
-    "eamodio.gitlens",
-    // -- PROFILE_JS
-    "herrmannplatz.npm-dependency-links",
-    "antfu.pnpm-catalog-lens",
-    "jasonnutter.search-node-modules",
-
-    // ↓↓ remote dev
-    "ms-azuretools.vscode-containers",
-    "ms-vscode-remote.remote-containers", // NOTE: vscode only
-    "ms-vscode-remote.remote-wsl", // NOTE: vscode only
-    "anysphere.remote-containers", // NOTE: cursor only
-    "anysphere.remote-wsl", // NOTE: cursor only
-
     // ↓↓ language & file support, formatter, linter, snippets
     // -- language & file support
-    "remcohaszing.schemastore",
-    "redhat.vscode-yaml",
-    "simonsiefke.svg-preview",
-    "ms-vscode.powershell", // also the formatter & linter & snippets for powershell
-    "sandcastle.vscode-open",
-    "ms-vscode.hexeditor",
-    "brandonfowler.exe-runner",
-    // -- PROFILE_JS language & file support
-    "dotenv.dotenv-vscode",
-    // -- PROFILE_VUE language & file support
-    "vue.volar",
-    "lokalise.i18n-ally",
-    // -- PROFILE_VUE3 language & file support
     "noxussj.element-plus", // also the snippets for element-plus
     "antfu.slidev",
-    // -- formatter
-    "editorconfig.editorconfig",
-    "esbenp.prettier-vscode",
-    "foxundermoon.shell-format",
-    // -- linter
-    "streetsidesoftware.code-spell-checker",
-    "davidanson.vscode-markdownlint",
-    // -- PROFILE_JS linter
-    "dbaeumer.vscode-eslint", // also the formatter for js
-    "stylelint.vscode-stylelint",
     // -- snippets
-    "jmsv.javascriptsnippetsstandard",
-    "bierner.emojisense",
-    // -- PROFILE_VUE3 snippets
-    "nicholashsiang.vscode-vue3-snippets",
-
-    // ↓↓ coding helper
-    // -- views
-    "antfu.file-nesting",
-    "gruntfuggly.todo-tree",
-    "oderwat.indent-rainbow",
-    "vincaslt.highlight-matching-tag",
-    "usernamehw.errorlens",
-    "antfu.array-index-inlay",
-    "moalamri.inline-fold",
-    "ibm.output-colorizer",
-    // -- dev
-    "antfu.smart-clicks",
-    "albert.tabout",
-    "yatki.vscode-surround",
-    "cardinal90.multi-cursor-case-preserve",
-    "christian-kohler.path-intellisense",
-    "jakob101.relativepath",
-    "tombonnike.vscode-status-bar-format-toggle",
-    "github.copilot", // NOTE: vscode only
-    "github.copilot-chat", // NOTE: vscode only
-    // -- test
-    "ms-vscode.test-adapter-converter",
-    "hbenl.vscode-test-explorer",
-    // -- PROFILE_JS dev
-    "fractalbrew.backticks",
-    "ecmel.vscode-html-css",
-    "antfu.goto-alias",
-    "chakrounanas.turbo-console-log",
-    "ritwickdey.liveserver",
-    // -- PROFILE_VUE dev
-    "dariofuzinato.vue-peek",
-
-    // ↓↓ extension customization
-    "l13rary.l13-built-in-extensions",
-    "vscode.javascript-modified" // NOTE: modified by extension "l13rary.l13-built-in-extensions", snippets disabled
+    "nicholashsiang.vscode-vue3-snippets"
 
     // ↓↓ extension count
-    // vscode: 67 - 2 = 65
-    // cursor: 67 - 4 = 63
+    // vscode: {PROFILE_VUE3: 3 + {PROFILE_VUE: 61} = 64}
+    // cursor: {PROFILE_VUE3: 3 + {PROFILE_VUE: 59} = 62}
   ]
 }
