@@ -10,7 +10,7 @@
     "nicholashsiang.vscode-vue3-snippets"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE3: 3 + {PROFILE_VUE: 61} = 64}
-    // cursor: {PROFILE_VUE3: 3 + {PROFILE_VUE: 59} = 62}
+    // vscode: {PROFILE_VUE3: 3 + {PROFILE_VUE: 62} = 65}
+    // cursor: {PROFILE_VUE3: 3 + {PROFILE_VUE: 60} = 63}
   ]
 }

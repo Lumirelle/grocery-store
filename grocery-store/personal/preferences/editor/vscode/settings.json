@@ -36,7 +36,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "//": "Last update at 6/13/2025, 11:31:59 AM",
+    "//": "Last update at 6/16/2025, 3:31:35 PM",
     ".clang-tidy": ".clang-format, .clangd, compile_commands.json",
     ".env": "*.env, .env.*, .envrc, env.d.ts",
     ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .lfsconfig, .mailmap, .git-blame*",
@@ -346,7 +346,6 @@
   "turboConsoleLog.quote": "'",
   "turboConsoleLog.logMessagePrefix": "⏳",
   "turboConsoleLog.includeFilename": true,
-  "turboConsoleLog.includeLineNum": true,
 
   // ↓↓ extensions: extension customization
   "l13BuiltInExtensions.autoUpdateModifiedBuiltInExtensions": true
