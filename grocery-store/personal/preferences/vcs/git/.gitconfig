@@ -88,8 +88,9 @@ stash-drop = stash drop
 branch-list = branch
 branch-list-remote = branch --remote
 branch-list-all = branch --all
-branch-delete = branch --delete
-branch-force-delete = branch --delete --force
+branch-delete-locally = branch --delete
+branch-force-delete-locally = branch --delete --force
+branch-delete-remote = push --delete origin
 # branch & switch
 branch-then-switch = switch --create
 # merge
@@ -183,8 +184,9 @@ b = branch
 bl = branch-list
 blr = branch-list-remote
 bla = branch-list-all
-bx = branch-delete
-bxx = branch-force-delete
+bx = branch-delete-locally
+bxx = branch-force-delete-locally
+bxr = branch-delete-remote # Remote branch has no force delete operation
 # switch: w
 w = switch
 # branch & switch: b*w*
@@ -197,6 +199,8 @@ r = rebase
 rz = rebase-abort
 # reset: rs
 rs = reset
+# revert: rv
+rv = revert
 # cherry-pick: cp
 cp = cherry-pick
 # tag: t
