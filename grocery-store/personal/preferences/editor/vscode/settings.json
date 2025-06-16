@@ -247,6 +247,7 @@
     "scmItemInline": false,
     "scmItem": false
   },
+  "gitlens.graph.dimMergeCommits": true,
   "gitlens.views.branches.showRemoteBranches": true,
   "gitlens.views.commitDetails.files.layout": "tree",
   // -- PROFILE_JAVA
