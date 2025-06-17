@@ -17,6 +17,9 @@
     "jsonc",
     "yaml",
     "toml",
-    "xml"
+    "xml",
+    "css",
+    "postcss",
+    "scss"
   ]
 }

@@ -73,9 +73,9 @@ export default {
       },
     ],
 
-    // Warning for descending specificity, for better maintainability
+    // In css, the specificity & order of selectors are important.
     // Actually, some times this rule may give false positives, and it's not so worth fixing it
-    'no-descending-specificity': [true, { severity: 'warning' }],
+    'no-descending-specificity': [true, { ignore: ['selectors-within-list'], severity: 'warning' }],
 
     'scss/dollar-variable-pattern': [
       '^(-|--)?[a-z][a-z0-9]*(-[a-z0-9]+)*$',

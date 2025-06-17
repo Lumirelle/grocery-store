@@ -51,6 +51,23 @@
         }
       },
       "preferences": {
+        "code-template": {
+          "scss": {
+            "color": {
+              "index.scss": null
+            },
+            "common": {
+              "var.scss": null
+            },
+            "mixins": {
+              "config.scss": null,
+              "function.scss": null,
+              "mixins.scss": null,
+              "utils.scss": null
+            },
+            "var.scss": null
+          }
+        },
         "deployer": {
           "docker": {
             "docker-compose.yaml": null,
