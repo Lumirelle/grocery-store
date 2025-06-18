@@ -134,7 +134,7 @@ $font-family: () !default;
 $font-family: map.merge(
   (
     '': "'Inter', 'Microsoft YaHei', '微软雅黑', sans-serif",
-    'number': "'TCloud Number', 'sans-serif'",
+    'number': "'TCloud Number', sans-serif",
   ),
   $font-family
 );
