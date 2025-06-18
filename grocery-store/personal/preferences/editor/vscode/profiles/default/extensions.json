@@ -29,6 +29,8 @@
     // -- language & file support
     "remcohaszing.schemastore",
     "redhat.vscode-yaml",
+    "mrmlnc.vscode-scss",
+    "glenn2223.live-sass",
     "simonsiefke.svg-preview",
     "ms-vscode.powershell", // also the formatter & linter & snippets for powershell
     "sandcastle.vscode-open",
@@ -72,7 +74,7 @@
     "vscode.javascript-modified" // NOTE: modified by extension "l13rary.l13-built-in-extensions", snippets disabled
 
     // ↓↓ extension count
-    // vscode: {PROFILE_DEFAULT: 51 - 3 = 48}
-    // cursor: {PROFILE_DEFAULT: 51 - 5 = 46}
+    // vscode: {PROFILE_DEFAULT: 53 - 3 = 50}
+    // cursor: {PROFILE_DEFAULT: 53 - 5 = 48}
   ]
 }

@@ -260,6 +260,7 @@
   // -- language & file support
   "docker.extension.dockerEngineAvailabilityPrompt": false,
   "json.schemaDownload.enable": true,
+  "liveSassCompile.settings.showOutputWindowOn": "Debug",
   "powershell.integratedConsole.showOnStartup": false,
   "powershell.promptToUpdatePowerShell": false,
   "redhat.telemetry.enabled": false,

@@ -23,7 +23,7 @@
     "ritwickdey.liveserver"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 48} = 59}
-    // cursor: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 46} = 57}
+    // vscode: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 50} = 61}
+    // cursor: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 48} = 59}
   ]
 }
