@@ -1,3 +1,6 @@
+packages:
+  - 'grocery-store/personal/preferences/project-template/**'
+
 catalogs:
   dev:
     '@antfu/eslint-config': ^4.14.1
@@ -14,6 +17,7 @@ catalogs:
     typescript: ^5.8.3
     unbuild: ^3.5.0
     vitest: ^3.2.3
+    vue: ^2.7.16
   prod:
     ansis: ^4.1.0
     tinyglobby: ^0.2.14

@@ -1,0 +1,9 @@
+{
+  "name": "vue2-scss-bem",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "vue": "catalog:dev"
+  }
+}

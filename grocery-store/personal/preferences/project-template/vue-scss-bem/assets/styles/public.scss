@@ -1,0 +1,115 @@
+@use 'common/var' as *;
+
+// 1. You can import the mixins in `public.scss` file.
+@use 'mixins' as *;
+//
+// 2. Or you can import the mixins in your project build config.
+// For example, in your `nuxt.config.ts` file, you can add the following:
+//
+// Nuxt2:
+// ```ts
+// export default {
+//   css: {
+//     loaderOptions: {
+//       scss: {
+//         additionalData: `@use 'mixins/index' as *;`,
+//       },
+//     },
+//   },
+// };
+// ```
+//
+// Nuxt3:
+// ```ts
+// export default defineNuxtConfig({
+//   vite: {
+//     css: {
+//       preprocessorOptions: {
+//         scss: {
+//           additionalData: `@use 'mixins/index' as *;`,
+//         },
+//       },
+//     },
+//   },
+// });
+// ```
+
+@use 'sass:map';
+
+// for better performance do not dynamically change the root variable if you really
+// do not need that, since this could introduce recalculation overhead for rendering.
+// https://lisilinhart.info/posts/css-variables-performance/
+
+// Common
+:root {
+  // Colors
+  @include css-var('color-white', $color-white);
+  @include css-var('color-black', $color-black);
+
+  @each $type in map.keys($colors) {
+    @include css-color-type($type);
+  }
+
+  // Border
+  @include css-var-all-type('border-radius', $border-radius);
+
+  // Overlay & Mask
+  @include css-var-all-type('overlay-color', $overlay-color);
+  @include css-var-all-type('mask-color', $mask-color);
+
+  // ZIndex
+  @include css-var-all-type('index', $z-index);
+
+  // Typography
+  @include css-var-all-type('font-size', $font-size);
+  @include css-var-all-type('font-family', $font-family);
+  @include css-var-all-type('font-weight', $font-weight);
+  @include css-var-all-type('line-height', $line-height);
+
+  // Transition
+  // refer to this website to get the bezier motion function detail
+  // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
+  @include css-var-all-type('transition-duration', $transition-duration);
+  @include css-var-all-type('transition-function', $transition-function);
+  @include css-var-all-type('transition', $transition);
+
+  // Content max width
+  @include css-var-all-type('content-max-width', $content-max-width);
+}
+
+// Light Scheme
+:root {
+  color-scheme: light;
+
+  @each $type in (primary) {
+    @include css-color-type-schema($type, 'light');
+  }
+
+  // Background
+  @include css-var-all-type('bg-color', $bg-color);
+  // Text
+  @include css-var-all-type('text-color', $text-color);
+  // Border
+  @include css-var-all-type('border-color', $border-color);
+
+  // Border but based on border-color, so they should put after border-color
+  @include css-var('border-width', $border-width);
+  @include css-var('border-style', $border-style);
+  @include css-var('border', getCssVar('border-width') getCssVar('border-style') getCssVar('border-color'));
+}
+
+// Dark Scheme
+html.dark {
+  color-scheme: dark;
+
+  @each $type in (primary) {
+    @include css-color-type-schema($type, 'dark');
+  }
+
+  // Background
+  @include css-var-all-type('bg-color', $bg-color);
+  // Text
+  @include css-var-all-type('text-color', $text-color);
+  // Border
+  @include css-var-all-type('border-color', $border-color);
+}

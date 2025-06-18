@@ -1,0 +1,264 @@
+@use 'sass:map';
+
+@use '../mixins/function/css-var' as *;
+
+// NOTE: Colors
+$colors: () !default;
+$colors: map.merge(
+  (
+    'white': #fff,
+    'black': #000,
+
+    'primary': #2bacb2,
+
+    'success': #00b42a,
+    'warn': #ff7d00,
+    'error': #f53f3f,
+
+    'cyan-green': #0fc6c2,
+    'dusk-yellow': #f7ba1e,
+    'sea-azure': #3491fa,
+    'night-purple': #904cf0,
+    'magenta': #ee58ab,
+    'newborn-green': #9fdb1d,
+  ),
+  $colors
+);
+
+$color-white: map.get($colors, 'white') !default;
+$color-black: map.get($colors, 'black') !default;
+
+// For light scheme
+$colors-light: () !default;
+$colors-light: map.deep-merge(
+  (
+    'primary': (
+      // hover
+      'light-1': #45b6bb,
+      // hover-light
+      'light-3': #dff2f2,
+      // active
+      'dark-2': #26979c,
+    ),
+  ),
+  $colors-light
+);
+
+// For dark scheme
+$colors-dark: () !default;
+$colors-dark: map.deep-merge(
+  (
+    'primary': (
+      // hover
+      'light-1': #45b6bb,
+      // hover-light
+      'light-3': #dff2f2,
+      // active
+      'dark-2': #26979c,
+    ),
+  ),
+  $colors-dark
+);
+
+// NOTE: Background
+$bg-color: () !default;
+$bg-color: map.deep-merge(
+  (
+    '': #fff,
+    'light': #f7f8f9,
+    'dark': #f2f3f5,
+    'primary': #eef9f9,
+    'overlay': #838c8d,
+  ),
+  $bg-color
+);
+
+// NOTE: Border
+$border-width: 1px !default;
+$border-style: solid !default;
+
+$border-radius: () !default;
+$border-radius: map.merge(
+  (
+    'round': 50%,
+    'medium': 12px,
+    'base': 8px,
+    'small': 4px,
+    'smallest': 2px,
+  ),
+  $border-radius
+);
+
+$border-color: () !default;
+$border-color: map.deep-merge(
+  (
+    '': #e2eaeb,
+  ),
+  $border-color
+);
+
+// NOTE: Overlay
+$overlay-color: () !default;
+$overlay-color: map.merge(
+  (
+    '': rgba(0, 0, 0, 0.8),
+    'light': rgba(0, 0, 0, 0.7),
+    'lighter': rgba(0, 0, 0, 0.5),
+  ),
+  $overlay-color
+);
+
+// NOTE: Mask
+$mask-color: () !default;
+$mask-color: map.merge(
+  (
+    '': rgba(255, 255, 255, 0.9),
+    'light': rgba(255, 255, 255, 0.3),
+  ),
+  $mask-color
+);
+
+// NOTE: ZIndex
+$z-index: () !default;
+$z-index: map.merge(
+  (
+    'normal': 1,
+    'top': 1000,
+    'popper': 2000,
+  ),
+  $z-index
+);
+
+// NOTE: Typography
+$font-family: () !default;
+$font-family: map.merge(
+  (
+    '': "'Inter', 'Microsoft YaHei', '微软雅黑', sans-serif",
+    'number': "'TCloud Number', 'sans-serif'",
+  ),
+  $font-family
+);
+
+$font-size: () !default;
+$font-size: map.merge(
+  (
+    'largest': 28px,
+    'extra-large': 24px,
+    'larger': 20px,
+    'large': 18px,
+    'medium': 16px,
+    'base': 14px,
+    'small': 12px,
+    'extra-small': 10px,
+  ),
+  $font-size
+);
+
+// Related to font-size
+$line-height: () !default;
+$line-height: map.merge(
+  (
+    'largest': 36px,
+    'extra-large': 32px,
+    'larger': 28px,
+    'large': 26px,
+    'medium': 24px,
+    'base': 22px,
+    'small': 18px,
+    'extra-small': 18px,
+  ),
+  $line-height
+);
+
+$font-weight: () !default;
+$font-weight: map.merge(
+  (
+    '': 400,
+    'regular': 400,
+    'medium': 500,
+    'semibold': 600,
+    'bold': 700,
+  ),
+  $font-weight
+);
+
+$text-color: () !default;
+$text-color: map.deep-merge(
+  (
+    'title': #042c2e,
+    'body': #3c4848,
+    'assist': #8e9595,
+    'placeholder': #c7d2d2,
+    'white': #fff,
+  ),
+  $text-color
+);
+
+// NOTE: Transition
+$transition: () !default;
+$transition: map.merge(
+  (
+    'all': all getCssVar('transition-duration') getCssVar('transition-function-ease-in-out-bezier'),
+    'fade': opacity getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
+    'md-fade': (
+      transform getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
+      opacity getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
+    ),
+    'fade-linear': opacity getCssVar('transition-duration-fast') linear,
+    'border': border-color getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
+    'box-shadow': box-shadow getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
+    'color': color getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
+  ),
+  $transition
+);
+
+$transition-duration: () !default;
+$transition-duration: map.merge(
+  (
+    '': 0.3s,
+    'fast': 0.2s,
+  ),
+  $transition-duration
+);
+
+$transition-function: () !default;
+$transition-function: map.merge(
+  (
+    'ease-in-out-bezier': cubic-bezier(0.645, 0.045, 0.355, 1),
+    'fast-bezier': cubic-bezier(0.23, 1, 0.32, 1),
+  ),
+  $transition-function
+);
+
+// NOTE: Max content width of page component
+$content-max-width: () !default;
+$content-max-width: map.merge(
+  (
+    '': 1366px,
+    'small': 1200px,
+  ),
+  $content-max-width
+);
+
+// NOTE: Break-point
+// $xs: less than $sm
+$sm: 768px !default;
+$md: 992px !default;
+$lg: 1200px !default;
+$xl: 1920px !default;
+
+$breakpoints: (
+  'xs': '(max-width: #{$sm - 1})',
+  'xs+': '(min-width: #{$sm})',
+  'sm-': '(max-width: #{$sm - 1})',
+  'sm': '(min-width: #{$sm}) and (max-width: #{$md - 1})',
+  'sm+': '(min-width: #{$sm})',
+  'md-': '(max-width: #{$md - 1})',
+  'md': '(min-width: #{$md}) and (max-width: #{$lg - 1})',
+  'md+': '(min-width: #{$md})',
+  'lg-': '(max-width: #{$lg - 1})',
+  'lg': '(min-width: #{$lg}) and (max-width: #{$xl - 1})',
+  'lg+': '(min-width: #{$lg})',
+  'xl-': '(max-width: #{$xl - 1})',
+  'xl': '(min-width: #{$xl})',
+) !default;

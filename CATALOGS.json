@@ -51,23 +51,6 @@
         }
       },
       "preferences": {
-        "code-template": {
-          "scss": {
-            "color": {
-              "index.scss": null
-            },
-            "common": {
-              "var.scss": null
-            },
-            "mixins": {
-              "config.scss": null,
-              "function.scss": null,
-              "mixins.scss": null,
-              "utils.scss": null
-            },
-            "var.scss": null
-          }
-        },
         "deployer": {
           "docker": {
             "docker-compose.yaml": null,
@@ -188,6 +171,373 @@
           },
           "npm": {
             ".npmrc": null
+          }
+        },
+        "project-template": {
+          "vue-scss-bem": {
+            "assets": {
+              "styles": {
+                "common": {
+                  "var.scss": null
+                },
+                "function": {
+                  "color.scss": null
+                },
+                "mixins": {
+                  "config": {
+                    "index.scss": null
+                  },
+                  "css-var.scss": null,
+                  "function": {
+                    "bem.scss": null,
+                    "css-var.scss": null,
+                    "index.scss": null
+                  },
+                  "index.scss": null,
+                  "placeholder.scss": null,
+                  "res.scss": null,
+                  "selector.scss": null,
+                  "utils.scss": null
+                },
+                "public.scss": null,
+                "README.md": null
+              }
+            },
+            "hooks": {
+              "use-namespace-v2": {
+                "index.js": null
+              },
+              "use-namespace-v3": {
+                "index.ts": null
+              }
+            },
+            "jsconfig.json": null,
+            "node_modules": {
+              ".vue-global-types": {
+                "vue_2.7_0_0_0.d.ts": null
+              },
+              "vue": {
+                "compiler-sfc": {
+                  "index.d.ts": null,
+                  "index.js": null,
+                  "index.mjs": null,
+                  "package.json": null
+                },
+                "dist": {
+                  "vue.common.dev.js": null,
+                  "vue.common.js": null,
+                  "vue.common.prod.js": null,
+                  "vue.esm.browser.js": null,
+                  "vue.esm.browser.min.js": null,
+                  "vue.esm.js": null,
+                  "vue.js": null,
+                  "vue.min.js": null,
+                  "vue.runtime.common.dev.js": null,
+                  "vue.runtime.common.js": null,
+                  "vue.runtime.common.prod.js": null,
+                  "vue.runtime.esm.js": null,
+                  "vue.runtime.js": null,
+                  "vue.runtime.min.js": null,
+                  "vue.runtime.mjs": null
+                },
+                "LICENSE": null,
+                "package.json": null,
+                "packages": {
+                  "compiler-sfc": {
+                    "api-extractor.json": null,
+                    "dist": {
+                      "compiler-sfc.d.ts": null,
+                      "compiler-sfc.js": null
+                    },
+                    "node_modules": {
+                      ".bin": {
+                        "lessc": null,
+                        "parser": null,
+                        "prettier": null,
+                        "sass": null,
+                        "stylus": null
+                      }
+                    },
+                    "package.json": null,
+                    "src": {
+                      "babelUtils.ts": null,
+                      "compileScript.ts": null,
+                      "compileStyle.ts": null,
+                      "compileTemplate.ts": null,
+                      "cssVars.ts": null,
+                      "index.ts": null,
+                      "parse.ts": null,
+                      "parseComponent.ts": null,
+                      "prefixIdentifiers.ts": null,
+                      "rewriteDefault.ts": null,
+                      "stylePlugins": {
+                        "scoped.ts": null,
+                        "trim.ts": null
+                      },
+                      "stylePreprocessors.ts": null,
+                      "templateCompilerModules": {
+                        "assetUrl.ts": null,
+                        "srcset.ts": null,
+                        "utils.ts": null
+                      },
+                      "types.ts": null,
+                      "warn.ts": null
+                    },
+                    "test": {
+                      "compileScript.spec.ts": null,
+                      "compileStyle.spec.ts": null,
+                      "compileTemplate.spec.ts": null,
+                      "cssVars.spec.ts": null,
+                      "parseComponent.spec.ts": null,
+                      "prefixIdentifiers.spec.ts": null,
+                      "rewriteDefault.spec.ts": null,
+                      "stylePluginScoped.spec.ts": null,
+                      "tsconfig.json": null,
+                      "util.ts": null,
+                      "__snapshots__": {
+                        "compileScript.spec.ts.snap": null,
+                        "cssVars.spec.ts.snap": null
+                      }
+                    }
+                  }
+                },
+                "README.md": null,
+                "src": {
+                  "compiler": {
+                    "codeframe.ts": null,
+                    "codegen": {
+                      "events.ts": null,
+                      "index.ts": null
+                    },
+                    "create-compiler.ts": null,
+                    "directives": {
+                      "bind.ts": null,
+                      "index.ts": null,
+                      "model.ts": null,
+                      "on.ts": null
+                    },
+                    "error-detector.ts": null,
+                    "helpers.ts": null,
+                    "index.ts": null,
+                    "optimizer.ts": null,
+                    "parser": {
+                      "entity-decoder.ts": null,
+                      "filter-parser.ts": null,
+                      "html-parser.ts": null,
+                      "index.ts": null,
+                      "text-parser.ts": null
+                    },
+                    "to-function.ts": null
+                  },
+                  "core": {
+                    "components": {
+                      "index.ts": null,
+                      "keep-alive.ts": null
+                    },
+                    "config.ts": null,
+                    "global-api": {
+                      "assets.ts": null,
+                      "extend.ts": null,
+                      "index.ts": null,
+                      "mixin.ts": null,
+                      "use.ts": null
+                    },
+                    "index.ts": null,
+                    "instance": {
+                      "events.ts": null,
+                      "index.ts": null,
+                      "init.ts": null,
+                      "inject.ts": null,
+                      "lifecycle.ts": null,
+                      "proxy.ts": null,
+                      "render-helpers": {
+                        "bind-dynamic-keys.ts": null,
+                        "bind-object-listeners.ts": null,
+                        "bind-object-props.ts": null,
+                        "check-keycodes.ts": null,
+                        "index.ts": null,
+                        "render-list.ts": null,
+                        "render-slot.ts": null,
+                        "render-static.ts": null,
+                        "resolve-filter.ts": null,
+                        "resolve-scoped-slots.ts": null,
+                        "resolve-slots.ts": null
+                      },
+                      "render.ts": null,
+                      "state.ts": null
+                    },
+                    "observer": {
+                      "array.ts": null,
+                      "dep.ts": null,
+                      "index.ts": null,
+                      "scheduler.ts": null,
+                      "traverse.ts": null,
+                      "watcher.ts": null
+                    },
+                    "util": {
+                      "debug.ts": null,
+                      "env.ts": null,
+                      "error.ts": null,
+                      "index.ts": null,
+                      "lang.ts": null,
+                      "next-tick.ts": null,
+                      "options.ts": null,
+                      "perf.ts": null,
+                      "props.ts": null
+                    },
+                    "vdom": {
+                      "create-component.ts": null,
+                      "create-element.ts": null,
+                      "create-functional-component.ts": null,
+                      "helpers": {
+                        "extract-props.ts": null,
+                        "get-first-component-child.ts": null,
+                        "index.ts": null,
+                        "is-async-placeholder.ts": null,
+                        "merge-hook.ts": null,
+                        "normalize-children.ts": null,
+                        "normalize-scoped-slots.ts": null,
+                        "resolve-async-component.ts": null,
+                        "update-listeners.ts": null
+                      },
+                      "modules": {
+                        "directives.ts": null,
+                        "index.ts": null,
+                        "template-ref.ts": null
+                      },
+                      "patch.ts": null,
+                      "vnode.ts": null
+                    }
+                  },
+                  "global.d.ts": null,
+                  "platforms": {
+                    "web": {
+                      "compiler": {
+                        "directives": {
+                          "html.ts": null,
+                          "index.ts": null,
+                          "model.ts": null,
+                          "text.ts": null
+                        },
+                        "index.ts": null,
+                        "modules": {
+                          "class.ts": null,
+                          "index.ts": null,
+                          "model.ts": null,
+                          "style.ts": null
+                        },
+                        "options.ts": null,
+                        "util.ts": null
+                      },
+                      "entry-compiler.ts": null,
+                      "entry-runtime-esm.ts": null,
+                      "entry-runtime-with-compiler-esm.ts": null,
+                      "entry-runtime-with-compiler.ts": null,
+                      "entry-runtime.ts": null,
+                      "runtime": {
+                        "class-util.ts": null,
+                        "components": {
+                          "index.ts": null,
+                          "transition-group.ts": null,
+                          "transition.ts": null
+                        },
+                        "directives": {
+                          "index.ts": null,
+                          "model.ts": null,
+                          "show.ts": null
+                        },
+                        "index.ts": null,
+                        "modules": {
+                          "attrs.ts": null,
+                          "class.ts": null,
+                          "dom-props.ts": null,
+                          "events.ts": null,
+                          "index.ts": null,
+                          "style.ts": null,
+                          "transition.ts": null
+                        },
+                        "node-ops.ts": null,
+                        "patch.ts": null,
+                        "transition-util.ts": null
+                      },
+                      "runtime-with-compiler.ts": null,
+                      "util": {
+                        "attrs.ts": null,
+                        "class.ts": null,
+                        "compat.ts": null,
+                        "element.ts": null,
+                        "index.ts": null,
+                        "style.ts": null
+                      }
+                    }
+                  },
+                  "shared": {
+                    "constants.ts": null,
+                    "util.ts": null
+                  },
+                  "types": {
+                    "compiler.ts": null,
+                    "component.ts": null,
+                    "global-api.ts": null,
+                    "modules.d.ts": null,
+                    "options.ts": null,
+                    "ssr.ts": null,
+                    "utils.ts": null,
+                    "vnode.ts": null
+                  },
+                  "v3": {
+                    "apiAsyncComponent.ts": null,
+                    "apiInject.ts": null,
+                    "apiLifecycle.ts": null,
+                    "apiSetup.ts": null,
+                    "apiWatch.ts": null,
+                    "currentInstance.ts": null,
+                    "debug.ts": null,
+                    "h.ts": null,
+                    "index.ts": null,
+                    "reactivity": {
+                      "computed.ts": null,
+                      "effect.ts": null,
+                      "effectScope.ts": null,
+                      "operations.ts": null,
+                      "reactive.ts": null,
+                      "readonly.ts": null,
+                      "ref.ts": null
+                    },
+                    "sfc-helpers": {
+                      "useCssModule.ts": null,
+                      "useCssVars.ts": null
+                    }
+                  }
+                },
+                "types": {
+                  "built-in-components.d.ts": null,
+                  "common.d.ts": null,
+                  "index.d.ts": null,
+                  "jsx.d.ts": null,
+                  "options.d.ts": null,
+                  "plugin.d.ts": null,
+                  "umd.d.ts": null,
+                  "v3-component-options.d.ts": null,
+                  "v3-component-props.d.ts": null,
+                  "v3-component-public-instance.d.ts": null,
+                  "v3-define-async-component.d.ts": null,
+                  "v3-define-component.d.ts": null,
+                  "v3-directive.d.ts": null,
+                  "v3-generated.d.ts": null,
+                  "v3-manual-apis.d.ts": null,
+                  "v3-setup-context.d.ts": null,
+                  "v3-setup-helpers.d.ts": null,
+                  "vnode.d.ts": null,
+                  "vue.d.ts": null
+                }
+              }
+            },
+            "package.json": null,
+            "pages": {
+              "example-v2.vue": null,
+              "example-v3.vue": null
+            }
           }
         },
         "readme": {

@@ -1,0 +1,29 @@
+/* The functions for getting CSS Variables */
+
+@use '../config';
+
+// joinCssVarName(('button', 'text-color')) => '--cs-button-text-color'
+@function joinCssVarName($list) {
+  $name: '--' + config.$namespace;
+  @each $item in $list {
+    @if $item != '' {
+      $name: $name + '-' + $item;
+    }
+  }
+  @return $name;
+}
+
+// getCssVarName('button', 'text-color') => '--cs-button-text-color'
+@function getCssVarName($args...) {
+  @return joinCssVarName($args);
+}
+
+// getCssVar('button', 'text-color') => var(--cs-button-text-color)
+@function getCssVar($args...) {
+  @return var(#{joinCssVarName($args)});
+}
+
+// getCssVarWithDefault(('button', 'text-color'), red) => var(--cs-button-text-color, red)
+@function getCssVarWithDefault($args, $default) {
+  @return var(#{joinCssVarName($args)}, #{$default});
+}

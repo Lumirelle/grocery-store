@@ -1,0 +1,93 @@
+/* The mixins for setting CSS Variables */
+
+@use 'sass:map';
+@use 'sass:color';
+
+@use 'config';
+@use 'function/css-var' as *;
+
+@use '../common/var' as *;
+
+// Set css var value in current scope and provide a certain value
+//
+// For example:
+// @include css-var(('color', 'primary'), red);
+// --cs-color-primary: red;
+//
+@mixin css-var($name-list, $value) {
+  #{joinCssVarName($name-list)}: #{$value};
+}
+
+// Set css var value from a scss variable by the specific type (key), the scss variable is defined in `common/var.scss`
+//
+// For example:
+// @include css-var-type('text-color', 'title', $text-color);
+// --cs-text-color-title: #{map.get($text-color, 'title')};
+//
+@mixin css-var-type($name, $type, $variables) {
+  #{getCssVarName($name, $type)}: #{map.get($variables, $type)};
+}
+
+// Set all css var from a scss variable, it will process all types (keys) in the scss variable
+//
+// For example:
+// @include css-var-all-type('bg-color', $bg-color);
+// --cs-bg-color: $bg-color.'';
+// --cs-bg-color-light: $bg-color.light;
+// --cs-bg-color-dark: $bg-color.dark;
+// --cs-bg-color-primary: $bg-color.primary;
+// --cs-bg-color-overlay: $bg-color.overlay;
+//
+@mixin css-var-all-type($name, $variables) {
+  @each $type, $value in $variables {
+    @if $type == 'default' {
+      #{getCssVarName($name)}: #{$value};
+    } @else {
+      #{getCssVarName($name, $type)}: #{$value};
+    }
+  }
+}
+
+// Set css var from existing css var
+//
+// For example:
+// @include css-var-existing(('button', 'text-color'), ('color', $type))
+// --cs-button-text-color: var(--cs-color-#{$type});
+//
+@mixin css-var-existing($name-list, $existing-name-list) {
+  $name: joinCssVarName($name-list);
+  $existing-name: joinCssVarName($existing-name-list);
+  #{$name}: var(#{$existing-name});
+}
+
+// Set css color from scss variable `$colors` by specific type
+@mixin css-color-type($type) {
+  @include css-var(('color', $type), map.get($colors, $type));
+}
+
+// Set css color from scss variable `$colors-<schema>` by specific type
+//
+// For example:
+// @include css-color-type('primary');
+// --cs-color-primary: $colors.primary.base;
+// --cs-color-primary-dark-1: $colors.primary.dark-1;
+// --cs-color-primary-light-1: $colors.primary.light-1;
+// --cs-color-primary-light-2: $colors.primary.light-2;
+//
+@mixin css-color-type-schema($type, $schema: 'light') {
+  $variables: $colors;
+
+  @if $schema == 'light' {
+    $variables: $colors-light;
+  } @else {
+    $variables: $colors-dark;
+  }
+
+  @each $level in map.keys(map.get($variables, $type)) {
+    @if $level == 'base' {
+      @include css-var(('color', $type), map.get($variables, $type, $level));
+    } @else {
+      @include css-var(('color', $type, $level), map.get($variables, $type, $level));
+    }
+  }
+}
