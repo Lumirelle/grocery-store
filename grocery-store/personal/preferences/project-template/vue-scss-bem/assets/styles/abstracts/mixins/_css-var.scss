@@ -3,10 +3,8 @@
 @use 'sass:map';
 @use 'sass:color';
 
-@use 'config';
-@use 'function/css-var' as *;
-
-@use '../common/var' as *;
+@use '../variables/common';
+@use '../functions/css-var';
 
 /// Generate CSS variable name, and set it in current scope with a certain value
 /// @access public
@@ -19,7 +17,7 @@
 ///   @include set-var(('color', 'primary'), red);
 ///   --cs-color-primary: red;
 @mixin set-var($name, $value) {
-  #{getVarName($name)}: #{$value};
+  #{css-var.getVarName($name)}: #{$value};
 }
 
 /// Process all keys in the SCSS map, and set all CSS variables from them
@@ -43,9 +41,9 @@
 @mixin set-vars($name, $map) {
   @each $key, $value in $map {
     @if $key == 'default' {
-      #{getVarName($name)}: #{$value};
+      #{css-var.getVarName($name)}: #{$value};
     } @else {
-      #{getVarName($name, $key)}: #{$value};
+      #{css-var.getVarName($name, $key)}: #{$value};
     }
   }
 }
@@ -61,8 +59,8 @@
 ///   @include set-var-existing(('button', 'text-color'), ('color', 'primary'));
 ///   --cs-button-text-color: var(--cs-color-primary);
 @mixin set-var-existing($name, $existing-name) {
-  $name: getVarName($name);
-  $existing-name: getVarName($existing-name);
+  $name: css-var.getVarName($name);
+  $existing-name: css-var.getVarName($existing-name);
   #{$name}: var(#{$existing-name});
 }
 
@@ -77,7 +75,7 @@
 ///   --cs-color-warn: $colors.warn;
 ///   --cs-color-error: $colors.error;
 @mixin set-colors() {
-  @each $key, $value in $colors {
+  @each $key, $value in common.$colors {
     @include set-var(('color', $key), $value);
   }
 }
@@ -96,12 +94,12 @@
 ///   --cs-color-primary-light-3: $colors-dark.primary.light-3;
 ///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
 @mixin set-colors-schema($schema: 'light') {
-  $map: $colors;
+  $map: common.$colors;
 
   @if $schema == 'light' {
-    $map: $colors-light;
+    $map: common.$colors-light;
   } @else if $schema == 'dark' {
-    $map: $colors-dark;
+    $map: common.$colors-dark;
   }
 
   @each $key, $value in $map {

@@ -1,6 +1,6 @@
 /// The functions for generating CSS variables & `var()` function
 
-@use '../config';
+@use '../variables/config';
 
 /// Generate CSS variable name from specific string list with predefined namespace
 /// @access public

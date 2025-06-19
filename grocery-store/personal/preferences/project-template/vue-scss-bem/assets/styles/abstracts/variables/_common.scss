@@ -1,7 +1,7 @@
 @use 'sass:map';
 
 // Use css-var mixin to generate `var(--xxx)` statement
-@use '../mixins/function/css-var' as *;
+@use '../functions/css-var';
 
 // ------------------------------------------------------------
 // Base Colors
@@ -266,16 +266,18 @@ $text-color-dark: map.deep-merge(
 $transition: () !default;
 $transition: map.merge(
   (
-    'all': all getVar('transition-duration') getVar('transition-function-ease-in-out-bezier'),
-    'fade': opacity getVar('transition-duration') getVar('transition-function-fast-bezier'),
+    'all': all css-var.getVar('transition-duration') css-var.getVar('transition-function-ease-in-out-bezier'),
+    'fade': opacity css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
     'md-fade': (
-      transform getVar('transition-duration') getVar('transition-function-fast-bezier'),
-      opacity getVar('transition-duration') getVar('transition-function-fast-bezier'),
+      transform css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
+      opacity css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
     ),
-    'fade-linear': opacity getVar('transition-duration-fast') linear,
-    'border': border-color getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
-    'box-shadow': box-shadow getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
-    'color': color getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
+    'fade-linear': opacity css-var.getVar('transition-duration-fast') linear,
+    'border': border-color css-var.getVar('transition-duration-fast')
+      css-var.getVar('transition-function-ease-in-out-bezier'),
+    'box-shadow': box-shadow css-var.getVar('transition-duration-fast')
+      css-var.getVar('transition-function-ease-in-out-bezier'),
+    'color': color css-var.getVar('transition-duration-fast') css-var.getVar('transition-function-ease-in-out-bezier'),
   ),
   $transition
 );

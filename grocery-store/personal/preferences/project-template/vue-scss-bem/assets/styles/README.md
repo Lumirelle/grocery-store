@@ -70,3 +70,13 @@
 
 2. 在浏览器开发者工具中可见 / Visible in the devtools of browser
 3. 原生支持，向后兼容和渐进增强 / Native support, backward compatibility and progressive enhancement
+
+## 🤣 Why using prefix `_` in filename
+
+`_` 前缀标识该 SCSS 类似于库文件，供其它 SCSS 文件使用，会被 SCSS 编译器忽略编译。
+
+## 🥰 Comments in SCSS
+
+1. `/* */`：CSS注释，在输出的 CSS 文件中仍会保留
+2. `//`：SCSS 特有的注释，不在输出的 CSS 文件中保留
+3. `///`：SCSS 的文档注释

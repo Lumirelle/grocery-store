@@ -1,4 +1,6 @@
-@use '../config';
+/// The functions for operating the selector
+
+@use '../variables/config';
 
 @use 'sass:meta';
 @use 'sass:string';

@@ -1,7 +1,9 @@
 /// The mixins for realizing responsive layout
-@use '../common/var' as *;
+
+@use '../variables/common';
 
 @use 'sass:map';
+@use 'sass:string';
 
 /// Realize responsive layout
 /// @access public
@@ -11,11 +13,11 @@
 ///     @content;
 ///   }
 @mixin res($key) {
-  @if map.has-key($breakpoints, $key) {
-    @media only screen and #{string.unquote(map.get($breakpoints, $key))} {
+  @if map.has-key(common.$breakpoints, $key) {
+    @media only screen and #{string.unquote(map.get(common.$breakpoints, $key))} {
       @content;
     }
   } @else {
-    @warn "Undefined points: `#{$breakpoints}`";
+    @warn "Undefined points: `#{common.$breakpoints}`";
   }
 }

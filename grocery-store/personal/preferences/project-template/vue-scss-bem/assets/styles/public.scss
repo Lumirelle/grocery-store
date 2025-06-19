@@ -1,114 +1,112 @@
-@use 'common/var' as *;
-
-// 1. You can import the mixins in `public.scss` file.
-@use 'mixins' as *;
-//
-// 2. Or you can import the mixins in your project build config.
-// For example, in your `nuxt.config.ts` file, you can add the following:
-//
-// Nuxt2:
-// ```ts
-// export default {
-//   css: {
-//     loaderOptions: {
-//       scss: {
-//         additionalData: `@use 'mixins' as *;`,
-//       },
-//     },
-//   },
-// };
-// ```
-//
-// Nuxt3:
-// ```ts
-// export default defineNuxtConfig({
-//   vite: {
-//     css: {
-//       preprocessorOptions: {
-//         scss: {
-//           additionalData: `@use 'mixins' as *;`,
-//         },
-//       },
-//     },
-//   },
-// });
-// ```
+@use 'abstracts';
 
 @use 'sass:map';
+
+// -----------------------------------------------------------------------------
+// This file contains public styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 // for better performance do not dynamically change the root variable if you really
 // do not need that, since this could introduce recalculation overhead for rendering.
 // https://lisilinhart.info/posts/css-variables-performance/
 
-// Common
+/**
+ * Common CSS variables
+ */
 :root {
   // Colors
-  @include set-var('color-white', $color-white);
-  @include set-var('color-black', $color-black);
+  @include abstracts.set-var('color-white', abstracts.$color-white);
+  @include abstracts.set-var('color-black', abstracts.$color-black);
 
-  @include set-colors();
+  @include abstracts.set-colors();
 
   // Border
-  @include set-vars('border-radius', $border-radius);
+  @include abstracts.set-vars('border-radius', abstracts.$border-radius);
 
   // Overlay & Mask
-  @include set-vars('overlay-color', $overlay-color);
-  @include set-vars('mask-color', $mask-color);
+  @include abstracts.set-vars('overlay-color', abstracts.$overlay-color);
+  @include abstracts.set-vars('mask-color', abstracts.$mask-color);
 
   // ZIndex
-  @include set-vars('index', $z-index);
+  @include abstracts.set-vars('index', abstracts.$z-index);
 
   // Typography
-  @include set-vars('font-size', $font-size);
-  @include set-vars('font-family', $font-family);
-  @include set-vars('font-weight', $font-weight);
-  @include set-vars('line-height', $line-height);
+  @include abstracts.set-vars('font-size', abstracts.$font-size);
+  @include abstracts.set-vars('font-family', abstracts.$font-family);
+  @include abstracts.set-vars('font-weight', abstracts.$font-weight);
+  @include abstracts.set-vars('line-height', abstracts.$line-height);
 
   // Transition
   // refer to this website to get the bezier motion function detail
   // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
-  @include set-vars('transition-duration', $transition-duration);
-  @include set-vars('transition-function', $transition-function);
-  @include set-vars('transition', $transition);
+  @include abstracts.set-vars('transition-duration', abstracts.$transition-duration);
+  @include abstracts.set-vars('transition-function', abstracts.$transition-function);
+  @include abstracts.set-vars('transition', abstracts.$transition);
 
   // Content max width
-  @include set-vars('content-max-width', $content-max-width);
+  @include abstracts.set-vars('content-max-width', abstracts.$content-max-width);
 }
 
-// Light Scheme
+/**
+ * CSS variables for light scheme
+ */
 :root {
   color-scheme: light;
 
   // Colors
-  @include set-colors-schema('light');
+  @include abstracts.set-colors-schema('light');
 
   // Background
-  @include set-vars('bg-color', $bg-color);
+  @include abstracts.set-vars('bg-color', abstracts.$bg-color);
 
   // Text
-  @include set-vars('text-color', $text-color);
+  @include abstracts.set-vars('text-color', abstracts.$text-color);
 
   // Border
-  @include set-vars('border-color', $border-color);
+  @include abstracts.set-vars('border-color', abstracts.$border-color);
   // Border but based on border-color, so they should put after border-color
-  @include set-var('border-width', $border-width);
-  @include set-var('border-style', $border-style);
-  @include set-var('border', getVar('border-width') getVar('border-style') getVar('border-color'));
+  @include abstracts.set-var('border-width', abstracts.$border-width);
+  @include abstracts.set-var('border-style', abstracts.$border-style);
+  @include abstracts.set-var(
+    'border',
+    abstracts.getVar('border-width') abstracts.getVar('border-style') abstracts.getVar('border-color')
+  );
 }
 
-// Dark Scheme
+/**
+ * CSS variables for dark scheme
+ */
 html.dark {
   color-scheme: dark;
 
   // Colors
-  @include set-colors-schema('dark');
+  @include abstracts.set-colors-schema('dark');
 
   // Background
-  @include set-vars('bg-color', $bg-color-dark);
+  @include abstracts.set-vars('bg-color', abstracts.$bg-color-dark);
 
   // Text
-  @include set-vars('text-color', $text-color-dark);
+  @include abstracts.set-vars('text-color', abstracts.$text-color-dark);
 
   // Border
-  @include set-vars('border-color', $border-color-dark);
+  @include abstracts.set-vars('border-color', abstracts.$border-color-dark);
 }

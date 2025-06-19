@@ -1,7 +1,7 @@
 /// The mixins for operating selector (BEM style & state check)
 
-@use 'config' as *;
-@use 'function/selector' as *;
+@use '../variables/config';
+@use '../functions/selector';
 
 $B: null;
 $E: null;
@@ -17,7 +17,7 @@ $E: null;
 ///     @content;
 ///   }
 @mixin b($block) {
-  $B: $namespace + $common-separator + $block !global;
+  $B: config.$namespace + config.$common-separator + $block !global;
 
   .#{$B} {
     @content;
@@ -39,10 +39,10 @@ $E: null;
   $selector: &;
   $currentSelector: '';
   @each $unit in $element {
-    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
+    $currentSelector: #{$currentSelector + '.' + $B + config.$element-separator + $unit + ','};
   }
 
-  @if hasSpecialNestingRule($selector) {
+  @if selector.hasSpecialNestingRule($selector) {
     @at-root {
       #{$selector} {
         #{$currentSelector} {
@@ -74,7 +74,7 @@ $E: null;
   $selector: &;
   $currentSelector: '';
   @each $unit in $modifier {
-    $currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ','};
+    $currentSelector: #{$currentSelector + $selector + config.$modifier-separator + $unit + ','};
   }
 
   @at-root {
@@ -96,7 +96,7 @@ $E: null;
 ///   }
 @mixin when($state) {
   @at-root {
-    &.#{$state-prefix + $state} {
+    &.#{config.$state-prefix + $state} {
       @content;
     }
   }
@@ -114,7 +114,7 @@ $E: null;
 ///   }
 @mixin when-not($state) {
   @at-root {
-    &.#{':not(' + $state-prefix + $state + ')'} {
+    &.#{':not(' + config.$state-prefix + $state + ')'} {
       @content;
     }
   }

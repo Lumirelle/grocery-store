@@ -177,30 +177,30 @@
           "vue-scss-bem": {
             "assets": {
               "styles": {
-                "common": {
-                  "var.scss": null
-                },
-                "function": {
-                  "color.scss": null
-                },
-                "mixins": {
-                  "config": {
-                    "index.scss": null
-                  },
-                  "css-var.scss": null,
-                  "function": {
-                    "css-var.scss": null,
-                    "index.scss": null,
-                    "selector.scss": null,
+                "abstracts": {
+                  "functions": {
                     "test": {
-                      "css-var.scss": null
-                    }
+                      "_css-var.scss": null
+                    },
+                    "_color.scss": null,
+                    "_css-var.scss": null,
+                    "_index.scss": null,
+                    "_selector.scss": null
                   },
-                  "index.scss": null,
-                  "placeholder.scss": null,
-                  "res.scss": null,
-                  "selector.scss": null,
-                  "utils.scss": null
+                  "mixins": {
+                    "_css-var.scss": null,
+                    "_index.scss": null,
+                    "_placeholder.scss": null,
+                    "_res.scss": null,
+                    "_selector.scss": null,
+                    "_utils.scss": null
+                  },
+                  "variables": {
+                    "_common.scss": null,
+                    "_config.scss": null,
+                    "_index.scss": null
+                  },
+                  "_index.scss": null
                 },
                 "public.scss": null,
                 "README.md": null
