@@ -1,0 +1,6 @@
+@use '../css-var' as *;
+
+@debug getVarName('button-text-color'); // --cs-button-text-color
+@debug getVarName('button', 'text-color'); // --cs-button-text-color
+@debug getVarName(('button', 'text-color')); // --cs-button-text-color
+@debug getVarName(('button-text-color')); // --cs-button-text-color

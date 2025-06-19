@@ -1,4 +1,4 @@
-/* The mixins for setting CSS Variables */
+/// The mixins for setting CSS Variables
 
 @use 'sass:map';
 @use 'sass:color';
@@ -8,86 +8,105 @@
 
 @use '../common/var' as *;
 
-// Set css var value in current scope and provide a certain value
-//
-// For example:
-// @include css-var(('color', 'primary'), red);
-// --cs-color-primary: red;
-//
-@mixin css-var($name-list, $value) {
-  #{joinCssVarName($name-list)}: #{$value};
+/// Generate CSS variable name, and set it in current scope with a certain value
+/// @access public
+/// @param {String | List[String]} $name - A string, or strings in list form
+/// @param {Any} $value - Value
+/// @example
+///   @include set-var('color-primary', red);
+///   --cs-color-primary: red;
+/// @example
+///   @include set-var(('color', 'primary'), red);
+///   --cs-color-primary: red;
+@mixin set-var($name, $value) {
+  #{getVarName($name)}: #{$value};
 }
 
-// Set css var value from a scss variable by the specific type (key), the scss variable is defined in `common/var.scss`
-//
-// For example:
-// @include css-var-type('text-color', 'title', $text-color);
-// --cs-text-color-title: #{map.get($text-color, 'title')};
-//
-@mixin css-var-type($name, $type, $variables) {
-  #{getCssVarName($name, $type)}: #{map.get($variables, $type)};
-}
-
-// Set all css var from a scss variable, it will process all types (keys) in the scss variable
-//
-// For example:
-// @include css-var-all-type('bg-color', $bg-color);
-// --cs-bg-color: $bg-color.'';
-// --cs-bg-color-light: $bg-color.light;
-// --cs-bg-color-dark: $bg-color.dark;
-// --cs-bg-color-primary: $bg-color.primary;
-// --cs-bg-color-overlay: $bg-color.overlay;
-//
-@mixin css-var-all-type($name, $variables) {
-  @each $type, $value in $variables {
-    @if $type == 'default' {
-      #{getCssVarName($name)}: #{$value};
+/// Process all keys in the SCSS map, and set all CSS variables from them
+/// @access public
+/// @param {String} $name - A string
+/// @param {Map} $map - SCSS map contains multiple keys and values
+/// @example
+///   @include set-vars('bg-color', $bg-color);
+///   --cs-bg-color: $bg-color.'';
+///   --cs-bg-color-light: $bg-color.light;
+///   --cs-bg-color-dark: $bg-color.dark;
+///   --cs-bg-color-primary: $bg-color.primary;
+///   --cs-bg-color-overlay: $bg-color.overlay;
+/// @example
+///   @include set-vars('text-color', $text-color);
+///   --cs-text-color: $text-color.default;
+///   --cs-text-color-light: $text-color.light;
+///   --cs-text-color-dark: $text-color.dark;
+///   --cs-text-color-primary: $text-color.primary;
+///   --cs-text-color-overlay: $text-color.overlay;
+@mixin set-vars($name, $map) {
+  @each $key, $value in $map {
+    @if $key == 'default' {
+      #{getVarName($name)}: #{$value};
     } @else {
-      #{getCssVarName($name, $type)}: #{$value};
+      #{getVarName($name, $key)}: #{$value};
     }
   }
 }
 
-// Set css var from existing css var
-//
-// For example:
-// @include css-var-existing(('button', 'text-color'), ('color', $type))
-// --cs-button-text-color: var(--cs-color-#{$type});
-//
-@mixin css-var-existing($name-list, $existing-name-list) {
-  $name: joinCssVarName($name-list);
-  $existing-name: joinCssVarName($existing-name-list);
+/// Generate CSS variable name, and set it in current scope with a certain value from existing CSS variable
+/// @access public
+/// @param {String | List[String]} $name - A string, or strings in list form
+/// @param {String | List[String]} $existing-name - A string, or strings in list form
+/// @example
+///   @include set-var-existing('button-text-color', 'color-primary');
+///   --cs-button-text-color: var(--cs-color-primary);
+/// @example
+///   @include set-var-existing(('button', 'text-color'), ('color', 'primary'));
+///   --cs-button-text-color: var(--cs-color-primary);
+@mixin set-var-existing($name, $existing-name) {
+  $name: getVarName($name);
+  $existing-name: getVarName($existing-name);
   #{$name}: var(#{$existing-name});
 }
 
-// Set css color from scss variable `$colors` by specific type
-@mixin css-color-type($type) {
-  @include css-var(('color', $type), map.get($colors, $type));
+/// Process all keys in the SCSS map `$colors`, and set all CSS colors from them
+/// @access public
+/// @example
+///   @include set-colors();
+///   --cs-color-white: $colors.white;
+///   --cs-color-black: $colors.black;
+///   --cs-color-primary: $colors.primary;
+///   --cs-color-success: $colors.success;
+///   --cs-color-warn: $colors.warn;
+///   --cs-color-error: $colors.error;
+@mixin set-colors() {
+  @each $key, $value in $colors {
+    @include set-var(('color', $key), $value);
+  }
 }
 
-// Set css color from scss variable `$colors-<schema>` by specific type
-//
-// For example:
-// @include css-color-type('primary');
-// --cs-color-primary: $colors.primary.base;
-// --cs-color-primary-dark-1: $colors.primary.dark-1;
-// --cs-color-primary-light-1: $colors.primary.light-1;
-// --cs-color-primary-light-2: $colors.primary.light-2;
-//
-@mixin css-color-type-schema($type, $schema: 'light') {
-  $variables: $colors;
+/// Process all keys in the SCSS map `$colors-<schema>`, and set all CSS colors from them
+/// @access public
+/// @param {String} $schema - Color schema
+/// @example
+///   @include set-colors-schema('light');
+///   --cs-color-primary-light-1: $colors-light.primary.light-1;
+///   --cs-color-primary-light-3: $colors-light.primary.light-3;
+///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
+/// @example
+///   @include set-colors-schema('dark');
+///   --cs-color-primary-light-1: $colors-dark.primary.light-1;
+///   --cs-color-primary-light-3: $colors-dark.primary.light-3;
+///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
+@mixin set-colors-schema($schema: 'light') {
+  $map: $colors;
 
   @if $schema == 'light' {
-    $variables: $colors-light;
-  } @else {
-    $variables: $colors-dark;
+    $map: $colors-light;
+  } @else if $schema == 'dark' {
+    $map: $colors-dark;
   }
 
-  @each $level in map.keys(map.get($variables, $type)) {
-    @if $level == 'base' {
-      @include css-var(('color', $type), map.get($variables, $type, $level));
-    } @else {
-      @include css-var(('color', $type, $level), map.get($variables, $type, $level));
+  @each $key, $value in $map {
+    @each $level in map.keys($value) {
+      @include set-var(('color', $key, $level), map.get($value, $level));
     }
   }
 }

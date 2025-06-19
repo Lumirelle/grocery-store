@@ -1,6 +1,6 @@
-/* The mixins for operating (share & extend) placeholder */
+/// The mixins for operating (define & extend) placeholder
 
-@mixin share-rule($name) {
+@mixin define-placeholder($name) {
   $rule-name: '%shared-' + $name;
 
   @at-root #{$rule-name} {
@@ -8,6 +8,6 @@
   }
 }
 
-@mixin extend-rule($name) {
+@mixin extend-placeholder($name) {
   @extend #{'%shared-' + $name} !optional;
 }

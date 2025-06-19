@@ -9,7 +9,7 @@
   @return $selector;
 }
 
-@function containsModifier($selector) {
+@function hasModifier($selector) {
   $selector: selectorToString($selector);
 
   @if string.index($selector, config.$modifier-separator) {
@@ -20,7 +20,7 @@
 }
 
 // That's means the selector contains the state flag like `.is-disabled`
-@function containWhenFlag($selector) {
+@function hasWhenFlag($selector) {
   $selector: selectorToString($selector);
 
   @if string.index($selector, '.' + config.$state-prefix) {
@@ -30,7 +30,7 @@
   }
 }
 
-@function containPseudoClass($selector) {
+@function hasPseudoClass($selector) {
   $selector: selectorToString($selector);
 
   @if string.index($selector, ':') {
@@ -40,20 +40,22 @@
   }
 }
 
-@function hitAllSpecialNestRule($selector) {
-  @return containsModifier($selector) or containWhenFlag($selector) or containPseudoClass($selector);
+@function hasSpecialNestingRule($selector) {
+  @return hasModifier($selector) or hasWhenFlag($selector) or hasPseudoClass($selector);
 }
 
-// Generate a BEM selector, commonly used in the case of multiple selectors
-//
-// For example:
-// .#{bem('color-picker')},
-// .#{bem('color-picker', 'panel')} {
-//   @include css-var(('color-picker', 'alpha-bg-a'), '#ccc');
-//   @include css-var(('color-picker', 'alpha-bg-b'), 'transparent');
-// }
-//
-// bem('block', 'element', 'modifier') => 'cs-block__element--modifier'
+/// Generate a BEM selector, commonly used in the case of setting the same style to multiple selectors
+/// @access public
+/// @param {String} $block - Block name
+/// @param {String} $element - Element name
+/// @param {String} $modifier - Modifier name
+/// @return {String} BEM selector
+/// @example
+///   .#{bem('color-picker')},
+///   .#{bem('color-picker', 'panel')} {
+///     @include css-var(('color-picker', 'alpha-bg-a'), '#ccc');
+///     @include css-var(('color-picker', 'alpha-bg-b'), 'transparent');
+///   }
 @function bem($block, $element: '', $modifier: '') {
   $name: config.$namespace + config.$common-separator + $block;
 
@@ -65,6 +67,5 @@
     $name: $name + config.$modifier-separator + $modifier;
   }
 
-  // @debug $name;
   @return $name;
 }

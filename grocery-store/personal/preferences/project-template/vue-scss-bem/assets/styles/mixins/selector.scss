@@ -1,11 +1,21 @@
-/* The mixins for operating selector (BEM style & state check) */
+/// The mixins for operating selector (BEM style & state check)
 
 @use 'config' as *;
-@use 'function/bem' as *;
+@use 'function/selector' as *;
 
 $B: null;
 $E: null;
 
+/// Generate BEM selector for block
+/// @access public
+/// @param {String} $block - Block name
+/// @example
+///   @include b('button') {
+///     @content;
+///   }
+///   .button {
+///     @content;
+///   }
 @mixin b($block) {
   $B: $namespace + $common-separator + $block !global;
 
@@ -14,6 +24,16 @@ $E: null;
   }
 }
 
+/// Generate BEM selector for element
+/// @access public
+/// @param {String} $element - Element name
+/// @example
+///   @include e('button') {
+///     @content;
+///   }
+///   .#{$B}__input {
+///     @content;
+///   }
 @mixin e($element) {
   $E: $element !global;
   $selector: &;
@@ -22,7 +42,7 @@ $E: null;
     $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
   }
 
-  @if hitAllSpecialNestRule($selector) {
+  @if hasSpecialNestingRule($selector) {
     @at-root {
       #{$selector} {
         #{$currentSelector} {
@@ -39,6 +59,17 @@ $E: null;
   }
 }
 
+/// Generate BEM selector for modifier
+/// @access public
+/// @param {String} $modifier - Modifier name
+/// @example
+///   @include m('large', 'small) {
+///     @content;
+///   }
+///   .#{$B}__#{$E}--large,
+///   .#{$B}__#{$E}--small {
+///     @content;
+///   }
 @mixin m($modifier) {
   $selector: &;
   $currentSelector: '';
@@ -53,6 +84,16 @@ $E: null;
   }
 }
 
+/// Generate BEM selector for state
+/// @access public
+/// @param {String} $state - State name
+/// @example
+///   @include when('active') {
+///     @content;
+///   }
+///   .#{$B}__#{$E}--#{$M}.is-active {
+///     @content;
+///   }
 @mixin when($state) {
   @at-root {
     &.#{$state-prefix + $state} {
@@ -61,6 +102,16 @@ $E: null;
   }
 }
 
+/// Generate BEM selector for state not
+/// @access public
+/// @param {String} $state - State name
+/// @example
+///   @include when-not('active') {
+///     @content;
+///   }
+///   .#{$B}__#{$E}--#{$M}:not(.is-active) {
+///     @content;
+///   }
 @mixin when-not($state) {
   @at-root {
     &.#{':not(' + $state-prefix + $state + ')'} {

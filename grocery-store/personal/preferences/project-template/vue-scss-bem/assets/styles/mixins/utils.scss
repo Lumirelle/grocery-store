@@ -1,6 +1,10 @@
-/* The mixins for utilities */
+/// The mixins for utilities
 
-@mixin utils-clearfix {
+/// Clearfix
+/// @access public
+/// @example
+///   @include clearfix;
+@mixin clearfix {
   $selector: &;
 
   @at-root {
@@ -15,7 +19,12 @@
   }
 }
 
-@mixin utils-ellipsis($line-clamp: 1) {
+/// Ellipsis
+/// @access public
+/// @param {Number} $line-clamp - Line clamp, default is 1
+/// @example
+///   @include ellipsis(2);
+@mixin ellipsis($line-clamp: 1) {
   @if $line-clamp > 1 {
     overflow: hidden;
     text-overflow: ellipsis;

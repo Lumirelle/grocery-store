@@ -12,7 +12,7 @@
 //   css: {
 //     loaderOptions: {
 //       scss: {
-//         additionalData: `@use 'mixins/index' as *;`,
+//         additionalData: `@use 'mixins' as *;`,
 //       },
 //     },
 //   },
@@ -26,7 +26,7 @@
 //     css: {
 //       preprocessorOptions: {
 //         scss: {
-//           additionalData: `@use 'mixins/index' as *;`,
+//           additionalData: `@use 'mixins' as *;`,
 //         },
 //       },
 //     },
@@ -43,73 +43,72 @@
 // Common
 :root {
   // Colors
-  @include css-var('color-white', $color-white);
-  @include css-var('color-black', $color-black);
+  @include set-var('color-white', $color-white);
+  @include set-var('color-black', $color-black);
 
-  @each $type in map.keys($colors) {
-    @include css-color-type($type);
-  }
+  @include set-colors();
 
   // Border
-  @include css-var-all-type('border-radius', $border-radius);
+  @include set-vars('border-radius', $border-radius);
 
   // Overlay & Mask
-  @include css-var-all-type('overlay-color', $overlay-color);
-  @include css-var-all-type('mask-color', $mask-color);
+  @include set-vars('overlay-color', $overlay-color);
+  @include set-vars('mask-color', $mask-color);
 
   // ZIndex
-  @include css-var-all-type('index', $z-index);
+  @include set-vars('index', $z-index);
 
   // Typography
-  @include css-var-all-type('font-size', $font-size);
-  @include css-var-all-type('font-family', $font-family);
-  @include css-var-all-type('font-weight', $font-weight);
-  @include css-var-all-type('line-height', $line-height);
+  @include set-vars('font-size', $font-size);
+  @include set-vars('font-family', $font-family);
+  @include set-vars('font-weight', $font-weight);
+  @include set-vars('line-height', $line-height);
 
   // Transition
   // refer to this website to get the bezier motion function detail
   // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
-  @include css-var-all-type('transition-duration', $transition-duration);
-  @include css-var-all-type('transition-function', $transition-function);
-  @include css-var-all-type('transition', $transition);
+  @include set-vars('transition-duration', $transition-duration);
+  @include set-vars('transition-function', $transition-function);
+  @include set-vars('transition', $transition);
 
   // Content max width
-  @include css-var-all-type('content-max-width', $content-max-width);
+  @include set-vars('content-max-width', $content-max-width);
 }
 
 // Light Scheme
 :root {
   color-scheme: light;
 
-  @each $type in (primary) {
-    @include css-color-type-schema($type, 'light');
-  }
+  // Colors
+  @include set-colors-schema('light');
 
   // Background
-  @include css-var-all-type('bg-color', $bg-color);
-  // Text
-  @include css-var-all-type('text-color', $text-color);
-  // Border
-  @include css-var-all-type('border-color', $border-color);
+  @include set-vars('bg-color', $bg-color);
 
+  // Text
+  @include set-vars('text-color', $text-color);
+
+  // Border
+  @include set-vars('border-color', $border-color);
   // Border but based on border-color, so they should put after border-color
-  @include css-var('border-width', $border-width);
-  @include css-var('border-style', $border-style);
-  @include css-var('border', getCssVar('border-width') getCssVar('border-style') getCssVar('border-color'));
+  @include set-var('border-width', $border-width);
+  @include set-var('border-style', $border-style);
+  @include set-var('border', getVar('border-width') getVar('border-style') getVar('border-color'));
 }
 
 // Dark Scheme
 html.dark {
   color-scheme: dark;
 
-  @each $type in (primary) {
-    @include css-color-type-schema($type, 'dark');
-  }
+  // Colors
+  @include set-colors-schema('dark');
 
   // Background
-  @include css-var-all-type('bg-color', $bg-color);
+  @include set-vars('bg-color', $bg-color-dark);
+
   // Text
-  @include css-var-all-type('text-color', $text-color);
+  @include set-vars('text-color', $text-color-dark);
+
   // Border
-  @include css-var-all-type('border-color', $border-color);
+  @include set-vars('border-color', $border-color-dark);
 }

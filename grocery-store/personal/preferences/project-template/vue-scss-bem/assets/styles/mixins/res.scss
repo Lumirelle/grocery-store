@@ -1,10 +1,16 @@
-/* The mixins for realizing responsive layout */
+/// The mixins for realizing responsive layout
 @use '../common/var' as *;
 
 @use 'sass:map';
 
+/// Realize responsive layout
+/// @access public
+/// @param {String} $key - Key
+/// @example
+///   @include res('md') {
+///     @content;
+///   }
 @mixin res($key) {
-  // loop breakpoint Map, return if present
   @if map.has-key($breakpoints, $key) {
     @media only screen and #{string.unquote(map.get($breakpoints, $key))} {
       @content;

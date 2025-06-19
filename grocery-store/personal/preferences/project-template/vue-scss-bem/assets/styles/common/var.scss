@@ -1,8 +1,12 @@
 @use 'sass:map';
 
+// Use css-var mixin to generate `var(--xxx)` statement
 @use '../mixins/function/css-var' as *;
 
-// NOTE: Colors
+// ------------------------------------------------------------
+// Base Colors
+// ------------------------------------------------------------
+/// Colors for all schemes
 $colors: () !default;
 $colors: map.merge(
   (
@@ -28,7 +32,7 @@ $colors: map.merge(
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
 
-// For light scheme
+/// Colors for light scheme
 $colors-light: () !default;
 $colors-light: map.deep-merge(
   (
@@ -44,7 +48,7 @@ $colors-light: map.deep-merge(
   $colors-light
 );
 
-// For dark scheme
+/// Colors for dark scheme
 $colors-dark: () !default;
 $colors-dark: map.deep-merge(
   (
@@ -60,7 +64,10 @@ $colors-dark: map.deep-merge(
   $colors-dark
 );
 
-// NOTE: Background
+// ------------------------------------------------------------
+// Background
+// ------------------------------------------------------------
+/// Background colors
 $bg-color: () !default;
 $bg-color: map.deep-merge(
   (
@@ -73,10 +80,29 @@ $bg-color: map.deep-merge(
   $bg-color
 );
 
-// NOTE: Border
+/// Background colors for dark scheme
+$bg-color-dark: () !default;
+$bg-color-dark: map.deep-merge(
+  (
+    '': #fff,
+    'light': #f7f8f9,
+    'dark': #f2f3f5,
+    'primary': #eef9f9,
+    'overlay': #838c8d,
+  ),
+  $bg-color-dark
+);
+
+// ------------------------------------------------------------
+// Border
+// ------------------------------------------------------------
+/// Border width
 $border-width: 1px !default;
+
+/// Border style
 $border-style: solid !default;
 
+/// Border radius
 $border-radius: () !default;
 $border-radius: map.merge(
   (
@@ -89,6 +115,7 @@ $border-radius: map.merge(
   $border-radius
 );
 
+/// Border colors
 $border-color: () !default;
 $border-color: map.deep-merge(
   (
@@ -97,7 +124,19 @@ $border-color: map.deep-merge(
   $border-color
 );
 
-// NOTE: Overlay
+/// Border colors for dark scheme
+$border-color-dark: () !default;
+$border-color-dark: map.deep-merge(
+  (
+    '': #e2eaeb,
+  ),
+  $border-color-dark
+);
+
+// ------------------------------------------------------------
+// Overlay
+// ------------------------------------------------------------
+/// Overlay colors
 $overlay-color: () !default;
 $overlay-color: map.merge(
   (
@@ -108,7 +147,10 @@ $overlay-color: map.merge(
   $overlay-color
 );
 
-// NOTE: Mask
+// ------------------------------------------------------------
+// Mask
+// ------------------------------------------------------------
+/// Mask colors
 $mask-color: () !default;
 $mask-color: map.merge(
   (
@@ -118,7 +160,10 @@ $mask-color: map.merge(
   $mask-color
 );
 
-// NOTE: ZIndex
+// ------------------------------------------------------------
+// ZIndex
+// ------------------------------------------------------------
+/// ZIndex
 $z-index: () !default;
 $z-index: map.merge(
   (
@@ -129,7 +174,10 @@ $z-index: map.merge(
   $z-index
 );
 
-// NOTE: Typography
+// ------------------------------------------------------------
+// Typography
+// ------------------------------------------------------------
+/// Font family
 $font-family: () !default;
 $font-family: map.merge(
   (
@@ -139,6 +187,7 @@ $font-family: map.merge(
   $font-family
 );
 
+/// Font size
 $font-size: () !default;
 $font-size: map.merge(
   (
@@ -154,7 +203,7 @@ $font-size: map.merge(
   $font-size
 );
 
-// Related to font-size
+/// Line height, related to font-size
 $line-height: () !default;
 $line-height: map.merge(
   (
@@ -170,6 +219,7 @@ $line-height: map.merge(
   $line-height
 );
 
+/// Font weight
 $font-weight: () !default;
 $font-weight: map.merge(
   (
@@ -182,6 +232,7 @@ $font-weight: map.merge(
   $font-weight
 );
 
+/// Text colors
 $text-color: () !default;
 $text-color: map.deep-merge(
   (
@@ -194,24 +245,42 @@ $text-color: map.deep-merge(
   $text-color
 );
 
-// NOTE: Transition
+/// Text colors for dark scheme
+
+$text-color-dark: () !default;
+$text-color-dark: map.deep-merge(
+  (
+    'title': #042c2e,
+    'body': #3c4848,
+    'assist': #8e9595,
+    'placeholder': #c7d2d2,
+    'white': #fff,
+  ),
+  $text-color-dark
+);
+
+// ------------------------------------------------------------
+// Transition
+// ------------------------------------------------------------
+/// Transition
 $transition: () !default;
 $transition: map.merge(
   (
-    'all': all getCssVar('transition-duration') getCssVar('transition-function-ease-in-out-bezier'),
-    'fade': opacity getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
+    'all': all getVar('transition-duration') getVar('transition-function-ease-in-out-bezier'),
+    'fade': opacity getVar('transition-duration') getVar('transition-function-fast-bezier'),
     'md-fade': (
-      transform getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
-      opacity getCssVar('transition-duration') getCssVar('transition-function-fast-bezier'),
+      transform getVar('transition-duration') getVar('transition-function-fast-bezier'),
+      opacity getVar('transition-duration') getVar('transition-function-fast-bezier'),
     ),
-    'fade-linear': opacity getCssVar('transition-duration-fast') linear,
-    'border': border-color getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
-    'box-shadow': box-shadow getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
-    'color': color getCssVar('transition-duration-fast') getCssVar('transition-function-ease-in-out-bezier'),
+    'fade-linear': opacity getVar('transition-duration-fast') linear,
+    'border': border-color getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
+    'box-shadow': box-shadow getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
+    'color': color getVar('transition-duration-fast') getVar('transition-function-ease-in-out-bezier'),
   ),
   $transition
 );
 
+/// Transition duration
 $transition-duration: () !default;
 $transition-duration: map.merge(
   (
@@ -221,6 +290,7 @@ $transition-duration: map.merge(
   $transition-duration
 );
 
+/// Transition function
 $transition-function: () !default;
 $transition-function: map.merge(
   (
@@ -230,7 +300,7 @@ $transition-function: map.merge(
   $transition-function
 );
 
-// NOTE: Max content width of page component
+/// Max content width of page component
 $content-max-width: () !default;
 $content-max-width: map.merge(
   (
@@ -240,13 +310,19 @@ $content-max-width: map.merge(
   $content-max-width
 );
 
-// NOTE: Break-point
-// $xs: less than $sm
+// ------------------------------------------------------------
+// Break-point
+// ------------------------------------------------------------
+/// `sm` size
 $sm: 768px !default;
+/// `md` size
 $md: 992px !default;
+/// `lg` size
 $lg: 1200px !default;
+/// `xl` size
 $xl: 1920px !default;
 
+/// Break-point
 $breakpoints: (
   'xs': '(max-width: #{$sm - 1})',
   'xs+': '(min-width: #{$sm})',

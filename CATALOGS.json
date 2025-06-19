@@ -189,9 +189,12 @@
                   },
                   "css-var.scss": null,
                   "function": {
-                    "bem.scss": null,
                     "css-var.scss": null,
-                    "index.scss": null
+                    "index.scss": null,
+                    "selector.scss": null,
+                    "test": {
+                      "css-var.scss": null
+                    }
                   },
                   "index.scss": null,
                   "placeholder.scss": null,

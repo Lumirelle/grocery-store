@@ -1,12 +1,38 @@
 @use 'sass:color';
 @use 'sass:string';
 
+/// Slightly lighten a color
+/// @access public
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color} A slightly lighter version of the color
+@function lighten($color, $percentage) {
+  @return color.mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+/// @access public
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @return {Color} A slightly darker version of the color
+@function darken($color, $percentage) {
+  @return color.mix(black, $color, $percentage);
+}
+
+/// Convert a rgb color to a hex color
+/// @access public
+/// @param {Color} $color - rgb color
+/// @return {Color} A hex color
 @function rgb2hex($color) {
   @return string.unquote('#' + #{string.slice(color.ie-hex-str($color), 4)});
 }
 
-// rgba color above solid color
-@function mix-overlay-color($upper, $lower) {
+/// Mix a overlay rgba color above a base solid color
+/// @access public
+/// @param {Color} $upper - overlay rgba color
+/// @param {Color} $lower - base solid color
+/// @return {Color} A mixed color
+@function mix-overlay($upper, $lower) {
   $opacity: color.alpha($upper);
   $red: color.channel($upper, 'red') * $opacity + color.channel($lower, 'red') * (1 - $opacity);
   $green: color.channel($upper, 'green') * $opacity + color.channel($lower, 'green') * (1 - $opacity);
