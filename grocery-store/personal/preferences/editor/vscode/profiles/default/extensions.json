@@ -29,7 +29,7 @@
     // -- language & file support
     "remcohaszing.schemastore",
     "redhat.vscode-yaml",
-    "mrmlnc.vscode-scss",
+    "somewhatstationery.some-sass",
     "glenn2223.live-sass",
     "simonsiefke.svg-preview",
     "ms-vscode.powershell", // also the formatter & linter & snippets for powershell
