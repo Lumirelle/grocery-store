@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> My personal grocery store, include docs, preferences and resources.
+<p align="center"> My personal grocery store, include docs, preferences, templates and resources.
     <br>
 </p>
 
@@ -32,7 +32,7 @@
 
 ## 🧐 About <a name="about"></a>
 
-My personal grocery store, include docs, preferences and resources.
+My personal grocery store, include docs, preferences, templates and resources.
 
 ## 📑 Catalogs <a name="catalogs"></a>
 
