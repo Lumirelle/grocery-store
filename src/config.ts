@@ -6,130 +6,149 @@ import { env } from 'node:process'
 /**
  * The keys of the boolean parameters
  */
-export const BOOLEAN_PARAMETER_KEYS: ParameterKey[] = ['-?', '--help', '-h', '--version', '-v', '--override', '-o']
+export const BOOLEAN_PARAMETER_KEYS: ParameterKey[] = ['-?', '--help', '-h', '--version', '-v', '--force', '-f']
 
 /**
  * The path to the grocery store, relative to the project root
  */
 export const GROCERY_STORE_PATH: string = 'grocery-store'
 
-export interface InstallableMatcher {
+/**
+ * The mode of installation
+ */
+export type InstallMode = 'symlink' | 'copy'
+
+/**
+ * The matcher for installing & uninstalling the grocery collection
+ */
+export interface InstallMatcher {
   /**
-   * The glob pattern to match the preference collection, relative to the `source` path
+   * The glob pattern to match the grocery collection, relative to the `source` path
    */
-  match: string
+  pattern: string
 
   /**
-   * The folder to install the preference collection
+   * The folder(s) to install the grocery collection
    */
-  installFolder: string | string[]
+  folder: string | string[]
 
   /**
    * The mode of installation, if not specified, it will behave as `symlink`
    */
-  installMode?: 'symlink' | 'copy'
+  mode?: InstallMode
 }
 
-export interface PreferenceCollection {
+export interface GroceryCollection {
   /**
-   * The source path of the preference collection, relative to project root
+   * The source path of the grocery collection, relative to project root
    */
   source: string
 
   /**
-   * The install matchers for installing the preference collection.
+   * The install matchers for installing the grocery collection.
    *
-   * Preferences not matched by any matcher will not be installed.
+   * Grocery not matched by any matcher will not be installed.
    */
-  installMatchers: InstallableMatcher[]
+  installMatchers: InstallMatcher[]
 }
 
 /**
- * Supported preference collections
+ * All of grocery collections
  *
  * FIXME: Need test `installFolder` in unix & linux like system
  */
-export const SUPPORTED_PREFERENCE_COLLECTIONS: PreferenceCollection[] = [
+export const GROCERY_COLLECTIONS: GroceryCollection[] = [
   {
     source: `${GROCERY_STORE_PATH}/personal/preferences`,
     installMatchers: [
       {
-        match: 'editor/neovim/**/*',
-        installFolder: join(env.LOCALAPPDATA || '', 'nvim'),
+        pattern: 'editor/neovim/**/*',
+        folder: join(env.LOCALAPPDATA || '', 'nvim'),
       },
       {
-        match: 'editor/vscode/{settings,keybindings}.json',
-        installFolder: [
+        pattern: 'editor/vscode/{settings,keybindings}.json',
+        folder: [
           join(env.APPDATA || '', 'Code', 'User'),
           join(env.APPDATA || '', 'Cursor', 'User'),
         ],
       },
       {
-        match: 'editor/vscode/snippets/**/*.json',
-        installFolder: [
+        pattern: 'editor/vscode/snippets/**/*.json',
+        folder: [
           join(env.APPDATA || '', 'Code', 'User', 'snippets'),
           join(env.APPDATA || '', 'Cursor', 'User', 'snippets'),
         ],
       },
       {
-        match: 'editor/.editorconfig',
-        installFolder: homedir(),
+        pattern: 'editor/.editorconfig',
+        folder: homedir(),
       },
       {
-        match: 'formatter/prettier/.prettierrc.yaml',
-        installFolder: homedir(),
+        pattern: 'formatter/prettier/.prettierrc.yaml',
+        folder: homedir(),
       },
       {
-        match: 'linter/cspell/.cspell.common.txt',
-        installFolder: homedir(),
+        pattern: 'linter/cspell/.cspell.common.txt',
+        folder: homedir(),
       },
       {
-        match: 'package-manager/maven/settings.xml',
-        installFolder: join(homedir(), '.m2'),
+        pattern: 'package-manager/maven/settings.xml',
+        folder: join(homedir(), '.m2'),
       },
       {
-        match: 'package-manager/miniconda/*.lnk',
-        installFolder: join(env.ProgramData || '', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Anaconda (miniconda3)'),
-        installMode: 'copy',
+        pattern: 'package-manager/miniconda/*.lnk',
+        folder: join(env.ProgramData || '', 'Microsoft', 'Windows', 'Start Menu', 'Programs', 'Anaconda (miniconda3)'),
+        mode: 'copy',
       },
       {
-        match: 'terminal/bash/.bash_profile',
-        installFolder: homedir(),
+        pattern: 'terminal/bash/.bash_profile',
+        folder: homedir(),
       },
       {
-        match: 'terminal/cmd/autorun.cmd',
-        installFolder: join(homedir() || '', 'Documents', 'CMD'),
+        pattern: 'terminal/cmd/autorun.cmd',
+        folder: join(homedir() || '', 'Documents', 'CMD'),
       },
       {
-        match: 'terminal/powershell/Microsoft.PowerShell_profile.ps1',
-        installFolder: join(homedir() || '', 'Documents', 'PowerShell'),
+        pattern: 'terminal/powershell/Microsoft.PowerShell_profile.ps1',
+        folder: join(homedir() || '', 'Documents', 'PowerShell'),
       },
       {
-        match: 'terminal/windows-terminal/settings.json',
-        installFolder: join(env.LOCALAPPDATA || '', 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState'),
+        pattern: 'terminal/windows-terminal/settings.json',
+        folder: join(env.LOCALAPPDATA || '', 'Packages', 'Microsoft.WindowsTerminal_8wekyb3d8bbwe', 'LocalState'),
       },
       {
-        match: 'vcs/git/.gitconfig',
-        installFolder: homedir(),
+        pattern: 'vcs/git/.gitconfig',
+        folder: homedir(),
       },
       {
-        match: 'vpn/clash-for-windows/cfw-settings.yaml',
-        installFolder: join(homedir(), '.config', 'clash'),
+        pattern: 'vpn/clash-for-windows/cfw-settings.yaml',
+        folder: join(homedir(), '.config', 'clash'),
       },
     ],
+  },
+  {
+    source: `${GROCERY_STORE_PATH}/personal/template`,
+    installMatchers: [], // Set to empty, template should not be installed
   },
   {
     source: `${GROCERY_STORE_PATH}/work/preferences`,
     installMatchers: [
       {
-        match: 'linter/cspell/.cspell.wrk.txt',
-        installFolder: homedir(),
+        pattern: 'linter/cspell/.cspell.wrk.txt',
+        folder: homedir(),
       },
     ],
   },
 ]
 
 /**
- * The files to ignore when paste the preference collection (Command `pp`).
+ * The files to ignore when copy & paste the grocery collection (Command `gsp`).
  */
-export const IGNORE_FILES_WHEN_PASTE: string[] = ['**/*.md', '**/outdated']
+export const IGNORE_GROCERY_WHEN_COPY_PASTE: string[] = [
+  '**/outdated',
+  'vpn/clash-for-windows/README.md',
+  'project/**/node_modules',
+  'project/**/jsconfig.json',
+  'project/**/package.json',
+  'project/**/README.md',
+]

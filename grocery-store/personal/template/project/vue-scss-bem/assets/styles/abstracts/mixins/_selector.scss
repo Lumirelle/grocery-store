@@ -1,9 +1,11 @@
 /// The mixins for operating selector (BEM style & state check)
 
-@use '../variables/config';
-@use '../functions/selector';
+@use '../variables/config/selector' as config;
+@use '../functions/selector' as *;
 
+/// Block name
 $B: null;
+/// Element name
 $E: null;
 
 /// Generate BEM selector for block
@@ -42,7 +44,7 @@ $E: null;
     $currentSelector: #{$currentSelector + '.' + $B + config.$element-separator + $unit + ','};
   }
 
-  @if selector.hasSpecialNestingRule($selector) {
+  @if hasSpecialNestingRule($selector) {
     @at-root {
       #{$selector} {
         #{$currentSelector} {

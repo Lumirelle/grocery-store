@@ -1,6 +1,6 @@
 /// The functions for generating CSS variables & `var()` function
 
-@use '../variables/config';
+@use '../variables/config/selector' as selector-config;
 
 /// Generate CSS variable name from specific string list with predefined namespace
 /// @access public
@@ -13,7 +13,7 @@
 /// @example
 ///   getVarName(('button', 'text-color')) => '--cs-button-text-color'
 @function getVarName($args...) {
-  $name: '--' + config.$namespace;
+  $name: '--' + selector-config.$namespace;
   $list: $args;
 
   @if length($args) == 1 {

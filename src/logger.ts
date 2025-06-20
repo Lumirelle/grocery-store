@@ -23,22 +23,22 @@ function getCharacter(key: keyof LogCharacters): string {
 
 export const log = {
   info: (message: string): void => {
-    console.log(`${message}\n`)
+    console.log(`${message}`)
   },
   success: (message: string): void => {
-    console.log(green(`${getCharacter('success')} ${message}\n`))
+    console.log(green(`${getCharacter('success')} ${message}`))
   },
   warn: (message: string): void => {
-    console.warn(yellow(`${getCharacter('warn')} ${message}\n`))
+    console.warn(yellow(`${getCharacter('warn')} ${message}`))
   },
   progress: (message: string): void => {
-    console.log(yellow(`${getCharacter('progress')} ${message}\n`))
+    console.log(`${getCharacter('progress')} ${message}`)
   },
   error: (message: string): void => {
-    console.error(red(`${getCharacter('error')} ${message}\n`))
+    console.error(red(`${getCharacter('error')} ${message}`))
   },
   debug: (message: string): void => {
-    console.log(magenta(`${getCharacter('debug')} ${dim(message)}\n`))
+    console.log(magenta(`${getCharacter('debug')} ${dim(message)}`))
   },
 }
 

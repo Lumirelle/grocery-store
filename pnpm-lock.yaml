@@ -120,7 +120,7 @@ importers:
         specifier: catalog:dev
         version: 3.2.3(@types/debug@4.1.12)(@types/node@22.15.32)(jiti@2.4.2)(jsdom@21.1.2(canvas@2.11.2(encoding@0.1.13)))(tsx@4.20.3)(yaml@2.8.0)
 
-  grocery-store/personal/preferences/project-template/vue-scss-bem:
+  grocery-store/personal/template/project/vue-scss-bem:
     dependencies:
       vue:
         specifier: catalog:dev

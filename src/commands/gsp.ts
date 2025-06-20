@@ -15,8 +15,8 @@
 import type { Parameter } from '../parse'
 import type { RunnerContext } from '../runner'
 import { getRoot } from '../fs'
+import { copyGrocery } from '../grocery'
 import { extractBoolean, extractString } from '../parse'
-import { copyPreference } from '../preferences'
 import { runCli } from '../runner'
 
 runCli(async (context: RunnerContext, parameters: Parameter[]) => {
@@ -26,7 +26,7 @@ runCli(async (context: RunnerContext, parameters: Parameter[]) => {
 
   const sourceName = extractString(parameters, { keys: ['-s', '--source'], position: 0 })
   const targetPath = extractString(parameters, { keys: ['-t', '--target'], position: 1 })
-  const override = extractBoolean(parameters, { keys: ['-o', '--override'] })
+  const force = extractBoolean(parameters, { keys: ['-f', '--force'] })
 
-  await copyPreference(root, cwd, sourceName, targetPath, override)
+  await copyGrocery(root, cwd, sourceName, targetPath, force)
 })

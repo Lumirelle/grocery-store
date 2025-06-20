@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 'use strict'
 
-import '../dist/pi.mjs'
+import '../dist/gsp.mjs'

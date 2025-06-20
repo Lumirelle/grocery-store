@@ -1,5 +1,5 @@
 packages:
-  - 'grocery-store/personal/preferences/project-template/**'
+  - 'grocery-store/personal/template/project/**'
 
 catalogs:
   dev:

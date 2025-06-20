@@ -4,67 +4,6 @@
 @use '../functions/css-var';
 
 // ------------------------------------------------------------
-// Base Colors
-// ------------------------------------------------------------
-/// Colors for all schemes
-$colors: () !default;
-$colors: map.merge(
-  (
-    'white': #fff,
-    'black': #000,
-
-    'primary': #2bacb2,
-
-    'success': #00b42a,
-    'warn': #ff7d00,
-    'error': #f53f3f,
-
-    'cyan-green': #0fc6c2,
-    'dusk-yellow': #f7ba1e,
-    'sea-azure': #3491fa,
-    'night-purple': #904cf0,
-    'magenta': #ee58ab,
-    'newborn-green': #9fdb1d,
-  ),
-  $colors
-);
-
-$color-white: map.get($colors, 'white') !default;
-$color-black: map.get($colors, 'black') !default;
-
-/// Colors for light scheme
-$colors-light: () !default;
-$colors-light: map.deep-merge(
-  (
-    'primary': (
-      // hover
-      'light-1': #45b6bb,
-      // hover-light
-      'light-3': #dff2f2,
-      // active
-      'dark-2': #26979c,
-    ),
-  ),
-  $colors-light
-);
-
-/// Colors for dark scheme
-$colors-dark: () !default;
-$colors-dark: map.deep-merge(
-  (
-    'primary': (
-      // hover
-      'light-1': #45b6bb,
-      // hover-light
-      'light-3': #dff2f2,
-      // active
-      'dark-2': #26979c,
-    ),
-  ),
-  $colors-dark
-);
-
-// ------------------------------------------------------------
 // Background
 // ------------------------------------------------------------
 /// Background colors
@@ -311,32 +250,3 @@ $content-max-width: map.merge(
   ),
   $content-max-width
 );
-
-// ------------------------------------------------------------
-// Break-point
-// ------------------------------------------------------------
-/// `sm` size
-$sm: 768px !default;
-/// `md` size
-$md: 992px !default;
-/// `lg` size
-$lg: 1200px !default;
-/// `xl` size
-$xl: 1920px !default;
-
-/// Break-point
-$breakpoints: (
-  'xs': '(max-width: #{$sm - 1})',
-  'xs+': '(min-width: #{$sm})',
-  'sm-': '(max-width: #{$sm - 1})',
-  'sm': '(min-width: #{$sm}) and (max-width: #{$md - 1})',
-  'sm+': '(min-width: #{$sm})',
-  'md-': '(max-width: #{$md - 1})',
-  'md': '(min-width: #{$md}) and (max-width: #{$lg - 1})',
-  'md+': '(min-width: #{$md})',
-  'lg-': '(max-width: #{$lg - 1})',
-  'lg': '(min-width: #{$lg}) and (max-width: #{$xl - 1})',
-  'lg+': '(min-width: #{$lg})',
-  'xl-': '(max-width: #{$xl - 1})',
-  'xl': '(min-width: #{$xl})',
-) !default;

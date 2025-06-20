@@ -1,6 +1,6 @@
 /// The functions for operating the selector
 
-@use '../variables/config';
+@use '../variables/config/selector' as config;
 
 @use 'sass:meta';
 @use 'sass:string';

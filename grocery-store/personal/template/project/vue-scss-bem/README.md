@@ -1,4 +1,4 @@
-# README for SCSS Module
+# README for Vue-SCSS-BEM
 
 ## 😋 Why use CSS var instead of SCSS var directly
 

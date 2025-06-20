@@ -48,11 +48,11 @@ export async function run(fn: Runner, parameters: Parameter[]): Promise<void> {
 
   if (parameters.length === 1 && ['-h', '--help'].includes(parameters[0].key)) {
     const dash = c.dim('-')
-    console.log(format.title('@lumirelle/grocery-store') + c.dim` use the right preference v${version}\n`)
-    console.log(`pi    ${dash}  install preferences from my grocery store`)
-    console.log(`pu    ${dash}  uninstall preferences from my grocery store`)
-    console.log(`pp    ${dash}  copy and paste preference from my grocery store`)
-    console.log(`pi -h ${dash}  show help`)
+    console.log(format.title('@lumirelle/grocery-store') + c.dim` getting useful groceries from the grocery store v${version}\n`)
+    console.log(`gsi    ${dash}  install grocery from the grocery store`)
+    console.log(`gsu    ${dash}  uninstall grocery from the grocery store`)
+    console.log(`gsp    ${dash}  copy & paste grocery from the grocery store`)
+    console.log(`gsi -h ${dash}  show help`)
     console.log(format.additional('\ncheck https://github.com/lumirelle/grocery-store for more documentation.'))
     return
   }

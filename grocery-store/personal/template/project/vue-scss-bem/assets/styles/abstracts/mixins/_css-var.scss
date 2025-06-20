@@ -3,8 +3,7 @@
 @use 'sass:map';
 @use 'sass:color';
 
-@use '../variables/common';
-@use '../functions/css-var';
+@use '../functions/css-var' as *;
 
 /// Generate CSS variable name, and set it in current scope with a certain value
 /// @access public
@@ -17,7 +16,7 @@
 ///   @include set-var(('color', 'primary'), red);
 ///   --cs-color-primary: red;
 @mixin set-var($name, $value) {
-  #{css-var.getVarName($name)}: #{$value};
+  #{getVarName($name)}: #{$value};
 }
 
 /// Process all keys in the SCSS map, and set all CSS variables from them
@@ -41,9 +40,9 @@
 @mixin set-vars($name, $map) {
   @each $key, $value in $map {
     @if $key == 'default' {
-      #{css-var.getVarName($name)}: #{$value};
+      #{getVarName($name)}: #{$value};
     } @else {
-      #{css-var.getVarName($name, $key)}: #{$value};
+      #{getVarName($name, $key)}: #{$value};
     }
   }
 }
@@ -59,52 +58,7 @@
 ///   @include set-var-existing(('button', 'text-color'), ('color', 'primary'));
 ///   --cs-button-text-color: var(--cs-color-primary);
 @mixin set-var-existing($name, $existing-name) {
-  $name: css-var.getVarName($name);
-  $existing-name: css-var.getVarName($existing-name);
+  $name: getVarName($name);
+  $existing-name: getVarName($existing-name);
   #{$name}: var(#{$existing-name});
-}
-
-/// Process all keys in the SCSS map `$colors`, and set all CSS colors from them
-/// @access public
-/// @example
-///   @include set-colors();
-///   --cs-color-white: $colors.white;
-///   --cs-color-black: $colors.black;
-///   --cs-color-primary: $colors.primary;
-///   --cs-color-success: $colors.success;
-///   --cs-color-warn: $colors.warn;
-///   --cs-color-error: $colors.error;
-@mixin set-colors() {
-  @each $key, $value in common.$colors {
-    @include set-var(('color', $key), $value);
-  }
-}
-
-/// Process all keys in the SCSS map `$colors-<schema>`, and set all CSS colors from them
-/// @access public
-/// @param {String} $schema - Color schema
-/// @example
-///   @include set-colors-schema('light');
-///   --cs-color-primary-light-1: $colors-light.primary.light-1;
-///   --cs-color-primary-light-3: $colors-light.primary.light-3;
-///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
-/// @example
-///   @include set-colors-schema('dark');
-///   --cs-color-primary-light-1: $colors-dark.primary.light-1;
-///   --cs-color-primary-light-3: $colors-dark.primary.light-3;
-///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
-@mixin set-colors-schema($schema: 'light') {
-  $map: common.$colors;
-
-  @if $schema == 'light' {
-    $map: common.$colors-light;
-  } @else if $schema == 'dark' {
-    $map: common.$colors-dark;
-  }
-
-  @each $key, $value in $map {
-    @each $level in map.keys($value) {
-      @include set-var(('color', $key, $level), map.get($value, $level));
-    }
-  }
 }

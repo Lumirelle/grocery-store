@@ -1,0 +1,27 @@
+/// Config variables for responsive layout
+
+/// `sm` size
+$sm: 768px !default;
+/// `md` size
+$md: 992px !default;
+/// `lg` size
+$lg: 1200px !default;
+/// `xl` size
+$xl: 1920px !default;
+
+/// Break-point
+$breakpoints: (
+  'xs': '(max-width: #{$sm - 1})',
+  'xs+': '(min-width: #{$sm})',
+  'sm-': '(max-width: #{$sm - 1})',
+  'sm': '(min-width: #{$sm}) and (max-width: #{$md - 1})',
+  'sm+': '(min-width: #{$sm})',
+  'md-': '(max-width: #{$md - 1})',
+  'md': '(min-width: #{$md}) and (max-width: #{$lg - 1})',
+  'md+': '(min-width: #{$md})',
+  'lg-': '(max-width: #{$lg - 1})',
+  'lg': '(min-width: #{$lg}) and (max-width: #{$xl - 1})',
+  'lg+': '(min-width: #{$lg})',
+  'xl-': '(max-width: #{$xl - 1})',
+  'xl': '(min-width: #{$xl})',
+) !default;

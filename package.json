@@ -15,32 +15,33 @@
   "bugs": "https://github.com/Lumirelle/grocery-store/issues",
   "exports": {
     ".": "./dist/index.mjs",
-    "./pi": "./dist/pi.mjs",
-    "./pu": "./dist/pu.mjs",
-    "./pp": "./dist/pp.mjs"
+    "./gsi": "./dist/gsi.mjs",
+    "./gsp": "./dist/gsp.mjs",
+    "./gsu": "./dist/gsu.mjs"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "bin": {
-    "pi": "./bin/pi.mjs",
-    "pu": "./bin/pu.mjs",
-    "pp": "./bin/pp.mjs"
+    "gsi": "./bin/gsi.mjs",
+    "gsp": "./bin/gsp.mjs",
+    "gsu": "./bin/gsu.mjs"
   },
   "files": [
     "CATALOGS.json",
     "bin",
     "dist",
     "grocery-store/personal/preferences",
-    "grocery-store/personal/preferences/package-manager/npm/.npmrc"
+    "grocery-store/personal/preferences/package-manager/npm/.npmrc",
+    "grocery-store/personal/template"
   ],
   "scripts": {
     "prepare": "simple-git-hooks",
     "prepublishOnly": "pnpm build && pnpm catalogs",
     "dev": "npm link && pnpm stub",
-    "pi": "node ./bin/pi.mjs",
-    "pu": "node ./bin/pu.mjs",
-    "pp": "node ./bin/pp.mjs",
+    "gsi": "node ./bin/gsi.mjs",
+    "gsp": "node ./bin/gsp.mjs",
+    "gsu": "node ./bin/gsu.mjs",
     "lint": "eslint",
     "test": "vitest",
     "build": "unbuild",
