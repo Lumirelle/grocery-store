@@ -1,7 +1,7 @@
 {
   "name": "lumirelle-grocery-store",
   "type": "module",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "packageManager": "pnpm@10.12.1",
   "description": "My personal grocery store, include docs, preferences and resources.",
   "author": "Lumirelle <shabbyacc@outlook.com>",
