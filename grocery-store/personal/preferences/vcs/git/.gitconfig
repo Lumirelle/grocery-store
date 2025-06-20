@@ -17,6 +17,9 @@ decoration = short
 [init]
 defaultBranch = main
 
+[stash]
+includeUntracked = true
+
 [branch]
 sort = -committerdate
 
@@ -55,8 +58,16 @@ log-last = log -1 HEAD --stat
 config-list = config --list
 config-global = config --global
 # discard
-discard = checkout --
-discard-all = checkout -- . # Discard all **tracked changes** in the working directory
+discard = "!f() { \
+  if git ls-files --error-unmatch -- \"$1\" >/dev/null 2>&1; then \
+    git restore --staged --worktree -- \"$1\"; \
+  else \
+    if [ -e \"$1\" ]; then \
+      git clean -fd -- \"$1\" >/dev/null 2>&1; \
+    fi; \
+  fi; \
+}; f"
+discard-all = "!git restore --staged --worktree && git clean -df"
 # add
 add-all = add .
 add-undo = reset HEAD --       # Move staged changes back to the working directory
