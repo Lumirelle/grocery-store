@@ -112,7 +112,7 @@ function extract(parameters: Parameter[], extractOptions: ExtractOptions): Param
 
   // Type conversion
   const type: ParameterType = typeOfParameter(keys[0])
-  if (type === 'string')
+  if (type === 'string' && result !== null)
     return String(result)
   else if (type === 'boolean')
     return Boolean(result)

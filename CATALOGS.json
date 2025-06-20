@@ -132,9 +132,6 @@
             ".prettierrc.yaml": null
           }
         },
-        "license": {
-          "LICENSE": null
-        },
         "linter": {
           "commitlint": {
             "commitlint.config.mjs": null
@@ -173,21 +170,75 @@
             ".npmrc": null
           }
         },
-        "project-template": {
+        "terminal": {
+          "bash": {
+            ".bash_profile": null
+          },
+          "cmd": {
+            "autorun.cmd": null,
+            "autorun.reg": null
+          },
+          "powershell": {
+            "Microsoft.PowerShell_profile.ps1": null
+          },
+          "windows-terminal": {
+            "settings.json": null
+          },
+          "zsh": {
+            ".zshrc": null,
+            "outdated": null
+          }
+        },
+        "vcs": {
+          "git": {
+            ".gitattributes": null,
+            ".gitconfig": null,
+            "nodejs.gitignore": null
+          },
+          "github": {
+            "workflows": {
+              "publish-commit.yaml": null,
+              "release.yaml": null
+            }
+          }
+        },
+        "vpn": {
+          "clash-for-windows": {
+            "cfw-settings.yaml": null,
+            "README.md": null
+          }
+        }
+      },
+      "resources": {
+        "fonts": {
+          "0xProto.url": null,
+          "NerdFontsSymbolsOnly.zip": null,
+          "README.md": null,
+          "SJlurongti.zip": null
+        }
+      },
+      "template": {
+        "code": {
+          "vue": {
+            "GradientBorder.vue": null
+          }
+        },
+        "license": {
+          "LICENSE": null
+        },
+        "project": {
           "vue-scss-bem": {
             "assets": {
               "styles": {
                 "abstracts": {
                   "functions": {
-                    "test": {
-                      "_css-var.scss": null
-                    },
                     "_color.scss": null,
                     "_css-var.scss": null,
                     "_index.scss": null,
                     "_selector.scss": null
                   },
                   "mixins": {
+                    "_base-color.scss": null,
                     "_css-var.scss": null,
                     "_index.scss": null,
                     "_placeholder.scss": null,
@@ -196,14 +247,17 @@
                     "_utils.scss": null
                   },
                   "variables": {
+                    "config": {
+                      "_base-color.scss": null,
+                      "_res.scss": null,
+                      "_selector.scss": null
+                    },
                     "_common.scss": null,
-                    "_config.scss": null,
                     "_index.scss": null
                   },
                   "_index.scss": null
                 },
-                "public.scss": null,
-                "README.md": null
+                "public.scss": null
               }
             },
             "hooks": {
@@ -540,7 +594,8 @@
             "pages": {
               "example-v2.vue": null,
               "example-v3.vue": null
-            }
+            },
+            "README.md": null
           }
         },
         "readme": {
@@ -550,52 +605,6 @@
           "standard": {
             "README.md": null
           }
-        },
-        "terminal": {
-          "bash": {
-            ".bash_profile": null
-          },
-          "cmd": {
-            "autorun.cmd": null,
-            "autorun.reg": null
-          },
-          "powershell": {
-            "Microsoft.PowerShell_profile.ps1": null
-          },
-          "windows-terminal": {
-            "settings.json": null
-          },
-          "zsh": {
-            ".zshrc": null,
-            "outdated": null
-          }
-        },
-        "vcs": {
-          "git": {
-            ".gitattributes": null,
-            ".gitconfig": null,
-            "nodejs.gitignore": null
-          },
-          "github": {
-            "workflows": {
-              "publish-commit.yaml": null,
-              "release.yaml": null
-            }
-          }
-        },
-        "vpn": {
-          "clash-for-windows": {
-            "cfw-settings.yaml": null,
-            "README.md": null
-          }
-        }
-      },
-      "resources": {
-        "fonts": {
-          "0xProto.url": null,
-          "NerdFontsSymbolsOnly.zip": null,
-          "README.md": null,
-          "SJlurongti.zip": null
         }
       }
     }
