@@ -105,7 +105,7 @@ BypassNRO.cmd
 
   # 安装个人配置
   npm i lumirelle-grocery-store -g
-  sudo pi -o
+  sudo gsi -f
   ```
 
 ### 步骤四：安装软件
@@ -176,7 +176,7 @@ BypassNRO.cmd
 - 再次安装我的个人配置。安装配置中添加了“工具不存在则不生成配置”的设定，因此推荐在完成应用安装后再次执行配置安装。
 
 ```powershell
-sudo pi -o
+sudo gsi -f
 ```
 
 ### 步骤五：配置 Brave 浏览器

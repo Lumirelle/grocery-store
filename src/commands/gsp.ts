@@ -3,12 +3,12 @@
  *
  * @example
  * ```bash
- * pp -s <source-name> -t <target-path>
+ * gsp -s <source-name> -t <target-path>
  * ```
  *
  * @example
  * ```bash
- * pp <source-name> <target-path>
+ * gsp <source-name> <target-path>
  * ```
  */
 

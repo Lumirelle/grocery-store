@@ -14,24 +14,24 @@ Main dependencies:
 
 ### 快速配置
 
-shell（For command `pp`, please see [README.md#script_setup](../../../../../../README.md#script_setup)）
+shell（For command `gsp`, please see [README.md#script_setup](../../../../../../README.md#script_setup)）
 
 ```shell
 # vscode 配置
 # -- 推荐扩展
-pp vue/extensions.json .vscode/ -o
+gsp vue/extensions.json .vscode/ -o
 # -- 工作区设置
-pp vue/settings.json .vscode/ -o
+gsp vue/settings.json .vscode/ -o
 # -- js 编译器设置
-pp vue/jsconfig.json -o
+gsp vue/jsconfig.json -o
 # -- 通用代码格式设置
-pp .editorconfig -o
+gsp .editorconfig -o
 
 # git 配置
 # -- 文件属性
-pp .gitattributes -o
+gsp .gitattributes -o
 # -- 忽略文件
-pp nodejs.gitignore .gitignore -o
+gsp nodejs.gitignore .gitignore -o
 ```
 
 ### 手动配置
@@ -84,7 +84,7 @@ corepack use pnpm@latest-10
 # pnpm 版本符合 >=7
 npm pkg set 'engines.node=^18.12.0 || ^20.9.0 || >=22' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=Please use pnpm for instead!'
 
-pp npm/.npmrc -o
+gsp npm/.npmrc -o
 ```
 
 ### 手动配置
@@ -145,7 +145,7 @@ ni eslint-plugin-format@latest @prettier/plugin-xml@latest -D
 shell
 
 ```shell
-pp vue3/eslint.config.mjs -o
+gsp vue3/eslint.config.mjs -o
 ```
 
 ### 手动配置
@@ -180,7 +180,7 @@ ni stylelint-config-html@latest -D
 shell
 
 ```shell
-pp vue/stylelint.config.mjs -o
+gsp vue/stylelint.config.mjs -o
 ```
 
 ### 手动配置
@@ -258,7 +258,7 @@ npm pkg set 'simple-git-hooks.commit-msg=npx commitlint --edit $1'
 npm pkg set 'lint-staged.*=eslint --fix'
 npm pkg set 'lint-staged[*.{css,postcss,scss,html,vue}]=stylelint --cache --fix'
 
-pp commitlint/commitlint.config.mjs -o
+gsp commitlint/commitlint.config.mjs -o
 ```
 
 ### 手动配置

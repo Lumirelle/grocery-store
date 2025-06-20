@@ -3,7 +3,7 @@
  *
  * @example
  * ```bash
- * pu
+ * gsu
  * ```
  */
 
