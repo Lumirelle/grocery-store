@@ -4,6 +4,8 @@ packages:
 catalogs:
   dev:
     '@antfu/eslint-config': ^4.14.1
+    '@commitlint/cli': latest
+    '@commitlint/config-conventional': latest
     '@prettier/plugin-xml': ^3.4.1
     '@stylistic/stylelint-config': latest
     '@types/node': ^22.15.32

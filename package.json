@@ -62,6 +62,8 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
+    "@commitlint/cli": "catalog:dev",
+    "@commitlint/config-conventional": "catalog:dev",
     "@posva/prompts": "catalog:prod-inlined",
     "@prettier/plugin-xml": "catalog:dev",
     "@stylistic/stylelint-config": "catalog:dev",
@@ -85,7 +87,8 @@
     "vitest": "catalog:dev"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm catalogs && git add CATALOGS.json && pnpm lint-staged"
+    "pre-commit": "pnpm catalogs && git add CATALOGS.json && pnpm lint-staged",
+    "commit-msg": "npx commitlint --edit $1"
   },
   "lint-staged": {
     "*": "eslint --cache --fix",
