@@ -1,27 +1,30 @@
 /// Config variables for responsive layout
 
-/// `sm` size
-$sm: 768px !default;
-/// `md` size
-$md: 992px !default;
-/// `lg` size
-$lg: 1200px !default;
-/// `xl` size
-$xl: 1920px !default;
+// Mobile
+$xs: 0 !default;
+$sm: 375px !default;
+$md: 768px !default;
 
-/// Break-point
+// Desktop
+$lg: 1024px !default;
+$xl: 1200px !default;
+$xxl: 1920px !default;
+
+/// Break-points, mobile first
 $breakpoints: (
-  'xs': '(max-width: #{$sm - 1})',
-  'xs+': '(min-width: #{$sm})',
-  'sm-': '(max-width: #{$sm - 1})',
-  'sm': '(min-width: #{$sm}) and (max-width: #{$md - 1})',
-  'sm+': '(min-width: #{$sm})',
-  'md-': '(max-width: #{$md - 1})',
-  'md': '(min-width: #{$md}) and (max-width: #{$lg - 1})',
-  'md+': '(min-width: #{$md})',
-  'lg-': '(max-width: #{$lg - 1})',
-  'lg': '(min-width: #{$lg}) and (max-width: #{$xl - 1})',
-  'lg+': '(min-width: #{$lg})',
-  'xl-': '(max-width: #{$xl - 1})',
+  // For mobile devices
+  // >= 0px
+  'xs': '(min-width: #{$xs})',
+  // >= 375px
+  'sm': '(min-width: #{$sm})',
+  // >= 768px
+  'md': '(min-width: #{$md})',
+
+  // For desktop devices
+  // >= 1024px
+  'lg': '(min-width: #{$lg})',
+  // >= 1200px
   'xl': '(min-width: #{$xl})',
+  // >= 1920px
+  'xxl': '(min-width: #{$xxl})'
 ) !default;
