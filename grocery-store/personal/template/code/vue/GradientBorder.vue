@@ -1,6 +1,10 @@
 <script>
 /**
  * Div with gradient border and transition, does not support border style now like `dashed`, `dotted`, etc.
+ *
+ * It's recommended to use `isolation: isolate` on the parent element to avoid the gradient border being affected by the parent element's background.
+ *
+ * Or you can uncomment `*:has(> .gradient-div)` in the global style to avoid the gradient border being affected by the parent element's background. But it may cause some other issues.
  */
 export default {
   name: 'GradientBorder',
@@ -158,4 +162,11 @@ export default {
     }
   }
 }
+</style>
+
+<style lang="scss">
+// May cause some other issues, it's recommend to manually set `isolation: isolate` on the parent element instead of using this global style.
+// *:has(> .gradient-div) {
+//   isolation: isolate;
+// }
 </style>
