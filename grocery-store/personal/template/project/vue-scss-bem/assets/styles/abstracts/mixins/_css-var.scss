@@ -1,9 +1,8 @@
 /// The mixins for setting CSS Variables
 
-@use 'sass:map';
-@use 'sass:color';
-
-@use '../functions/css-var' as *;
+@use "sass:map";
+@use "sass:color";
+@use "../functions/css-var" as *;
 
 /// Generate CSS variable name, and set it in current scope with a certain value
 /// @access public
@@ -16,7 +15,7 @@
 ///   @include set-var(('color', 'primary'), red);
 ///   --cs-color-primary: red;
 @mixin set-var($name, $value) {
-  #{getVarName($name)}: #{$value};
+  #{get-var-name($name)}: #{$value};
 }
 
 /// Process all keys in the SCSS map, and set all CSS variables from them
@@ -39,10 +38,10 @@
 ///   --cs-text-color-overlay: $text-color.overlay;
 @mixin set-vars($name, $map) {
   @each $key, $value in $map {
-    @if $key == 'default' {
-      #{getVarName($name)}: #{$value};
+    @if $key == "default" {
+      #{get-var-name($name)}: #{$value};
     } @else {
-      #{getVarName($name, $key)}: #{$value};
+      #{get-var-name($name, $key)}: #{$value};
     }
   }
 }
@@ -58,7 +57,8 @@
 ///   @include set-var-existing(('button', 'text-color'), ('color', 'primary'));
 ///   --cs-button-text-color: var(--cs-color-primary);
 @mixin set-var-existing($name, $existing-name) {
-  $name: getVarName($name);
-  $existing-name: getVarName($existing-name);
+  $name: get-var-name($name);
+  $existing-name: get-var-name($existing-name);
+
   #{$name}: var(#{$existing-name});
 }

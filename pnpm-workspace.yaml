@@ -5,13 +5,20 @@ catalogs:
   dev:
     '@antfu/eslint-config': ^4.14.1
     '@prettier/plugin-xml': ^3.4.1
+    '@stylistic/stylelint-config': latest
     '@types/node': ^22.15.32
     bumpp: ^10.1.1
     eslint: ^9.29.0
     eslint-plugin-format: ^1.0.1
     hint: ^7.1.13
     lint-staged: ^15.5.2
+    npm-run-all2: latest
     simple-git-hooks: ^2.13.0
+    stylelint: latest
+    stylelint-config-html: latest
+    stylelint-config-recess-order: latest
+    stylelint-config-standard-scss: latest
+    stylelint-config-standard-vue: latest
     taze: ^19.1.0
     tsx: ^4.20.3
     typescript: ^5.8.3

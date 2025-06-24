@@ -1,6 +1,5 @@
-@use 'abstracts';
-
-@use 'sass:map';
+@use "abstracts";
+@use "sass:map";
 
 // -----------------------------------------------------------------------------
 // This file contains public styles.
@@ -34,61 +33,60 @@ html {
  */
 :root {
   // Colors
-  @include abstracts.set-var('color-white', abstracts.$color-white);
-  @include abstracts.set-var('color-black', abstracts.$color-black);
-
-  @include abstracts.set-colors();
+  @include abstracts.set-colors;
 
   // Border
-  @include abstracts.set-vars('border-radius', abstracts.$border-radius);
+  @include abstracts.set-vars("border-radius", abstracts.$border-radius);
 
   // Overlay & Mask
-  @include abstracts.set-vars('overlay-color', abstracts.$overlay-color);
-  @include abstracts.set-vars('mask-color', abstracts.$mask-color);
+  @include abstracts.set-vars("overlay-color", abstracts.$overlay-color);
+  @include abstracts.set-vars("mask-color", abstracts.$mask-color);
 
   // ZIndex
-  @include abstracts.set-vars('index', abstracts.$z-index);
+  @include abstracts.set-vars("index", abstracts.$z-index);
 
   // Typography
-  @include abstracts.set-vars('font-size', abstracts.$font-size);
-  @include abstracts.set-vars('font-family', abstracts.$font-family);
-  @include abstracts.set-vars('font-weight', abstracts.$font-weight);
-  @include abstracts.set-vars('line-height', abstracts.$line-height);
+  @include abstracts.set-vars("font-size", abstracts.$font-size);
+  @include abstracts.set-vars("font-family", abstracts.$font-family);
+  @include abstracts.set-vars("font-weight", abstracts.$font-weight);
+  @include abstracts.set-vars("line-height", abstracts.$line-height);
 
   // Transition
   // refer to this website to get the bezier motion function detail
   // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
-  @include abstracts.set-vars('transition-duration', abstracts.$transition-duration);
-  @include abstracts.set-vars('transition-function', abstracts.$transition-function);
-  @include abstracts.set-vars('transition', abstracts.$transition);
+  @include abstracts.set-vars("transition-duration", abstracts.$transition-duration);
+  @include abstracts.set-vars("transition-function", abstracts.$transition-function);
+  @include abstracts.set-vars("transition", abstracts.$transition);
 
   // Content max width
-  @include abstracts.set-vars('content-max-width', abstracts.$content-max-width);
+  @include abstracts.set-vars("content-max-width", abstracts.$content-max-width);
 }
 
 /**
  * CSS variables for light scheme
  */
+/* stylelint-disable-next-line no-duplicate-selectors */
 :root {
   color-scheme: light;
 
   // Colors
-  @include abstracts.set-colors-schema('light');
+  @include abstracts.set-colors-schema("light");
 
   // Background
-  @include abstracts.set-vars('bg-color', abstracts.$bg-color);
+  @include abstracts.set-vars("bg-color", abstracts.$bg-color);
 
   // Text
-  @include abstracts.set-vars('text-color', abstracts.$text-color);
+  @include abstracts.set-vars("text-color", abstracts.$text-color);
 
   // Border
-  @include abstracts.set-vars('border-color', abstracts.$border-color);
+  @include abstracts.set-vars("border-color", abstracts.$border-color);
+
   // Border but based on border-color, so they should put after border-color
-  @include abstracts.set-var('border-width', abstracts.$border-width);
-  @include abstracts.set-var('border-style', abstracts.$border-style);
+  @include abstracts.set-var("border-width", abstracts.$border-width);
+  @include abstracts.set-var("border-style", abstracts.$border-style);
   @include abstracts.set-var(
-    'border',
-    abstracts.getVar('border-width') abstracts.getVar('border-style') abstracts.getVar('border-color')
+    "border",
+    abstracts.get-var("border-width") abstracts.get-var("border-style") abstracts.get-var("border-color")
   );
 }
 
@@ -99,14 +97,14 @@ html.dark {
   color-scheme: dark;
 
   // Colors
-  @include abstracts.set-colors-schema('dark');
+  @include abstracts.set-colors-schema("dark");
 
   // Background
-  @include abstracts.set-vars('bg-color', abstracts.$bg-color-dark);
+  @include abstracts.set-vars("bg-color", abstracts.$bg-color-dark);
 
   // Text
-  @include abstracts.set-vars('text-color', abstracts.$text-color-dark);
+  @include abstracts.set-vars("text-color", abstracts.$text-color-dark);
 
   // Border
-  @include abstracts.set-vars('border-color', abstracts.$border-color-dark);
+  @include abstracts.set-vars("border-color", abstracts.$border-color-dark);
 }

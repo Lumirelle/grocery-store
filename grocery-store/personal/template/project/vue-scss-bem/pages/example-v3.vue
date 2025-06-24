@@ -16,13 +16,12 @@ const ns = useNamespace('example-page')
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/mixins' as *;
+@use "@/assets/styles/mixins" as *;
 
 @include b(example-page) {
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 600px;
 
   @include e(body) {

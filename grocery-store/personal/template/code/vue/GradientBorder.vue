@@ -121,37 +121,31 @@ export default {
 <style lang="scss" scoped>
 .gradient-div {
   position: relative;
-  border-color: transparent !important;
   background: v-bind(background) !important;
   background-clip: padding-box;
+  border-color: transparent !important;
 
   &::before,
   &::after {
-    pointer-events: none;
-    content: '';
-
     position: absolute;
+    inset: 0;
     z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
+    pointer-events: none;
+    content: "";
     border-radius: inherit;
-
     transition: all v-bind(transitionDuration) v-bind(transitionFunction);
   }
 
   &::before {
     margin: v-bind(borderMargin) !important;
-    opacity: 1;
     background: v-bind(borderColor) !important;
+    opacity: 1;
   }
 
   &::after {
     margin: v-bind(hoverBorderMarginOrDefault) !important;
-    opacity: 0;
     background: v-bind(hoverBorderColorOrDefault) !important;
+    opacity: 0;
   }
 
   &:hover {

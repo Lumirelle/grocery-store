@@ -1,9 +1,8 @@
 /// The mixins for realizing responsive layout
 
-@use '../variables/config/res' as config;
-
-@use 'sass:map';
-@use 'sass:string';
+@use "../variables/config/res" as config;
+@use "sass:map";
+@use "sass:string";
 
 /// Realize responsive layout
 /// @access public

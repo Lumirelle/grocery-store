@@ -1,7 +1,7 @@
-@use 'sass:map';
+@use "sass:map";
 
 // Use css-var mixin to generate `var(--xxx)` statement
-@use '../functions/css-var';
+@use "../functions/css-var";
 
 // ------------------------------------------------------------
 // Background
@@ -10,11 +10,11 @@
 $bg-color: () !default;
 $bg-color: map.deep-merge(
   (
-    '': #fff,
-    'light': #f7f8f9,
-    'dark': #f2f3f5,
-    'primary': #eef9f9,
-    'overlay': #838c8d,
+    "": #fff,
+    "light": #f7f8f9,
+    "dark": #f2f3f5,
+    "primary": #eef9f9,
+    "overlay": #838c8d,
   ),
   $bg-color
 );
@@ -23,11 +23,11 @@ $bg-color: map.deep-merge(
 $bg-color-dark: () !default;
 $bg-color-dark: map.deep-merge(
   (
-    '': #fff,
-    'light': #f7f8f9,
-    'dark': #f2f3f5,
-    'primary': #eef9f9,
-    'overlay': #838c8d,
+    "": #fff,
+    "light": #f7f8f9,
+    "dark": #f2f3f5,
+    "primary": #eef9f9,
+    "overlay": #838c8d,
   ),
   $bg-color-dark
 );
@@ -45,11 +45,11 @@ $border-style: solid !default;
 $border-radius: () !default;
 $border-radius: map.merge(
   (
-    'round': 50%,
-    'medium': 12px,
-    'base': 8px,
-    'small': 4px,
-    'smallest': 2px,
+    "round": 50%,
+    "medium": 12px,
+    "base": 8px,
+    "small": 4px,
+    "smallest": 2px,
   ),
   $border-radius
 );
@@ -58,7 +58,7 @@ $border-radius: map.merge(
 $border-color: () !default;
 $border-color: map.deep-merge(
   (
-    '': #e2eaeb,
+    "": #e2eaeb,
   ),
   $border-color
 );
@@ -67,7 +67,7 @@ $border-color: map.deep-merge(
 $border-color-dark: () !default;
 $border-color-dark: map.deep-merge(
   (
-    '': #e2eaeb,
+    "": #e2eaeb,
   ),
   $border-color-dark
 );
@@ -79,9 +79,9 @@ $border-color-dark: map.deep-merge(
 $overlay-color: () !default;
 $overlay-color: map.merge(
   (
-    '': rgba(0, 0, 0, 0.8),
-    'light': rgba(0, 0, 0, 0.7),
-    'lighter': rgba(0, 0, 0, 0.5),
+    "": rgb(0 0 0 / 80%),
+    "light": rgb(0 0 0 / 70%),
+    "lighter": rgb(0 0 0 / 50%),
   ),
   $overlay-color
 );
@@ -93,8 +93,8 @@ $overlay-color: map.merge(
 $mask-color: () !default;
 $mask-color: map.merge(
   (
-    '': rgba(255, 255, 255, 0.9),
-    'light': rgba(255, 255, 255, 0.3),
+    "": rgb(255 255 255 / 90%),
+    "light": rgb(255 255 255 / 30%),
   ),
   $mask-color
 );
@@ -106,9 +106,9 @@ $mask-color: map.merge(
 $z-index: () !default;
 $z-index: map.merge(
   (
-    'normal': 1,
-    'top': 1000,
-    'popper': 2000,
+    "normal": 1,
+    "top": 1000,
+    "popper": 2000,
   ),
   $z-index
 );
@@ -120,8 +120,8 @@ $z-index: map.merge(
 $font-family: () !default;
 $font-family: map.merge(
   (
-    '': "'Inter', 'Microsoft YaHei', '微软雅黑', sans-serif",
-    'number': "'TCloud Number', sans-serif",
+    "": "'Inter', 'Microsoft YaHei', '微软雅黑', sans-serif",
+    "number": "'TCloud Number', sans-serif",
   ),
   $font-family
 );
@@ -130,14 +130,14 @@ $font-family: map.merge(
 $font-size: () !default;
 $font-size: map.merge(
   (
-    'largest': 28px,
-    'extra-large': 24px,
-    'larger': 20px,
-    'large': 18px,
-    'medium': 16px,
-    'base': 14px,
-    'small': 12px,
-    'extra-small': 10px,
+    "largest": 28px,
+    "extra-large": 24px,
+    "larger": 20px,
+    "large": 18px,
+    "medium": 16px,
+    "base": 14px,
+    "small": 12px,
+    "extra-small": 10px,
   ),
   $font-size
 );
@@ -146,14 +146,14 @@ $font-size: map.merge(
 $line-height: () !default;
 $line-height: map.merge(
   (
-    'largest': 36px,
-    'extra-large': 32px,
-    'larger': 28px,
-    'large': 26px,
-    'medium': 24px,
-    'base': 22px,
-    'small': 18px,
-    'extra-small': 18px,
+    "largest": 36px,
+    "extra-large": 32px,
+    "larger": 28px,
+    "large": 26px,
+    "medium": 24px,
+    "base": 22px,
+    "small": 18px,
+    "extra-small": 18px,
   ),
   $line-height
 );
@@ -162,11 +162,11 @@ $line-height: map.merge(
 $font-weight: () !default;
 $font-weight: map.merge(
   (
-    '': 400,
-    'regular': 400,
-    'medium': 500,
-    'semibold': 600,
-    'bold': 700,
+    "": 400,
+    "regular": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
   ),
   $font-weight
 );
@@ -175,11 +175,11 @@ $font-weight: map.merge(
 $text-color: () !default;
 $text-color: map.deep-merge(
   (
-    'title': #042c2e,
-    'body': #3c4848,
-    'assist': #8e9595,
-    'placeholder': #c7d2d2,
-    'white': #fff,
+    "title": #042c2e,
+    "body": #3c4848,
+    "assist": #8e9595,
+    "placeholder": #c7d2d2,
+    "white": #fff,
   ),
   $text-color
 );
@@ -189,11 +189,11 @@ $text-color: map.deep-merge(
 $text-color-dark: () !default;
 $text-color-dark: map.deep-merge(
   (
-    'title': #042c2e,
-    'body': #3c4848,
-    'assist': #8e9595,
-    'placeholder': #c7d2d2,
-    'white': #fff,
+    "title": #042c2e,
+    "body": #3c4848,
+    "assist": #8e9595,
+    "placeholder": #c7d2d2,
+    "white": #fff,
   ),
   $text-color-dark
 );
@@ -205,18 +205,18 @@ $text-color-dark: map.deep-merge(
 $transition: () !default;
 $transition: map.merge(
   (
-    'all': all css-var.getVar('transition-duration') css-var.getVar('transition-function-ease-in-out-bezier'),
-    'fade': opacity css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
-    'md-fade': (
-      transform css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
-      opacity css-var.getVar('transition-duration') css-var.getVar('transition-function-fast-bezier'),
+    "all": all css-var.get-var("transition-duration") css-var.get-var("transition-function-ease-in-out-bezier"),
+    "fade": opacity css-var.get-var("transition-duration") css-var.get-var("transition-function-fast-bezier"),
+    "md-fade": (
+      transform css-var.get-var("transition-duration") css-var.get-var("transition-function-fast-bezier"),
+      opacity css-var.get-var("transition-duration") css-var.get-var("transition-function-fast-bezier"),
     ),
-    'fade-linear': opacity css-var.getVar('transition-duration-fast') linear,
-    'border': border-color css-var.getVar('transition-duration-fast')
-      css-var.getVar('transition-function-ease-in-out-bezier'),
-    'box-shadow': box-shadow css-var.getVar('transition-duration-fast')
-      css-var.getVar('transition-function-ease-in-out-bezier'),
-    'color': color css-var.getVar('transition-duration-fast') css-var.getVar('transition-function-ease-in-out-bezier'),
+    "fade-linear": opacity css-var.get-var("transition-duration-fast") linear,
+    "border": border-color css-var.get-var("transition-duration-fast")
+    css-var.get-var("transition-function-ease-in-out-bezier"),
+    "box-shadow": box-shadow css-var.get-var("transition-duration-fast")
+    css-var.get-var("transition-function-ease-in-out-bezier"),
+    "color": color css-var.get-var("transition-duration-fast") css-var.get-var("transition-function-ease-in-out-bezier"),
   ),
   $transition
 );
@@ -225,8 +225,8 @@ $transition: map.merge(
 $transition-duration: () !default;
 $transition-duration: map.merge(
   (
-    '': 0.3s,
-    'fast': 0.2s,
+    "": 0.3s,
+    "fast": 0.2s,
   ),
   $transition-duration
 );
@@ -235,8 +235,8 @@ $transition-duration: map.merge(
 $transition-function: () !default;
 $transition-function: map.merge(
   (
-    'ease-in-out-bezier': cubic-bezier(0.645, 0.045, 0.355, 1),
-    'fast-bezier': cubic-bezier(0.23, 1, 0.32, 1),
+    "ease-in-out-bezier": cubic-bezier(0.645, 0.045, 0.355, 1),
+    "fast-bezier": cubic-bezier(0.23, 1, 0.32, 1),
   ),
   $transition-function
 );
@@ -245,8 +245,8 @@ $transition-function: map.merge(
 $content-max-width: () !default;
 $content-max-width: map.merge(
   (
-    '': 1366px,
-    'small': 1200px,
+    "": 1366px,
+    "small": 1200px,
   ),
   $content-max-width
 );

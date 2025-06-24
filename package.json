@@ -42,7 +42,12 @@
     "gsi": "node ./bin/gsi.mjs",
     "gsp": "node ./bin/gsp.mjs",
     "gsu": "node ./bin/gsu.mjs",
-    "lint": "eslint",
+    "lint": "run-s lint:*",
+    "lint:js": "eslint --cache .",
+    "lint:style": "stylelint --cache **/*.{css,postcss,scss,html,vue}",
+    "fix": "run-s fix:*",
+    "fix:js": "eslint --cache --fix .",
+    "fix:style": "stylelint --cache --fix **/*.{css,postcss,scss,html,vue}",
     "test": "vitest",
     "build": "unbuild",
     "stub": "unbuild --stub",
@@ -59,13 +64,20 @@
     "@antfu/eslint-config": "catalog:dev",
     "@posva/prompts": "catalog:prod-inlined",
     "@prettier/plugin-xml": "catalog:dev",
+    "@stylistic/stylelint-config": "catalog:dev",
     "@types/node": "catalog:dev",
     "bumpp": "catalog:dev",
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "hint": "catalog:dev",
     "lint-staged": "catalog:dev",
+    "npm-run-all2": "catalog:dev",
     "simple-git-hooks": "catalog:dev",
+    "stylelint": "catalog:dev",
+    "stylelint-config-html": "catalog:dev",
+    "stylelint-config-recess-order": "catalog:dev",
+    "stylelint-config-standard-scss": "catalog:dev",
+    "stylelint-config-standard-vue": "catalog:dev",
     "taze": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev",
@@ -76,6 +88,7 @@
     "pre-commit": "pnpm catalogs && git add CATALOGS.json && pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --cache --fix ."
+    "*": "eslint --cache --fix",
+    "*.{css,postcss,scss,html,vue}": "stylelint --cache --fix"
   }
 }

@@ -1,16 +1,16 @@
 /// Config variables for selector
 
 /// Namespace for selector
-$namespace: 'cs' !default;
+$namespace: "cs" !default;
 
 /// Common separator for selector
-$common-separator: '-' !default;
+$common-separator: "-" !default;
 
 /// Element separator for selector
-$element-separator: '__' !default;
+$element-separator: "__" !default;
 
 /// Modifier separator for selector
-$modifier-separator: '--' !default;
+$modifier-separator: "--" !default;
 
 /// State prefix
-$state-prefix: 'is-' !default;
+$state-prefix: "is-" !default;

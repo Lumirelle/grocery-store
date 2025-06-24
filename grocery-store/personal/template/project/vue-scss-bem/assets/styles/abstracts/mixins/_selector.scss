@@ -1,12 +1,13 @@
 /// The mixins for operating selector (BEM style & state check)
 
-@use '../variables/config/selector' as config;
-@use '../functions/selector' as *;
+@use "../variables/config/selector" as config;
+@use "../functions/selector" as *;
 
 /// Block name
-$B: null;
+$--b: null;
+
 /// Element name
-$E: null;
+$--e: null;
 
 /// Generate BEM selector for block
 /// @access public
@@ -19,9 +20,9 @@ $E: null;
 ///     @content;
 ///   }
 @mixin b($block) {
-  $B: config.$namespace + config.$common-separator + $block !global;
+  $--b: config.$namespace + config.$common-separator + $block !global;
 
-  .#{$B} {
+  .#{$--b} {
     @content;
   }
 }
@@ -33,28 +34,29 @@ $E: null;
 ///   @include e('button') {
 ///     @content;
 ///   }
-///   .#{$B}__input {
+///   .#{$--b}__input {
 ///     @content;
 ///   }
 @mixin e($element) {
-  $E: $element !global;
+  $--e: $element !global;
   $selector: &;
-  $currentSelector: '';
+  $current-selector: "";
+
   @each $unit in $element {
-    $currentSelector: #{$currentSelector + '.' + $B + config.$element-separator + $unit + ','};
+    $current-selector: #{$current-selector + "." + $--b + config.$element-separator + $unit + ","};
   }
 
-  @if hasSpecialNestingRule($selector) {
+  @if has-special-nesting-rule($selector) {
     @at-root {
       #{$selector} {
-        #{$currentSelector} {
+        #{$current-selector} {
           @content;
         }
       }
     }
   } @else {
     @at-root {
-      #{$currentSelector} {
+      #{$current-selector} {
         @content;
       }
     }
@@ -68,19 +70,20 @@ $E: null;
 ///   @include m('large', 'small) {
 ///     @content;
 ///   }
-///   .#{$B}__#{$E}--large,
-///   .#{$B}__#{$E}--small {
+///   .#{$--b}__#{$--e}--large,
+///   .#{$--b}__#{$--e}--small {
 ///     @content;
 ///   }
 @mixin m($modifier) {
   $selector: &;
-  $currentSelector: '';
+  $current-selector: "";
+
   @each $unit in $modifier {
-    $currentSelector: #{$currentSelector + $selector + config.$modifier-separator + $unit + ','};
+    $current-selector: #{$current-selector + $selector + config.$modifier-separator + $unit + ","};
   }
 
   @at-root {
-    #{$currentSelector} {
+    #{$current-selector} {
       @content;
     }
   }
@@ -93,7 +96,7 @@ $E: null;
 ///   @include when('active') {
 ///     @content;
 ///   }
-///   .#{$B}__#{$E}--#{$M}.is-active {
+///   .#{$--b}__#{$--e}--#{$--m}.is-active {
 ///     @content;
 ///   }
 @mixin when($state) {
@@ -111,7 +114,7 @@ $E: null;
 ///   @include when-not('active') {
 ///     @content;
 ///   }
-///   .#{$B}__#{$E}--#{$M}:not(.is-active) {
+///   .#{$--b}__#{$--e}--#{$--m}:not(.is-active) {
 ///     @content;
 ///   }
 @mixin when-not($state) {

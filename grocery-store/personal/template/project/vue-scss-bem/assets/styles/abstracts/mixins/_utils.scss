@@ -11,7 +11,7 @@
     #{$selector}::before,
     #{$selector}::after {
       display: table;
-      content: '';
+      content: "";
     }
     #{$selector}::after {
       clear: both;
@@ -26,9 +26,9 @@
 ///   @include ellipsis(2);
 @mixin ellipsis($line-clamp: 1) {
   @if $line-clamp > 1 {
+    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: -webkit-box;
     -webkit-line-clamp: $line-clamp;
     -webkit-box-orient: vertical;
   } @else {

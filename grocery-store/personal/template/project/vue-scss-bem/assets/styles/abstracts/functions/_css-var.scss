@@ -1,6 +1,8 @@
 /// The functions for generating CSS variables & `var()` function
 
-@use '../variables/config/selector' as selector-config;
+@use "../variables/config/selector" as selector-config;
+@use "sass:list";
+@use "sass:meta";
 
 /// Generate CSS variable name from specific string list with predefined namespace
 /// @access public
@@ -12,21 +14,22 @@
 ///   getVarName('button', 'text-color') => '--cs-button-text-color'
 /// @example
 ///   getVarName(('button', 'text-color')) => '--cs-button-text-color'
-@function getVarName($args...) {
-  $name: '--' + selector-config.$namespace;
+@function get-var-name($args...) {
+  $name: "--" + selector-config.$namespace;
   $list: $args;
 
-  @if length($args) == 1 {
-    @if type-of(nth($args, 1)) == 'list' or type-of(nth($args, 1)) == 'arglist' {
-      $list: nth($args, 1);
+  @if list.length($args) == 1 {
+    @if meta.type-of(list.nth($args, 1)) == "list" or meta.type-of(list.nth($args, 1)) == "arglist" {
+      $list: list.nth($args, 1);
     }
   }
 
   @each $item in $list {
-    @if $item != '' {
-      $name: $name + '-' + $item;
+    @if $item != "" {
+      $name: $name + "-" + $item;
     }
   }
+
   @return $name;
 }
 
@@ -40,8 +43,8 @@
 ///   getVar('button', 'text-color') => var(--cs-button-text-color)
 /// @example
 ///   getVar(('button', 'text-color')) => var(--cs-button-text-color)
-@function getVar($args...) {
-  @return var(#{getVarName($args)});
+@function get-var($args...) {
+  @return var(#{get-var-name($args)});
 }
 
 /// Generate CSS variable name with `var()` function and default value
@@ -55,6 +58,6 @@
 ///   getVarDefault(red, 'button', 'text-color') => var(--cs-button-text-color, red)
 /// @example
 ///   getVarDefault(red, ('button', 'text-color')) => var(--cs-button-text-color, red)
-@function getVarDefault($default, $args...) {
-  @return var(#{getVarName($args)}, #{$default});
+@function get-var-default($default, $args...) {
+  @return var(#{get-var-name($args)}, #{$default});
 }

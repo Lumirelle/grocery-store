@@ -1,9 +1,8 @@
 /// The mixins for operating base colors
 
-@use '../variables/config/base-color' as config;
-@use '../mixins/css-var' as css-var;
-
-@use 'sass:map';
+@use "../variables/config/base-color" as config;
+@use "../mixins/css-var" as css-var;
+@use "sass:map";
 
 /// Process all keys in the SCSS map `$colors`, and set all CSS colors from them
 /// @access public
@@ -17,7 +16,7 @@
 ///   --cs-color-error: $colors.error;
 @mixin set-colors() {
   @each $key, $value in config.$colors {
-    @include css-var.set-var(('color', $key), $value);
+    @include css-var.set-var(("color", $key), $value);
   }
 }
 
@@ -34,18 +33,18 @@
 ///   --cs-color-primary-light-1: $colors-dark.primary.light-1;
 ///   --cs-color-primary-light-3: $colors-dark.primary.light-3;
 ///   --cs-color-primary-dark-2: $colors-dark.primary.dark-2;
-@mixin set-colors-schema($schema: 'light') {
+@mixin set-colors-schema($schema: "light") {
   $map: config.$colors;
 
-  @if $schema == 'light' {
+  @if $schema == "light" {
     $map: config.$colors-light;
-  } @else if $schema == 'dark' {
+  } @else if $schema == "dark" {
     $map: config.$colors-dark;
   }
 
   @each $key, $value in $map {
     @each $level in map.keys($value) {
-      @include css-var.set-var(('color', $key, $level), map.get($value, $level));
+      @include css-var.set-var(("color", $key, $level), map.get($value, $level));
     }
   }
 }
