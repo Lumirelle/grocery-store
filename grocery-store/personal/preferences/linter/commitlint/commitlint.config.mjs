@@ -1,30 +1,14 @@
 /**
- * Git message structure:
- *
- * ```
- * <type>: <subject>
- * ```
- *
- * Eg:
- *
- * ```
- * feat: add a new feature
- * ```
- *
- * NOTE:
- * - `<type>` must be one of 'build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor','revert', 'style', 'test', 'merge', 'wip'.
- * - `<subject>` must in lower-case.
+ * @see https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional for more details.
  */
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    // <type>
+    // <type>, based on the conventional commit spec, add 'merge' and 'wip' to the list.
     'type-enum': [
       2,
       'always',
       ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'revert', 'style', 'test', 'merge', 'wip'],
     ],
-    // <subject>
-    'subject-case': [2, 'always', ['lower-case']],
   },
 }
