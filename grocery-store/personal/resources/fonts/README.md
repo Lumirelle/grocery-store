@@ -7,12 +7,12 @@
 
 ## 👫 Your Best Coding Friends <a name='coding'></a>
 
-It's a pity that I haven't found a Chinese font that can adapt well to `0xProto` yet.
+It's a pity that I haven't found a Chinese font that can adapt well to `Comic Mono` yet.
 
-Now, let's using `三极露融体` instead first.
+Now, let's using `猫啃忘形圆` instead first.
 
 ```json
-"'0xProto, '三极露融体', 'Symbols Nerd Font', monospace"
+"'Comic Mono', '猫啃忘形圆', 'Symbols Nerd Font', monospace"
 ```
 
 ## 📦 Other Nice Ones <a name="other"></a>
@@ -26,4 +26,7 @@ Waiting for trial!
 ```js
 console.log('Holly shit!')
 console.log('我的娘亲嘞!')
+
+// |wo|!-|so|+=0o|lI|
+// |我|的|天|……|！|
 ```

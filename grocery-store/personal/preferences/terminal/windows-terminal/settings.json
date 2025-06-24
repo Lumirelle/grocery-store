@@ -68,7 +68,8 @@
           "font":
             {
               "builtinGlyphs": false,
-              "face": "'0xProto', '\u4e09\u6781\u9732\u878d\u4f53', 'Symbols Nerd Font'"
+              "face": "'Comic Mono', '\u732B\u5543\u5FD8\u5F62\u5706', 'Symbols Nerd Font'",
+              "size": 16
             },
           "opacity": 80,
           "padding": "12",
