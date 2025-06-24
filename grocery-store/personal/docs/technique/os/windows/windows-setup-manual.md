@@ -115,7 +115,7 @@ BypassNRO.cmd
   | 软件名称                        | 来源/安装命令                                                              | 备注                                               |
   | ------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------- |
   | Brave                           | <https://brave.com/download/>                                              |                                                    |
-  | uTools                          | <https://www.u-tools.cn/download/>                                         |                                                    |
+  | uTools                          | <https://www.u-tools.cn/download/>                                         | 插件：npm包实时搜索、编码小助手、聚合翻译          |
   | Auto Dark Mode                  | <https://apps.microsoft.com/detail/xp8jk4hzbvf435>                         |                                                    |
   | NanaZip                         | <https://www.microsoft.com/store/apps/9N8G7TSCL18R>                        |                                                    |
   | KeePass 2                       | <https://keepass.info/download.html>                                       | 插件：ColoredPassword、HaveIBeenPwned、KeePassHttp |
