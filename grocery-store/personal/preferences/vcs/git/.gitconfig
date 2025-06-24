@@ -58,6 +58,12 @@ log-last = log -1 HEAD --stat
 config-list = config --list
 config-global = config --global
 # discard
+# If the file is tracked, then restore the file to the working directory.
+# If the file is untracked, then delete the file.
+# WHY USING FUNCTION?
+# 1: Support special characters in parameters.
+# 2: Support variables.
+# 3: Refuse unexpected parameters provided by user.
 discard = "!f() { \
   if git ls-files --error-unmatch -- \"$1\" >/dev/null 2>&1; then \
     git restore --staged --worktree -- \"$1\"; \
@@ -76,32 +82,37 @@ add-undo-all = reset HEAD -- . # Move all staged changes back to the working dir
 commit-with-message = commit --message
 commit-undo = reset --soft HEAD^ # Move commit back to the staging area
 # add & commit
-# WHY USING FUNCTION?
-# 1: Support special characters in parameters.
-# 2: Support variables.
-# 3: Refuse unexpected parameters provided by user.
+add-then-commit = "!f() { \
+  git add \"$1\"; \
+  git commit-with-message \"$2\"; \
+}; f"
 add-all-then-commit = "!f() { \
-  git add .; \
-  git commit --message \"$1\"; \
+  git add-all; \
+  git commit-with-message \"$1\"; \
 }; f"
 # amend commit
 amend-commit = commit --amend --no-edit
 amend-commit-with-edit = commit --amend
 # wip
-wip = "!git add . && git commit --message 'wip: temporary commit'"
+wip = "!git add-all && git commit-with-message 'wip: temporary commit'"
 wip-undo = "!git log -n 1 | grep -q -c 'wip' && git reset HEAD~1"
 # stash
+stash-push-with-message = stash push -m
 stash-list = stash list
-stash-push = stash push
 stash-undo = stash pop
 stash-drop = stash drop
 # branch
-branch-list = branch
+branch-list-local = branch
 branch-list-remote = branch --remote
 branch-list-all = branch --all
-branch-delete-locally = branch --delete
-branch-force-delete-locally = branch --delete --force
-branch-delete-remote = push --delete origin
+branch-delete-local = branch --delete
+branch-force-delete-local = branch --delete --force
+branch-delete-origin = push --delete origin
+branch-rename = "!f() { \
+  git branch --move \"$1\" \"$2\"; \
+  git push-origin-delete \"$1\"; \
+  git push-origin-upstream-current-branch \"$2\"; \
+}; f"
 # branch & switch
 branch-then-switch = switch --create
 # merge
@@ -120,22 +131,24 @@ tag-delete-multiple = "!f() { \
   git tag --list \"$1\" | xargs git tag --delete; \
 }; f"
 tag-sync-remote = "!f() { \
-  git push origin :refs/tags/$1; \
+  git push-origin :refs/tags/$1; \
   git fetch-prune-tags; \
 }; f"
 tag-sync-remote-multiple = "!f() { \
-  git tag --list \"$1\" | xargs -I {} git push origin :refs/tags/{}; \
+  git tag-list \"$1\" | xargs -I {} git push-origin :refs/tags/{}; \
   git fetch-prune-tags; \
 }; f"
 # remote
-remote-list = remote --verbose
+remote-add = remote add
+remote-remove = remote remove
 # fetch
 fetch-prune-tags = fetch --prune-tags # We will clean up unused tags when specify command `*-prune-tags`
 # pull
 pull-prune-tags = "!git fetch --prune-tags && git pull"
 # push
-push-delete = push --delete
-push-upstream-current-branch = "!f() { \
+push-origin = push origin
+push-origin-delete = push --delete origin
+push-origin-upstream-current-branch = "!f() { \
   current_branch=$(git branch --show-current); \
   git push --set-upstream origin \"$current_branch\"; \
 }; f"
@@ -147,16 +160,19 @@ pull-then-push = "!git pull-prune-tags && git push"
 # -- SUFFIX INTRODUCTION
 # <TO SPECIFY ADDITIONAL BEHAVIOR>
 # `l`: `list`
-# `z`: `abort`, which means **interrupt an operation**, we will not complete the operation
 # `u`: `undo`, which means recover the status **after an operation is completed**
 # `x`: `discard | delete | drop`, which means **drop things** we don't need any more
-# `xx`: `forcely discard | delete | drop`
+# `r`: `rename`
+# `z`: `abort`, which means **interrupt an operation**, we will not complete the operation
 # `s`: `sync`, which means **sync the changes** with the remote repository after we complete an operation locally
 # <TO SPECIFY TARGET>
-# `a`: `all`
-# `r`: `remote`
 # `g`: `global`
+# `a`: `all`
+# `o`: `remote` (by default, it's standing for `origin`)
 # `m`: `multiple`
+# <TO SPECIFY PARAMETERS>
+# `e`: with `--edit` parameter
+# `f`: with `--force` parameter
 #
 # -- ALIAS LIST
 # config: cf
@@ -176,28 +192,30 @@ aa = add-all
 au = add-undo
 aua = add-undo-all
 # commit: c
-c = commit-with-message
+c = commit-with-message # I love writing messages directly in the command line, so I named it `c` instead of `cm`
 cu = commit-undo
 # add & commit: a*c*
-ac = add-all-then-commit # Why not use `aac`? Because `add-all` is used very frequently, and `ac` is more concise
+ac = add-then-commit
+aac = add-all-then-commit
 # amend commit: amc
 amc = amend-commit
 amce = amend-commit-with-edit
 # wip: wip
 wipu = wip-undo
 # stash: s
-s = stash-push # Why not use `sp`? Because `s` is more concise
+s = stash-push-with-message # The same to `c`, so I named it `s` instead of `sm`
 sl = stash-list
 su = stash-undo
 sx = stash-drop
 # branch: b
 b = branch
-bl = branch-list
-blr = branch-list-remote
+bl = branch-list-local
+blo = branch-list-remote
 bla = branch-list-all
-bx = branch-delete-locally
-bxx = branch-force-delete-locally
-bxr = branch-delete-remote # Remote branch has no force delete operation
+bx = branch-delete-local
+bxf = branch-delete-local-force
+bxo = branch-delete-origin # Remote branch has no force delete operation
+br = branch-rename
 # switch: w
 w = switch
 # branch & switch: b*w*
@@ -217,23 +235,23 @@ cp = cherry-pick
 # tag: t
 t = tag
 tl = tag-list
-tlr = tag-list-remote
-tr = tag-remote
+tlo = tag-list-remote
 tx = tag-delete
 txm = tag-delete-multiple
-tsr = tag-sync-remote
-tsrm = tag-sync-remote-multiple
-# remote: re
-rel = remote-list
-re = remote add
-rex = remote remove
+tso = tag-sync-remote
+tsom = tag-sync-remote-multiple
+# remote: o
+o = remote-add
+ol = remote
+ox = remote-remove
 # fetch: f
 f = fetch-prune-tags
 # pull: l
 l = pull-prune-tags
 # push: p
 p = push
-px = push-delete
-pu = push-upstream-current-branch
+po = push-origin
+pox = push-origin-delete
+pou = push-origin-upstream-current-branch
 # pull & push: l*p*
 lp = pull-then-push
