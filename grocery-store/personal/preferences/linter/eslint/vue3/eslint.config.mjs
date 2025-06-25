@@ -3,7 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   // The options for generating the ESLint configurations
   {
-    // Disable typescript support
+    // Disable typescript support, if your project is not using typescript but including `typescript` packages because of the ghost dependency
     typescript: false,
 
     // Enable formatters for html and markdown (requires `eslint-plugin-format`)

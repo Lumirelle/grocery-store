@@ -134,8 +134,8 @@ shell
 ```shell
 # eslint
 ni eslint@latest -D
-# eslint config
-ni @antfu/eslint-config@latest -D
+# eslint config (From 4.14.1, it's dependency `eslint-plugin-jsdoc` remove the support of node@^18)
+ni @antfu/eslint-config@~4.14.1 -D
 # eslint & prettier plugin
 ni eslint-plugin-format@latest @prettier/plugin-xml@latest -D
 ```

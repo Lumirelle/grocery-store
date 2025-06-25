@@ -14,7 +14,7 @@ export default antfu(
       vueVersion: 2,
     },
 
-    // Disable typescript support
+    // Disable typescript support, if your project is not using typescript but including `typescript` packages because of the ghost dependency
     typescript: false,
 
     // Enable formatters for html and markdown (requires `eslint-plugin-format`)
