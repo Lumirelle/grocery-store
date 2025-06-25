@@ -28,6 +28,7 @@ export default antfu(
     // Build output, node_modules and other common ignored files are already included
     ignores: [
       // Assets and static files
+      '**/assets/font',
       '**/assets/icon',
       '**/assets/images',
       '**/assets/lang',
@@ -36,12 +37,10 @@ export default antfu(
       '**/static',
       '**/public',
       '**/theme',
-      '**/iconfont.*',
       // Nuxt html templates
       '**/app/view',
       '**/app.html',
       // Add your custom ignored files here
-      '**/_scripts',
     ],
   },
 )
