@@ -1,8 +1,8 @@
-# Vue.js 2 优化手册 Vue.js 2 Optimization Manual
+# Vue.js 2 优化手册 / Vue.js 2 Optimization Manual
 
-Requires node@'^18.12.0 || ^20.9.0 || >=22', npm@>=9, pnpm@>=7.
+Requires node@'^18.17.0 || ^20.9.0 || >=22.0.0', npm@>=9, pnpm@>=7.
 
-This article is based on node@18.20.8, npm@10.9.2, pnpm@10.11.1.
+This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.1.
 
 Main dependencies:
 

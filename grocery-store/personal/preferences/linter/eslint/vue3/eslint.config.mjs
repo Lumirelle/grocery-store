@@ -42,14 +42,23 @@ export default antfu(
       },
     },
   })
-  // Override rules of `@antfu/config`
+  // Custom (override) rules of `@antfu/config` below
   .override('antfu/javascript/rules', {
     rules: {
       // We need to use `console` in development environment, we can use build plugin to remove it in production environment
       'no-console': 'off',
     },
   })
-  // FIXME: Fix these warnings progressively, because they are too many
+  .override('antfu/regexp/rules', {
+    rules: {
+      // A large number of none-capturing groups are less readable than the same number of capturing groups
+      // Tell the true, it's not so necessary to use none-capturing groups in most cases
+      // Unless performance is sensitive or there are a large number of redundant captures, readability is more important
+      // When working in teams, readability is more critical than which grouping you choose
+      'regexp/no-unused-capturing-group': 'off',
+    },
+  })
+  // FIXME: Compatible with old project, please reactive these rules progressively
   .override('antfu/javascript/rules', {
     rules: {
       'eqeqeq': 'warn',

@@ -1,12 +1,12 @@
 # Nuxt.js 2 手册 / Nuxt.js 2 Manual
 
-Requires node@'^18.12.0 || ^20.9.0 || >=22', npm@>=9, pnpm@>=7.
+Requires node@'^18.18.0 || ^20.9.0 || >=22.0.0', npm@>=9, pnpm@>=7.
 
-This article base on node@18.20.8, npm@10.9.2, pnpm@10.11.1.
+This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.1.
 
 Main dependencies:
 
-- nuxt@^2.18.1 (Integrated with vue@^2, webpack@^4, babel@^7, core-js@^3)
+- nuxt@^2.18.1 (vue@^2, webpack@^4, babel@^7, core-js@^3)
 - eslint@latest, stylelint@latest
 
 ## 📑 为什么使用？ / Why use it?
@@ -50,8 +50,8 @@ Main dependencies:
 nuxt.config.js
 
 ```js
-// Uncomment if you want to analyze useless files, just works on dev mode
-// import UselessAnalyzerWebpackPlugin from 'useless-analyzer-webpack-plugin'
+// Uncomment if you want to analyze unimported files, just works on dev mode
+// import UnimportedAnalyzerWebpackPlugin from 'unimported-analyzer-webpack-plugin'
 
 export default {
   /**
@@ -233,13 +233,12 @@ export default {
         }
       : {},
 
-    // Uncomment if you want to analyze useless files, just works on localDevelopment mode
+    // Uncomment if you want to analyze unimported files, just works on dev mode
     // plugins: [
-    //   new UselessAnalyzerWebpackPlugin({
+    //   new UnimportedAnalyzerWebpackPlugin({
     //     preset: 'nuxt',
     //     ignores: [
     //       // 添加你需要忽略的文件... / Add files you need to ignore...
-    //       '**/*.scss',
     //     ],
     //     important: [
     //       // 添加你不想忽略的文件... / Add files you don't want to ignore...

@@ -14,12 +14,12 @@ catalogs:
     eslint-plugin-format: ^1.0.1
     hint: ^7.1.13
     lint-staged: ^15.5.2
-    npm-run-all2: latest
+    npm-run-all2: ^7.0.2
     simple-git-hooks: ^2.13.0
     stylelint: latest
     stylelint-config-html: latest
-    stylelint-config-recess-order: latest
-    stylelint-config-standard-scss: latest
+    stylelint-config-recess-order: ^6.1.0
+    stylelint-config-standard-scss: ^14.0.0
     stylelint-config-standard-vue: latest
     taze: ^19.1.0
     tsx: ^4.20.3

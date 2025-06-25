@@ -1,13 +1,16 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: [
+    // Language-specific
+    // Set `postcss-html` as the custom syntax for all `.html` like files
+    // `stylelint-config-standard-vue/scss` just set `post-html` as the custom syntax for `.vue` files
+    'stylelint-config-html',
     'stylelint-config-standard-scss',
     'stylelint-config-standard-vue/scss',
-    // Stylistic rules support
+    // Stylistic
     '@stylistic/stylelint-config',
+    // Order of css properties
     'stylelint-config-recess-order',
-    // It bundles postcss-html custom syntax for `.html` like files
-    'stylelint-config-html',
   ],
 
   allowEmptyInput: true,
@@ -17,6 +20,7 @@ export default {
     '**/.nuxt/**/*',
     '**/dist/**/*',
     // Assets and static files
+    '**/assets/font/**/*',
     '**/assets/icon/**/*',
     '**/assets/images/**/*',
     '**/assets/lang/**/*',
@@ -25,7 +29,6 @@ export default {
     '**/static/**/*',
     '**/public/**/*',
     '**/theme/**/*',
-    '**/iconfont.*',
     // Node modules
     '**/node_modules/**/*',
     // Nuxt app
@@ -35,25 +38,52 @@ export default {
   ],
 
   rules: {
+    // Override rules of `stylelint-config-recommended`
     // We don't want to set a generic family in some cases, like when we use iconfont
     'font-family-no-missing-generic-family-keyword': null,
+    // In css, the specificity & order of selectors are important
+    // This rule will not allow the low specificity selectors to be placed after the high specificity selectors
+    // Actually, it's not so worth to fix it， so we set it's severity to `warning`
+    'no-descending-specificity': [true, { ignore: ['selectors-within-list'], severity: 'warning' }],
+    // For better dev experience
+    'no-empty-source': null,
 
+    // Override rules of `stylelint-config-standard`
     // It's recommended to use BEM class & id selector pattern
     'selector-class-pattern': [
-      '^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?$',
+      '^(?:(?:[a-z][a-z0-9]*)(?:-[a-z0-9]+)*)(?:__[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?(?:--[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?$',
       {
         message: selector => `Expected class selector "${selector}" to be BEM case`,
         severity: 'warning',
       },
     ],
     'selector-id-pattern': [
-      '^([a-z][a-z0-9]*)(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?$',
+      '^(?:(?:[a-z][a-z0-9]*)(?:-[a-z0-9]+)*)(?:__[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?(?:--[a-z][a-z0-9]*(?:-[a-z0-9]+)*)?$',
       {
         message: selector => `Expected id selector "${selector}" to be BEM case`,
         severity: 'warning',
       },
     ],
+    // It's recommended to use kebab-case for keyframe name
+    'keyframes-name-pattern': [
+      '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+      {
+        message: name => `Expected keyframe name "${name}" to be kebab-case`,
+        severity: 'warning',
+      },
+    ],
 
+    // Override rules of `stylelint-config-standard-scss`
+    'scss/dollar-variable-pattern': [
+      '^(-|--)?[a-z][a-z0-9]*(-[a-z0-9]+)*$',
+      {
+        message: 'Expected variable to be kebab-case, start with "-" or "--"',
+      },
+    ],
+    // In my opinion, a rule about stylistic and doesn't provide auto-fix operation is of little value
+    'scss/double-slash-comment-whitespace-inside': null,
+
+    // Override rules of `stylelint-config-recommended-vue`
     // Support pseudo classes and elements provided by vue, webpack and element-ui
     'selector-pseudo-class-no-unknown': [
       true,
@@ -64,29 +94,6 @@ export default {
       { ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted', 'input-placeholder'] },
     ],
 
-    // It's recommended to use kebab-case for keyframe name
-    'keyframes-name-pattern': [
-      '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
-      {
-        message: name => `Expected keyframe name "${name}" to be kebab-case`,
-        severity: 'warning',
-      },
-    ],
-
-    // In css, the specificity & order of selectors are important.
-    // Actually, some times this rule may give false positives, and it's not so worth fixing it
-    'no-descending-specificity': [true, { ignore: ['selectors-within-list'], severity: 'warning' }],
-
-    'scss/dollar-variable-pattern': [
-      '^(-|--)?[a-z][a-z0-9]*(-[a-z0-9]+)*$',
-      {
-        message: 'Expected variable to be kebab-case, start with "-" or "--"',
-      },
-    ],
-
-    // We disable this rule because it doesn't provide auto-fix operation and it's not worth fixing it
-    'scss/double-slash-comment-whitespace-inside': null,
-
     // Stylistic rules
     '@stylistic/max-line-length': null,
     '@stylistic/block-closing-brace-newline-after': [
@@ -95,6 +102,9 @@ export default {
         ignoreAtRules: ['if', 'else'],
       },
     ],
+
+    // FIXME: Compatible with old project, please reactive these rules progressively
+    // TODO
 
     // Add your custom rules here
   },

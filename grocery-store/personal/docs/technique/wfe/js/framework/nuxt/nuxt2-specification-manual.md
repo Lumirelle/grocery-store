@@ -1,8 +1,8 @@
 # Nuxt.js 2 规范手册 / Nuxt.js 2 Specification Manual
 
-Requires node@'^18.18.0 || ^20.9.0 || >=22', npm@>=9, pnpm@>=7.
+Requires node@'^18.18.0 || ^20.9.0 || >=22.0.0', npm@>=9, pnpm@>=7.
 
-This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.11.1.
+This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.1.
 
 Main dependencies:
 
@@ -14,7 +14,7 @@ Main dependencies:
 
 ### 快速配置
 
-shell（For command `gsp`, please see [README.md#script_setup](../../../../../../README.md#script_setup)）
+shell（For command `gsp`, please see [README.md#script_setup](/README.md#script_setup)）
 
 ```shell
 # vscode 配置
@@ -38,27 +38,27 @@ gsp nodejs.gitignore .gitignore -o
 
 .vscode/extensions.json
 
-See [here](../../../../preferences/editor/vscode-workspace/vue/extensions.json).
+See [here](/grocery-store/personal/preferences/editor/vscode-workspace/vue/extensions.json).
 
 .vscode/settings.json
 
-See [here](../../../../preferences/editor/vscode-workspace/vue/settings.json).
+See [here](/grocery-store/personal/preferences/editor/vscode-workspace/vue/settings.json).
 
 jsconfig.json
 
-See [here](../../../../preferences/editor/vscode-workspace/vue/jsconfig.json).
+See [here](/grocery-store/personal/preferences/editor/vscode-workspace/vue/jsconfig.json).
 
 .editorconfig
 
-See [here](../../../../preferences/editor/.editorconfig).
+See [here](/grocery-store/personal/preferences/editor/.editorconfig).
 
 .gitattributes
 
-See [here](../../../../preferences/vcs/git/.gitattributes).
+See [here](/grocery-store/personal/preferences/vcs/git/.gitattributes).
 
 .gitignore
 
-See [here](../../../../preferences/vcs/git/nodejs.gitignore).
+See [here](/grocery-store/personal/preferences/vcs/git/nodejs.gitignore).
 
 ## 📦 配置包管理器和 .npmrc
 
@@ -79,10 +79,10 @@ shell（This syntax of command `npm pkg set` requires npm@>=10.9.2）
 corepack use pnpm@latest-10
 
 # 本文所安装的依赖要求:
-# node 版本符合 ^18.12.0 || ^20.9.0 || >=22，
+# node 版本符合 ^18.18.0 || ^20.9.0 || >=22.0.0，
 # npm 版本符合 >=9
 # pnpm 版本符合 >=7
-npm pkg set 'engines.node=^18.12.0 || ^20.9.0 || >=22' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=Please use pnpm for instead!'
+npm pkg set 'engines.node=^18.18.0 || ^20.9.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=Please use pnpm for instead!'
 
 gsp npm/.npmrc -o
 ```
@@ -98,7 +98,7 @@ package.json
   // Used by corepack
   "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
   "engines": {
-    "node": "^18.12.0 || ^20.9.0 || >=22",
+    "node": "^18.18.0 || ^20.9.0 || >=22.0.0",
     "npm": ">=9",
     "pnpm": ">=7",
     "yarn": "Please use pnpm for instead!"
@@ -110,7 +110,7 @@ package.json
 
 .npmrc
 
-See [here](../../../../preferences/package-manager/npm/.npmrc).
+See [here](/grocery-store/personal/preferences/package-manager/npm/.npmrc).
 
 ## 🥡 基础依赖升级
 
@@ -133,7 +133,7 @@ shell
 ```shell
 # eslint
 ni eslint@latest -D
-# eslint config (From 4.14.1, it's dependency `eslint-plugin-jsdoc` remove the support of node@^18)
+# Since the version of 4.15.0, `@antfu/eslint-config` requires node@>=20
 ni @antfu/eslint-config@~4.14.1 -D
 # eslint & prettier plugin
 ni eslint-plugin-format@latest @prettier/plugin-xml@latest -D
@@ -151,7 +151,7 @@ gsp vue2/eslint.config.mjs -o
 
 eslint.config.mjs
 
-See [here](../../../../preferences/linter/eslint/vue2/eslint.config.mjs).
+See [here](/grocery-store/personal/preferences/linter/eslint/vue2/eslint.config.mjs).
 
 ## ✨ 设置样式检查与格式化
 
@@ -164,14 +164,16 @@ shell
 ```shell
 # stylelint
 ni stylelint@latest -D
+# stylelint config for html
+ni stylelint-config-html@latest -D
 # stylelint config for scss
-ni stylelint-config-standard-scss@latest -D
+# Since the version of 15.0.0, `stylelint-config-standard-scss` requires node@>=20
+ni stylelint-config-standard-scss@^14.0.0 -D
 # stylelint config for vue
 ni stylelint-config-standard-vue@latest -D
 # stylelint config for stylistic
-ni @stylistic/stylelint-config@latest stylelint-config-recess-order@latest -D
-# stylelint config for html
-ni stylelint-config-html@latest -D
+# Since the version of 7.0.0, `stylelint-config-recess-order` requires node@>=20
+ni @stylistic/stylelint-config@latest stylelint-config-recess-order@^6.1.0 -D
 ```
 
 ### 快速配置
@@ -186,7 +188,7 @@ gsp vue/stylelint.config.mjs -o
 
 stylelint.config.mjs
 
-See [here](../../../../preferences/linter/stylelint/vue/stylelint.config.mjs).
+See [here](/grocery-store/personal/preferences/linter/stylelint/vue/stylelint.config.mjs).
 
 ## 📜 配置 npm 快速检查与格式化脚本
 
@@ -195,7 +197,8 @@ See [here](../../../../preferences/linter/stylelint/vue/stylelint.config.mjs).
 shell
 
 ```shell
-ni npm-run-all2@latest -D
+# Since the version of 8.0.0, `npm-run-all2` requires node@>=20
+ni npm-run-all2@^7.0.2 -D
 ```
 
 ### 快速配置
@@ -290,7 +293,7 @@ package.json（配置 simple-git-hooks）
 
 commitlint.config.mjs
 
-See [here](../../../../preferences/linter/commitlint/commitlint.config.mjs).
+See [here](/grocery-store/personal/preferences/linter/commitlint/commitlint.config.mjs).
 
 ## 💪🏼 使用 Dart Sass 提供 Sass 支持，移除 Node Sass
 
