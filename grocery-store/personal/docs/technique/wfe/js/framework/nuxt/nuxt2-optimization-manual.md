@@ -1,8 +1,8 @@
 # Nuxt.js 2 优化手册 / Nuxt.js 2 Optimization Manual
 
-Requires node@'^18.18.0 || ^20.9.0 || >=22.0.0', npm@>=9, pnpm@>=7.
+Requires node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7.
 
-This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.1.
+This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.3.
 
 Main dependencies:
 

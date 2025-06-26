@@ -1,8 +1,8 @@
 # Nuxt.js 2 规范手册 / Nuxt.js 2 Specification Manual
 
-Requires node@'^18.18.0 || ^20.9.0 || >=22.0.0', npm@>=9, pnpm@>=7.
+Requires node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7.
 
-This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.1.
+This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.3.
 
 Main dependencies:
 
@@ -79,10 +79,10 @@ shell（This syntax of command `npm pkg set` requires npm@>=10.9.2）
 corepack use pnpm@latest-10
 
 # 本文所安装的依赖要求:
-# node 版本符合 ^18.18.0 || ^20.9.0 || >=22.0.0，
+# node 版本符合 ^18.20.0 || ^20.10.0 || >=22.0.0，
 # npm 版本符合 >=9
 # pnpm 版本符合 >=7
-npm pkg set 'engines.node=^18.18.0 || ^20.9.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=Please use pnpm for instead!'
+npm pkg set 'engines.node=^18.20.0 || ^20.10.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=>=1'
 
 gsp npm/.npmrc -o
 ```
@@ -96,12 +96,12 @@ package.json
   // ...
 
   // Used by corepack
-  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
+  "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=22.0.0",
+    "node": "^18.20.0 || ^20.10.0 || >=22.0.0",
     "npm": ">=9",
     "pnpm": ">=7",
-    "yarn": "Please use pnpm for instead!"
+    "yarn": ">=1"
   }
 
   // ...
