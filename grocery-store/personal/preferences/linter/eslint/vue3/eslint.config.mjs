@@ -57,12 +57,14 @@ export default antfu(
       'regexp/no-unused-capturing-group': 'off',
     },
   })
-  // FIXME: Compatible with old project, please reactive these rules progressively
+  // FIXME: Compatible with old project, these rules are not providing auto-fix operation, please reactive these rules progressively
   .override('antfu/javascript/rules', {
     rules: {
       'eqeqeq': 'warn',
       'unused-imports/no-unused-vars': 'warn',
       'unused-imports/no-unused-imports': 'warn',
+      'no-irregular-whitespace': 'warn',
+      'prefer-rest-params': 'warn',
     },
   })
   .override('antfu/vue/rules', {
@@ -72,5 +74,8 @@ export default antfu(
       'vue/custom-event-name-casing': ['warn', 'camelCase'],
       'vue/no-reserved-component-names': 'warn',
       'vue/no-unused-refs': 'warn',
+      // You'd better not mutating props directly, it will break the unidirectional data flow
+      // However, humans always tend to be lazy, wish they will not be debugging in hell in the future
+      'vue/no-mutating-props': 'warn',
     },
   })
