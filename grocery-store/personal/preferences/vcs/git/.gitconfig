@@ -97,7 +97,7 @@ amend-commit-with-edit = commit --amend
 wip = "!git add-all && git commit-with-message 'wip: temporary commit'"
 wip-undo = "!git log -n 1 | grep -q -c 'wip' && git reset HEAD~1"
 # stash
-stash-push-with-message = stash push -m
+stash-push = stash push
 stash-list = stash list
 stash-undo = stash pop
 stash-drop = stash drop
@@ -203,7 +203,7 @@ amce = amend-commit-with-edit
 # wip: wip
 wipu = wip-undo
 # stash: s
-s = stash-push-with-message # The same to `c`, so I named it `s` instead of `sm`
+s = stash-push # The same to `c`, so I named it `s` instead of `sm`
 sl = stash-list
 su = stash-undo
 sx = stash-drop
