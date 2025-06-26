@@ -84,9 +84,17 @@ commit-undo = reset --soft HEAD^ # Move commit back to the staging area
 # add & commit
 add-then-commit = "!f() { \
   git add \"$1\"; \
+  git commit \"$2\"; \
+}; f"
+add-then-commit-with-message = "!f() { \
+  git add \"$1\"; \
   git commit-with-message \"$2\"; \
 }; f"
 add-all-then-commit = "!f() { \
+  git add-all; \
+  git commit \"$1\"; \
+}; f"
+add-all-then-commit-with-message = "!f() { \
   git add-all; \
   git commit-with-message \"$1\"; \
 }; f"
@@ -198,7 +206,9 @@ cm = commit-with-message
 cu = commit-undo
 # add & commit: a*c*
 ac = add-then-commit
+acm = add-then-commit-with-message
 aac = add-all-then-commit
+aacm = add-all-then-commit-with-message
 # amend commit: amc
 amc = amend-commit
 amce = amend-commit-with-edit
