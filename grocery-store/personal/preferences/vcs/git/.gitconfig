@@ -171,6 +171,7 @@ pull-then-push = "!git pull-prune-tags && git push"
 # `o`: `remote` (by default, it's standing for `origin`)
 # `m`: `multiple`
 # <TO SPECIFY PARAMETERS>
+# `m`: with `--message` parameter
 # `e`: with `--edit` parameter
 # `f`: with `--force` parameter
 #
@@ -192,7 +193,8 @@ aa = add-all
 au = add-undo
 aua = add-undo-all
 # commit: c
-c = commit-with-message # I love writing messages directly in the command line, so I named it `c` instead of `cm`
+c = commit
+cm = commit-with-message
 cu = commit-undo
 # add & commit: a*c*
 ac = add-then-commit
@@ -203,7 +205,7 @@ amce = amend-commit-with-edit
 # wip: wip
 wipu = wip-undo
 # stash: s
-s = stash-push # The same to `c`, so I named it `s` instead of `sm`
+s = stash-push
 sl = stash-list
 su = stash-undo
 sx = stash-drop
