@@ -90,6 +90,8 @@ export default {
     // Override rules of `stylelint-config-recommended-scss`
     // You should use `%placeholder` to define the style should be reused and extend the `%placeholder` instead of other selector
     'scss/at-extend-no-missing-placeholder': [true, { severity: 'warning' }],
+    // For better dev experience, it didn't provide automatic fix
+    'scss/load-no-partial-leading-underscore': [true, { severity: 'warning' }],
 
     // Override rules of `stylelint-config-standard-scss`
     'scss/dollar-variable-pattern': [
