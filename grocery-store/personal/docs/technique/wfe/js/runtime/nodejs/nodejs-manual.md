@@ -8,7 +8,7 @@
 
 ### 1. 安装并配置（基于 Windows 11，PowerShell 7，fnm）
 
-fnm 是一个跨平台的 Node.js 版本管理器，支持读取 `.node-version` 或 `.nvmrc` 配置，同时支持自动切换 node 版本。
+fnm 是一个跨平台的 Node.js 版本管理器，支持读取项目级 `.node-version` 或 `.nvmrc` 配置，支持自动切换终端中使用的 node 版本。
 
 安装 fnm，并[设置 Shell 环境](https://github.com/Schniz/fnm?tab=readme-ov-file#shell-setup)。
 

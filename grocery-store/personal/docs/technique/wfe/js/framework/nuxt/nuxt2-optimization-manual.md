@@ -1,6 +1,8 @@
 # Nuxt.js 2 优化手册 / Nuxt.js 2 Optimization Manual
 
-Requires node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7.
+Minimal requires: node@'^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0', npm@>=8, pnpm@>=7, yarn@>=1.
+
+Recommend requires: node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7, yarn@>=1.
 
 This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.3.
 

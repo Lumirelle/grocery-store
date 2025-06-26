@@ -1,6 +1,8 @@
 # Vue.js 3 (Vite) 规范手册 / Vue.js 3 (Vite) Specification Manual
 
-Requires node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7.
+Minimal requires: node@'^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0', npm@>=8, pnpm@>=7, yarn@>=1.
+
+Recommend requires: node@'^18.20.0 || ^20.10.0 || >=22.0.0', npm@>=9, pnpm@>=7, yarn@>=1.
 
 This article is based on node@18.20.8, npm@10.9.2, corepack@0.32.0, pnpm@10.12.3.
 
@@ -78,11 +80,12 @@ shell（This syntax of command `npm pkg set` requires npm@>=10.9.2）
 ```shell
 corepack use pnpm@latest-10
 
-# 本文所安装的依赖要求:
-# node 版本符合 ^18.20.0 || ^20.10.0 || >=22.0.0，
-# npm 版本符合 >=9
+# 运行本项目的“最小”要求:
+# node 版本符合 ^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0，
+# npm 版本符合 >=8
 # pnpm 版本符合 >=7
-npm pkg set 'engines.node=^18.20.0 || ^20.10.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=>=1'
+# yarn 版本符合 >=1
+npm pkg set 'engines.node=^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=>=1'
 
 gsp npm/.npmrc -o
 ```
@@ -98,8 +101,8 @@ package.json
   // Used by corepack
   "packageManager": "pnpm@10.12.3+sha512.467df2c586056165580ad6dfb54ceaad94c5a30f80893ebdec5a44c5aa73c205ae4a5bb9d5ed6bb84ea7c249ece786642bbb49d06a307df218d03da41c317417",
   "engines": {
-    "node": "^18.20.0 || ^20.10.0 || >=22.0.0",
-    "npm": ">=9",
+    "node": "^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0",
+    "npm": ">=8",
     "pnpm": ">=7",
     "yarn": ">=1"
   }
