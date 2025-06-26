@@ -17,12 +17,11 @@ export default antfu(
     // Build output, node_modules and other common ignored files are already included
     ignores: [
       // Assets and static files
-      '**/assets/font',
-      '**/assets/icon',
-      '**/assets/images',
-      '**/assets/lang',
-      '**/assets/langs',
-      '**/assets/json',
+      '**/assets/font{,s}',
+      '**/assets/icon{,s}',
+      '**/assets/image{,s}',
+      '**/assets/lang{,s}',
+      '**/assets/json{,s}',
       '**/static',
       '**/public',
       '**/theme',
