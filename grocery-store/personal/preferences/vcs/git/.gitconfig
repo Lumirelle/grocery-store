@@ -131,6 +131,8 @@ merge-with-default-message = "!f() { \
 merge-abort = merge --abort
 # rebase
 rebase-abort = rebase --abort
+# cherry-pick
+cherry-pick-abort = cherry-pick --abort
 # tag
 tag-list = tag --list
 tag-list-remote = ls-remote --tags
@@ -244,6 +246,7 @@ rs = reset
 rv = revert
 # cherry-pick: cp
 cp = cherry-pick
+cpz = cherry-pick-abort
 # tag: t
 t = tag
 tl = tag-list
