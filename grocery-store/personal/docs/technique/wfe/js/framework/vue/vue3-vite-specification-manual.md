@@ -21,19 +21,19 @@ shell（For command `gsp`, please see [README.md#script_setup](/README.md#script
 ```shell
 # vscode 配置
 # -- 推荐扩展
-gsp vue/extensions.json .vscode/ -o
+gsp vue/extensions.json .vscode/ -f
 # -- 工作区设置
-gsp vue/settings.json .vscode/ -o
+gsp vue/settings.json .vscode/ -f
 # -- js 编译器设置
-gsp vue/jsconfig.json -o
+gsp vue/jsconfig.json -f
 # -- 通用代码格式设置
-gsp .editorconfig -o
+gsp .editorconfig -f
 
 # git 配置
 # -- 文件属性
-gsp .gitattributes -o
+gsp .gitattributes -f
 # -- 忽略文件
-gsp nodejs.gitignore .gitignore -o
+gsp nodejs.gitignore .gitignore -f
 ```
 
 ### 手动配置
@@ -87,7 +87,7 @@ corepack use pnpm@latest-10
 # yarn 版本符合 >=1
 npm pkg set 'engines.node=^16.13.0 || ^18.12.0 || ^20.9.0 || >=22.0.0' 'engines.npm=>=9' 'engines.pnpm=>=7' 'engines.yarn=>=1'
 
-gsp npm/.npmrc -o
+gsp npm/.npmrc -f
 ```
 
 ### 手动配置
@@ -149,7 +149,7 @@ ni eslint-plugin-format@latest @prettier/plugin-xml@latest -D
 shell
 
 ```shell
-gsp vue3/eslint.config.mjs -o
+gsp vue3/eslint.config.mjs -f
 ```
 
 ### 手动配置
@@ -186,7 +186,7 @@ ni @stylistic/stylelint-config@latest stylelint-config-recess-order@^6.1.0 -D
 shell
 
 ```shell
-gsp vue/stylelint.config.mjs -o
+gsp vue/stylelint.config.mjs -f
 ```
 
 ### 手动配置
@@ -265,7 +265,7 @@ npm pkg set 'simple-git-hooks.commit-msg=npx commitlint --edit $1'
 npm pkg set 'lint-staged.*=eslint --fix'
 npm pkg set 'lint-staged[*.{css,postcss,scss,html,vue}]=stylelint --cache --fix'
 
-gsp commitlint/commitlint.config.mjs -o
+gsp commitlint/commitlint.config.mjs -f
 ```
 
 ### 手动配置

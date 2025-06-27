@@ -8,7 +8,7 @@
  *
  * @example
  * ```bash
- * gsi -o
+ * gsi -f
  * ```
  */
 
