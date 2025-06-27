@@ -10,12 +10,32 @@ $lg: 1024px !default;
 $xl: 1200px !default;
 $xxl: 1920px !default;
 
-/// Break-points, mobile first
+/// Break-points
+/// `<key>` means >= key width && <= next key width - 1
+/// `<key>+` means >= key width
+/// `<key>-` means <= key width - 1
 $breakpoints: (
-  "xs": "(min-width: #{$xs})",
-  "sm": "(min-width: #{$sm})",
-  "md": "(min-width: #{$md})",
-  "lg": "(min-width: #{$lg})",
-  "xl": "(min-width: #{$xl})",
-  "xxl": "(min-width: #{$xxl})"
+  // xs 0~374px
+  "xs": "(min-width: #{$xs}) and (max-width: #{$sm - 1})",
+  "xs+": "(min-width: #{$xs})",
+  // sm 375~767px
+  "sm": "(min-width: #{$sm}) and (max-width: #{$md - 1})",
+  "sm+": "(min-width: #{$sm})",
+  "sm-": "(max-width: #{$sm - 1})",
+  // md 768~1023px
+  "md": "(min-width: #{$md}) and (max-width: #{$lg - 1})",
+  "md+": "(min-width: #{$md})",
+  "md-": "(max-width: #{$md - 1})",
+  // lg 1024~1199px
+  "lg": "(min-width: #{$lg}) and (max-width: #{$xl - 1})",
+  "lg+": "(min-width: #{$lg})",
+  "lg-": "(max-width: #{$lg - 1})",
+  // xl 1200~1919px
+  "xl": "(min-width: #{$xl}) and (max-width: #{$xxl - 1})",
+  "xl+": "(min-width: #{$xl})",
+  "xl-": "(max-width: #{$xl - 1})",
+  // xxl 1920px+
+  "xxl": "(min-width: #{$xxl})",
+  "xxl+": "(min-width: #{$xxl})",
+  "xxl-": "(max-width: #{$xxl - 1})"
 ) !default;
