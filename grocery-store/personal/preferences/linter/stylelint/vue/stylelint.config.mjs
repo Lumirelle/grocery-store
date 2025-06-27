@@ -2,9 +2,9 @@
 export default {
   extends: [
     // Stylistic
-    // '@stylistic/stylelint-config',
+    '@stylistic/stylelint-config',
     // Order of css properties
-    // 'stylelint-config-recess-order',
+    'stylelint-config-recess-order',
     // Language-specific
     'stylelint-config-standard-scss',
     'stylelint-config-standard-vue/scss',
@@ -28,7 +28,6 @@ export default {
     '**/static/**/*',
     '**/public/**/*',
     '**/theme/**/*',
-    '**/iconfont.*',
     // Node modules
     '**/node_modules/**/*',
     // Nuxt app
@@ -37,25 +36,12 @@ export default {
     // Add your custom ignore files here
   ],
 
-  // `declaration-property-value-no-unknown` should not be used in none-css file, it's active by `stylelint-config-recommended-vue` and waiting for repair
-  // See https://github.com/ota-meshi/stylelint-config-recommended-vue/pull/90 for details
-  overrides: [
-    {
-      files: ['*.vue', '**/*.vue'],
-      rules: {
-        'declaration-property-value-no-unknown': null,
-      },
-    },
-  ],
-
   rules: {
     // Override rules of `stylelint-config-recommended`
     // We don't want to set a generic family in some cases, like when we use iconfont
     'font-family-no-missing-generic-family-keyword': null,
-    // In css, the specificity & order of selectors are important
-    // This rule will disallow the low specificity selectors to be placed after the high specificity selectors
-    // Actually, it's not so worth to fix it unless the project is extremely meticulous about standards, so we just left it's severity to `warning`
-    'no-descending-specificity': [true, { ignore: ['selectors-within-list'], severity: 'warning' }],
+    // This rule does not works well with nested selector structure, we'd better maintain the order of selectors by ourselves
+    'no-descending-specificity': null,
     // For better dev experience, they didn't provide automatic fix
     'no-empty-source': [true, { severity: 'warning' }],
     'block-no-empty': [true, { severity: 'warning' }],
