@@ -95,10 +95,10 @@
               "js": {
                 "extensions.json": null
               },
-              "uniapp": {
+              "vue": {
                 "extensions.json": null
               },
-              "vue": {
+              "vue-uniapp": {
                 "extensions.json": null
               },
               "vue2": {
@@ -219,7 +219,7 @@
       },
       "template": {
         "code": {
-          "vue": {
+          "vue2": {
             "GradientBorder.vue": null
           }
         },
@@ -270,9 +270,6 @@
             },
             "jsconfig.json": null,
             "node_modules": {
-              ".vue-global-types": {
-                "vue_2.7_0_0_0.d.ts": null
-              },
               "vue": {
                 "compiler-sfc": {
                   "index.d.ts": null,

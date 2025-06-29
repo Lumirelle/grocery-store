@@ -3,7 +3,6 @@
   // PROFILE_JS VSCODE EXTENSIONS, BASED ON PROFILE_DEFAULT
   "recommendations": [
     // ↓↓ pm & vcs
-    "herrmannplatz.npm-dependency-links",
     "antfu.pnpm-catalog-lens",
     "jasonnutter.search-node-modules",
 
@@ -23,7 +22,7 @@
     "ritwickdey.liveserver"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 50} = 61}
-    // cursor: {PROFILE_JS: 11 + {PROFILE_DEFAULT: 48} = 59}
+    // vscode: {PROFILE_JS: 10 + {PROFILE_DEFAULT: 50} = 60}
+    // cursor: {PROFILE_JS: 10 + {PROFILE_DEFAULT: 48} = 58}
   ]
 }
