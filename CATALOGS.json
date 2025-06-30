@@ -270,6 +270,9 @@
             },
             "jsconfig.json": null,
             "node_modules": {
+              ".vue-global-types": {
+                "vue_2.7_0_0_0.d.ts": null
+              },
               "vue": {
                 "compiler-sfc": {
                   "index.d.ts": null,
