@@ -1,10 +1,10 @@
-# Web 前端手册 / Web Front End Manual
+# Web 前端手册 / Web Frontend Manual
 
 ## 📚 目录 / TOC
 
 - [规范开发 / Standardized Development](#standardized-dev)
 
-- [前端技术发展 / Development of Front End Techniques](#dev-of-front-end)
+- [前端技术发展 / Development of Frontend Techniques](#dev-of-frontend)
 
 - [HTML & CSS & JS](#html-css-js)
 
@@ -33,7 +33,7 @@
       - Element UI/Plus（适用于 Vue.js 的 PC 端组件库）
       - Vant（适用于 Vue.js 的 H5 端组件库）
 
-- [前端项目工程化 / Engineering of Front End Project](#engineering-of-project)
+- [前端项目工程化 / Engineering of Frontend Project](#engineering-of-project)
 
   - [TS](#ts)
   - [模块化](#modularization)
@@ -84,7 +84,7 @@
 - 开发环境规范：使用 fnm + corepack + npm/pnpm/yarn
 - 配置文件：<https://github.com/Lumirelle/grocery-store>
 
-## 🚀 前端技术发展 / Development of Front End Techniques <a name="dev-of-front-end"></a>
+## 🚀 前端技术发展 / Development of Frontend Techniques <a name="dev-of-frontend"></a>
 
 1990 年 12 月，Tim Berners-Lee 创造了万维网（World Wide Web）和 HTML，与随后诞生的 CSS、JavaScript
 技术，一同标志着静态网页技术的诞生。
@@ -162,7 +162,7 @@ JS 框架主要有如下：
 
   其下组件库：Element UI/Element Plus、Vuetify、Ant Design Vue、Vant
 
-## 📏 前端项目工程化 / Engineering of Front End Project <a name="engineering-of-project"></a>
+## 📏 前端项目工程化 / Engineering of Frontend Project <a name="engineering-of-project"></a>
 
 ### TS <a name="ts"></a>
 

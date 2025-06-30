@@ -3,13 +3,20 @@
   // PROFILE_VUE2 VSCODE EXTENSIONS, BASED ON PROFILE_VUE
   "recommendations": [
     // ↓↓ language & file support, formatter, linter, snippets
-    // -- language & file support
-    "elemefe.vscode-element-helper", // also the snippets for element-ui
     // -- snippets
-    "nicholashsiang.vscode-vue2-snippets"
+    "nicholashsiang.vscode-vue2-snippets",
+
+    // ↓↓ framework support
+    // -- element-ui
+    "elemefe.vscode-element-helper", // also the snippets for element-ui
+    // -- uniapp
+    "uni-helper.uni-highlight-vscode",
+    "uni-helper.uni-app-schemas-vscode",
+    "uni-helper.uni-app-snippets-vscode",
+    "uni-helper.uni-ui-snippets-vscode"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE2: 2 + {PROFILE_VUE: 63} = 65}
-    // cursor: {PROFILE_VUE2: 2 + {PROFILE_VUE: 61} = 63}
+    // vscode: {PROFILE_VUE2: 5 + {PROFILE_VUE: 63} = 68}
+    // cursor: {PROFILE_VUE2: 5 + {PROFILE_VUE: 61} = 66}
   ]
 }

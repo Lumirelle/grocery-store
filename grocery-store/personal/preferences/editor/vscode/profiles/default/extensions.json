@@ -8,34 +8,36 @@
     "pkief.material-icon-theme",
     "subframe7536.custom-ui-style",
 
-    // ↓↓ pm & vcs
+    // ↓↓ package manager & version control
     "alefragnani.project-manager",
     "antfu.where-am-i",
     "eamodio.gitlens",
 
     // ↓↓ remote dev
+    // -- remote repositories
     "ms-vscode.remote-repositories",
     "github.remotehub",
     "ms-vscode.azure-repos",
+    // -- remote development
     "ms-azuretools.vscode-containers",
-    "ms-vscode-remote.remote-containers", // NOTE: vscode only
-    "ms-vscode-remote.remote-wsl", // NOTE: vscode only
-    "ms-vscode-remote.remote-ssh", // NOTE: vscode only
-    "anysphere.remote-containers", // NOTE: cursor only
-    "anysphere.remote-wsl", // NOTE: cursor only
-    "anysphere.remote-ssh", // NOTE: cursor only
+    "ms-vscode-remote.remote-containers", // NOTE: VSCODE
+    "ms-vscode-remote.remote-wsl", // NOTE: VSCODE
+    "ms-vscode-remote.remote-ssh", // NOTE: VSCODE
+    "anysphere.remote-containers", // NOTE: CURSOR
+    "anysphere.remote-wsl", // NOTE: CURSOR
+    "anysphere.remote-ssh", // NOTE: CURSOR
 
     // ↓↓ language & file support, formatter, linter, snippets
     // -- language & file support
     "remcohaszing.schemastore",
     "redhat.vscode-yaml",
+    "simonsiefke.svg-preview",
     "somewhatstationery.some-sass",
     "glenn2223.live-sass",
-    "simonsiefke.svg-preview",
     "ms-vscode.powershell", // also the formatter & linter & snippets for powershell
+    "brandonfowler.exe-runner",
     "sandcastle.vscode-open",
     "ms-vscode.hexeditor",
-    "brandonfowler.exe-runner",
     // -- formatter
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
@@ -53,8 +55,8 @@
     "gruntfuggly.todo-tree",
     "oderwat.indent-rainbow",
     "vincaslt.highlight-matching-tag",
-    "naumovs.color-highlight",
     "usernamehw.errorlens",
+    "naumovs.color-highlight",
     "antfu.array-index-inlay",
     "moalamri.inline-fold",
     "ibm.output-colorizer",
@@ -66,8 +68,8 @@
     "christian-kohler.path-intellisense",
     "jakob101.relativepath",
     "tombonnike.vscode-status-bar-format-toggle",
-    "github.copilot", // NOTE: vscode only
-    "github.copilot-chat", // NOTE: vscode only
+    "github.copilot", // NOTE: VSCODE
+    "github.copilot-chat", // NOTE: VSCODE
 
     // ↓↓ extension customization
     "l13rary.l13-built-in-extensions",

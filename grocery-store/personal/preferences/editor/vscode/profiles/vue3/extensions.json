@@ -3,14 +3,22 @@
   // PROFILE_VUE3 VSCODE EXTENSIONS, BASED ON PROFILE_VUE
   "recommendations": [
     // ↓↓ language & file support, formatter, linter, snippets
-    // -- language & file support
-    "noxussj.element-plus", // also the snippets for element-plus
-    "antfu.slidev",
     // -- snippets
-    "nicholashsiang.vscode-vue3-snippets"
+    "nicholashsiang.vscode-vue3-snippets",
+
+    // ↓↓ framework support
+    // -- element-plus
+    "noxussj.element-plus", // also the snippets for element-plus
+    // -- uniapp
+    "uni-helper.uni-highlight-vscode",
+    "uni-helper.uni-app-schemas-vscode",
+    "uni-helper.uni-app-snippets-vscode",
+    "uni-helper.uni-ui-snippets-vscode",
+    // -- slidev
+    "antfu.slidev"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE3: 3 + {PROFILE_VUE: 63} = 66}
-    // cursor: {PROFILE_VUE3: 3 + {PROFILE_VUE: 61} = 64}
+    // vscode: {PROFILE_VUE3: 7 + {PROFILE_VUE: 63} = 70}
+    // cursor: {PROFILE_VUE3: 7 + {PROFILE_VUE: 61} = 68}
   ]
 }

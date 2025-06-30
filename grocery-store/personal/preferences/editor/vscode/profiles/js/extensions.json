@@ -2,7 +2,7 @@
   // cspell:disable
   // PROFILE_JS VSCODE EXTENSIONS, BASED ON PROFILE_DEFAULT
   "recommendations": [
-    // ↓↓ pm & vcs
+    // ↓↓ package manager & version control
     "antfu.pnpm-catalog-lens",
     "jasonnutter.search-node-modules",
 
@@ -10,8 +10,8 @@
     // -- language & file support
     "dotenv.dotenv-vscode",
     // -- linter
-    "dbaeumer.vscode-eslint", // also the formatter for js
-    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint", // also the formatter for js, ts, jsx, tsx
+    "stylelint.vscode-stylelint", // also the formatter for styles
 
     // ↓↓ coding helper
     // -- dev

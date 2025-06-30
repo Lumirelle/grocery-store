@@ -18,7 +18,7 @@ HEAD：指向当前分支的最新提交。
 
 ## 怎么使用？ How to use?
 
-NOTE：本文中的命令缩写基于 [`.gitconfig`](../../../preferences/vcs/git/.gitconfig) 中设置的 aliases。
+NOTE：本文中的命令缩写基于 [`.gitconfig`](/grocery-store/personal/preferences/vcs/git/.gitconfig) 中设置的 aliases。
 
 ### 1. 创建版本库并完成初始化提交（init commit）
 
@@ -34,7 +34,7 @@ cursor .prettierrc.yml
 ...
 
 # 初始化提交
-git ac "init: init project"
+git aacm "init: init project"
 ```
 
 ### 2. 添加远程并推送
@@ -43,15 +43,12 @@ git ac "init: init project"
 
 ```shell
 # 添加远程
-# 格式：`git re <远程名> <远程库 URL>`
-git re origin https://github.com/Lumirelle/grocery-store.git
+# 格式：`git o <远程名> <远程库 URL>`
+git o origin https://github.com/Lumirelle/grocery-store.git
 
 # 首次推送分支，需要设置上游
-# 格式：`git pu <远程名> <本地分支名>:<远程分支名>`
-git pu origin main:main
-# 如果本地和远程分支名相同，则可以将 `<本地分支名>:<远程分支名>` 简写为 `<分支名>`，git pull 等命令同理
-# 格式：`git pu <远程名> <分支名>`
-git pu origin main
+# pou alias 会自动将当前分支推送为 origin 远程的同名分支，并设置上游
+git pou
 
 # 后续推送分支，通常一个版本库只会设置一个默认的名为 origin 的远程，因此约定在这种情况下 `<远程名>` 可以省略
 # 设置过上游后，后续所有涉及远程分支操作时就可以自动推断分支和上游 `<本地分支名>:<远程分支名>`
@@ -109,7 +106,7 @@ git bw feature/001 dev # 推荐的功能分支命名规则：`feature/<feature-c
 
 cursor git-manual.md
 
-git ac "feat: complete feature/001"
+git aacm "feat: complete feature/001"
 ```
 
 ### 6. 丢弃工作区的更改
@@ -192,12 +189,12 @@ git r branch2
 # 切换到其他分支
 git w dev
 # 务必保证分支可以安全删除（例如已经过时，并完全合并到了主分支）
-git xb features
+git bx features
 # 对于从未合并到主分支的分支，需要使用强制删除
-git xxb features
+git bxf features
 
 # 远程删除
-git xp origin features
+git pox features
 # 远程删除后，需要使用 `--prune` 参数同步远程分支缓存
 git f --prune
 
@@ -216,10 +213,10 @@ git s
 # 完成另一个分支上的工作...
 git w dev
 ...
-git ac 'feat: just do sth'
+git aacm 'feat: just do sth'
 
 git w feature/001
-git us
+git su
 ```
 
 ### 14. Cherry Pick
@@ -261,11 +258,11 @@ git m release-1.0.0 "merge: v1.0.0 release"
 当主分支上存在致命缺陷时，应当从主分支分出一个紧急修复分支。修复完成后，应当将紧急修复分支合并到主分支和开发分支上。
 
 ```shell
-git bw hotfix/route-missing main # 分支命名规则：hotfix/<place-problem>
+git bw hotfix/route-missing main # 分支命名规则：hotfix/<plaacme-problem>
 
 cursor src/router/index.js
 
-git ac "hotfix: fix route missing problem"
+git aacm "hotfix: fix route missing problem"
 
 git w main
 git m hotfix/route-missing "merge: merge hotfix"

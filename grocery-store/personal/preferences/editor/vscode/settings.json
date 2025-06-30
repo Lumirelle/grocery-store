@@ -298,6 +298,7 @@
 
   // ↓↓ extensions: coding helper
   // -- views
+  "arrayIndexInlay.minLength": 5,
   "highlight-matching-tag.styles": {
     "opening": { "name": { "highlight": "rgb(143 188 143 / 40%)" } }
   },

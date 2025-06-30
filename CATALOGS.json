@@ -9,44 +9,55 @@
           "workspace.json": null
         },
         "life": {
-          "prefabricated-dish-manual.md": null
+          "foods": {
+            "prefabricated-dish-manual.md": null
+          },
+          "log": {
+            "2025-06-30.md": null
+          }
         },
         "technique": {
-          "os": {
-            "windows": {
-              "windows-setup-manual.md": null
-            }
-          },
-          "vcs": {
-            "git": {
-              "git-manual.md": null
-            }
-          },
-          "wfe": {
-            "js": {
-              "framework": {
-                "nuxt": {
-                  "nuxt2-manual.md": null,
-                  "nuxt2-optimization-manual.md": null,
-                  "nuxt2-specification-manual.md": null
-                },
-                "vue": {
-                  "vue2-optimization-manual.md": null,
-                  "vue2-specification-manual.md": null,
-                  "vue3-vite-specification-manual.md": null
-                }
-              },
-              "js-basic-manual.md": null,
-              "runtime": {
-                "nodejs": {
-                  "nodejs-manual.md": null,
-                  "nodejs-pm-npm-manual.md": null,
-                  "nodejs-pm-pnpm-manual.md": null,
-                  "nodejs-pm-yarn-manual.md": null
-                }
+          "computer": {
+            "os": {
+              "windows": {
+                "windows-setup-manual.md": null
               }
             },
-            "web-front-end-manual.md": null
+            "software": {
+              "dev": {
+                "vcs": {
+                  "git": {
+                    "git-manual.md": null
+                  }
+                },
+                "web": {
+                  "js": {
+                    "framework": {
+                      "nuxt": {
+                        "nuxt2-manual.md": null,
+                        "nuxt2-optimization-manual.md": null,
+                        "nuxt2-specification-manual.md": null
+                      },
+                      "vue": {
+                        "vue2-optimization-manual.md": null,
+                        "vue2-specification-manual.md": null,
+                        "vue3-vite-specification-manual.md": null
+                      }
+                    },
+                    "js-basic-manual.md": null,
+                    "runtime": {
+                      "nodejs": {
+                        "nodejs-manual.md": null,
+                        "nodejs-pm-npm-manual.md": null,
+                        "nodejs-pm-pnpm-manual.md": null,
+                        "nodejs-pm-yarn-manual.md": null
+                      }
+                    }
+                  },
+                  "web-frontend-manual.md": null
+                }
+              }
+            }
           }
         }
       },
@@ -98,9 +109,6 @@
               "vue": {
                 "extensions.json": null
               },
-              "vue-uniapp": {
-                "extensions.json": null
-              },
               "vue2": {
                 "extensions.json": null
               },
@@ -110,20 +118,21 @@
             },
             "settings.json": null,
             "snippets": {
+              "outdated": null,
               "vue.json": null
             },
-            "trusted-domains.json": null
-          },
-          "vscode-workspace": {
-            "js": {
-              "extensions.json": null,
-              "settings.json": null,
-              "tsconfig.json": null
-            },
-            "vue": {
-              "extensions.json": null,
-              "jsconfig.json": null,
-              "settings.json": null
+            "trusted-domains.json": null,
+            "workspace": {
+              "js": {
+                "extensions.json": null,
+                "settings.json": null,
+                "tsconfig.json": null
+              },
+              "vue": {
+                "extensions.json": null,
+                "jsconfig.json": null,
+                "settings.json": null
+              }
             }
           }
         },
@@ -599,6 +608,9 @@
           }
         },
         "readme": {
+          "log": {
+            "YYYY-MM-DD.md": null
+          },
           "minimal": {
             "README.md": null
           },
