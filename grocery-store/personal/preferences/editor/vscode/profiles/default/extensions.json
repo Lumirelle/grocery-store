@@ -52,7 +52,8 @@
     // ↓↓ coding helper
     // -- views
     "antfu.file-nesting",
-    "gruntfuggly.todo-tree",
+    "gruntfuggly.todo-tree", // Show `TODO`, 'FIXME', 'XXX' in file explorer
+    "jgclark.vscode-todo-highlight", // Highlight `NOTE` in editor
     "oderwat.indent-rainbow",
     "vincaslt.highlight-matching-tag",
     "usernamehw.errorlens",

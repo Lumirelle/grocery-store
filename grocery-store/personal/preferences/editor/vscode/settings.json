@@ -304,7 +304,7 @@
   },
   "inlineFold.regex": "<svg(\\\\s*.*?\\\\s*)<\\/svg>",
   "inlineFold.regexFlags": "gs",
-  "todo-tree.general.tags": ["BUG", "FIXME", "TODO", "[ ]", "[x]", "NOTE"],
+  "todo-tree.general.tags": ["BUG", "FIXME", "TODO", "[ ]", "[x]"],
   "todo-tree.highlights.defaultHighlight": {
     "foreground": "#eeeeee"
   },
@@ -333,18 +333,43 @@
     "[x]": {
       "background": "#00c063",
       "iconColour": "#00c063"
-    },
-    // NOTE: This is a note
-    "NOTE": {
-      "background": "#8A2BE2",
-      "iconColour": "#8A2BE2",
-      "icon": "note"
     }
   },
   "todo-tree.regex.enableMultiLine": true,
   "todo-tree.regex.regex": "(//|#|;|%|REM|^[ \\t]*\\*+|--|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)|(\"\"\"|'''|<!--|/\\*+|--\\[\\[)\\s*($TAGS)[\\s\\S]*?(\"\"\"|'''|-->|\\*/|\\]\\])",
-  // support fullwidth colons
-  "todo-tree.regex.subTagRegex": "^[:：]\\s*",
+  "todohighlight.keywords": [
+    {
+      "text": "NOTE",
+      "backgroundColor": "#8a2be2",
+      "overviewRulerColor": "rgba(138,43,226,0.8)"
+    }
+  ],
+  "todohighlight.include": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.html",
+    "**/*.php",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.md",
+    "**/*.mmd",
+    "**/*.markdown",
+    "**/*.mdown",
+    "**/*.txt",
+    "**/*.rb",
+    "**/*.go",
+    "**/*.json",
+    "**/*.json",
+    "**/*.yml",
+    "**/*.yaml",
+    "**/*.toml"
+  ],
+  "todohighlight.defaultStyle": {
+    "color": "rgb(228, 228, 228)",
+    "borderRadius": "4px"
+  },
   // -- PROFILE_JS actions
   "css.enabledLanguages": ["html", "vue"],
   "css.styleSheets": ["**/*.css", "**/*.postcss", "**/*.scss"],
