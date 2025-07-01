@@ -5,14 +5,10 @@
     // ↓↓ language & file support, formatter, linter, snippets
     // -- language & file support
     "vue.volar",
-    "lokalise.i18n-ally",
-
-    // ↓↓ coding helper
-    // -- dev
-    "dariofuzinato.vue-peek"
+    "lokalise.i18n-ally"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE: 3 + {PROFILE_JS: 60} = 63}
-    // cursor: {PROFILE_VUE: 3 + {PROFILE_JS: 58} = 61}
+    // vscode: {PROFILE_VUE: 2 + {PROFILE_JS: 60} = 62}
+    // cursor: {PROFILE_VUE: 2 + {PROFILE_JS: 58} = 60}
   ]
 }

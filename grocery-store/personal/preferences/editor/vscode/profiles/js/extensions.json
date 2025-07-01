@@ -14,7 +14,7 @@
     "stylelint.vscode-stylelint", // also the formatter for styles
 
     // ↓↓ coding helper
-    // -- dev
+    // -- behavior
     "fractalbrew.backticks",
     "ecmel.vscode-html-css",
     "antfu.goto-alias",

@@ -15,10 +15,12 @@
     "uni-helper.uni-app-snippets-vscode",
     "uni-helper.uni-ui-snippets-vscode",
     // -- slidev
-    "antfu.slidev"
+    "antfu.slidev",
+    // -- unocss
+    "antfu.unocss"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE3: 7 + {PROFILE_VUE: 63} = 70}
-    // cursor: {PROFILE_VUE3: 7 + {PROFILE_VUE: 61} = 68}
+    // vscode: {PROFILE_VUE3: 8 + {PROFILE_VUE: 62} = 70}
+    // cursor: {PROFILE_VUE3: 8 + {PROFILE_VUE: 60} = 68}
   ]
 }

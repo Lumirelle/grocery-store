@@ -50,24 +50,24 @@
     "bierner.emojisense",
 
     // ↓↓ coding helper
-    // -- views
-    "antfu.file-nesting",
-    "gruntfuggly.todo-tree", // Show `TODO`, 'FIXME', 'XXX' in file explorer
-    "jgclark.vscode-todo-highlight", // Highlight `NOTE` in editor
+    // -- highlight
     "oderwat.indent-rainbow",
     "vincaslt.highlight-matching-tag",
-    "usernamehw.errorlens",
     "naumovs.color-highlight",
-    "antfu.array-index-inlay",
-    "moalamri.inline-fold",
+    "jgclark.vscode-todo-highlight",
     "ibm.output-colorizer",
-    // -- dev
+    // -- editor views
+    "antfu.file-nesting",
+    "antfu.array-index-inlay",
+    "usernamehw.errorlens",
+    "moalamri.inline-fold",
+    // -- behavior
     "antfu.smart-clicks",
     "albert.tabout",
     "yatki.vscode-surround",
     "cardinal90.multi-cursor-case-preserve",
     "christian-kohler.path-intellisense",
-    "jakob101.relativepath",
+    "john681611.relativepath",
     "tombonnike.vscode-status-bar-format-toggle",
     "github.copilot", // NOTE: VSCODE
     "github.copilot-chat", // NOTE: VSCODE

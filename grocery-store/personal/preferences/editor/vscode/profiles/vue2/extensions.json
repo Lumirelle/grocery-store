@@ -16,7 +16,7 @@
     "uni-helper.uni-ui-snippets-vscode"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE2: 5 + {PROFILE_VUE: 63} = 68}
-    // cursor: {PROFILE_VUE2: 5 + {PROFILE_VUE: 61} = 66}
+    // vscode: {PROFILE_VUE2: 6 + {PROFILE_VUE: 62} = 68}
+    // cursor: {PROFILE_VUE2: 6 + {PROFILE_VUE: 60} = 66}
   ]
 }
