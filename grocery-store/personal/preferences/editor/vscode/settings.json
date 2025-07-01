@@ -141,7 +141,8 @@
     "*.layout-template": "vue",
     "*.vue": "vue",
     ".env*": "dotenv",
-    "LICENSE": "plaintext"
+    "LICENSE": "plaintext",
+    "*.json": "jsonc"
   },
 
   // ↓↓ vscode: behavior

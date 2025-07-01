@@ -39,20 +39,13 @@ export default antfu(
       // Nuxt html templates
       '**/app/view',
       '**/app.html',
+      // Editor config
+      '**/{t,j}sconfig.json',
       // Add your custom ignored files here
     ],
   },
 )
-  // Prepend a setup config with `globals`
-  .prepend({
-    name: 'lumirelle/setup',
-    languageOptions: {
-      globals: {
-        // Add your custom global variables here
-      },
-    },
-  })
-  // Custom (override) rules of `@antfu/config` below
+  // NOTE: Custom (override) rules of `@antfu/config` below
   .override('antfu/javascript/rules', {
     rules: {
       // We need to use `console` in development environment, we can use build plugin to remove it in production environment
@@ -101,5 +94,23 @@ export default antfu(
       // You'd better not mutating props directly, it will break the unidirectional data flow
       // However, humans always tend to be lazy, wish they will not be debugging in hell in the future
       'vue/no-mutating-props': 'warn',
+    },
+  })
+  // NOTE: Append custom rules below
+  .append({
+    name: 'lumirelle/setup',
+    languageOptions: {
+      globals: {
+        // Add your custom global variables here
+      },
+    },
+  })
+  .append({
+    name: 'lumirelle/jsonc/rules',
+    files: [
+      '**/{t,j}sconfig.json',
+    ],
+    rules: {
+      'jsonc/sort-keys': 'off',
     },
   })

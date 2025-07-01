@@ -34,11 +34,6 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
 
-    // ↓↓ JSX
-    "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
-
     // ↓↓ Emit
     "noEmit": true,
 

@@ -36,8 +36,7 @@
 
     // ↓↓ JSX
     "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
+    "jsxFactory": "createElement",
 
     // ↓↓ Emit
     "noEmit": true,

@@ -25,6 +25,11 @@
             },
             "software": {
               "dev": {
+                "editor": {
+                  "vscode": {
+                    "vscode-manual.md": null
+                  }
+                },
                 "vcs": {
                   "git": {
                     "git-manual.md": null
@@ -53,6 +58,9 @@
                         "nodejs-pm-yarn-manual.md": null
                       }
                     }
+                  },
+                  "ts": {
+                    "ts-config-files-manual.md": null
                   },
                   "web-frontend-manual.md": null
                 }
@@ -125,12 +133,10 @@
             "workspace": {
               "js": {
                 "extensions.json": null,
-                "settings.json": null,
-                "tsconfig.json": null
+                "settings.json": null
               },
               "vue": {
                 "extensions.json": null,
-                "jsconfig.json": null,
                 "settings.json": null
               }
             }
@@ -177,6 +183,20 @@
           },
           "npm": {
             ".npmrc": null
+          }
+        },
+        "project": {
+          "js": {
+            "jsconfig.json": null,
+            "tsconfig.json": null
+          },
+          "vue2": {
+            "jsconfig.json": null,
+            "tsconfig.json": null
+          },
+          "vue3": {
+            "jsconfig.json": null,
+            "tsconfig.json": null
           }
         },
         "terminal": {
@@ -277,10 +297,179 @@
                 "index.ts": null
               }
             },
-            "jsconfig.json": null,
             "node_modules": {
+              ".bin": {
+                "tsc": null,
+                "tsc.CMD": null,
+                "tsc.ps1": null,
+                "tsserver": null,
+                "tsserver.CMD": null,
+                "tsserver.ps1": null
+              },
               ".vue-global-types": {
                 "vue_2.7_0_0_0.d.ts": null
+              },
+              "typescript": {
+                "bin": {
+                  "tsc": null,
+                  "tsserver": null
+                },
+                "lib": {
+                  "cs": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "de": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "es": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "fr": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "it": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "ja": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "ko": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "lib.d.ts": null,
+                  "lib.decorators.d.ts": null,
+                  "lib.decorators.legacy.d.ts": null,
+                  "lib.dom.asynciterable.d.ts": null,
+                  "lib.dom.d.ts": null,
+                  "lib.dom.iterable.d.ts": null,
+                  "lib.es2015.collection.d.ts": null,
+                  "lib.es2015.core.d.ts": null,
+                  "lib.es2015.d.ts": null,
+                  "lib.es2015.generator.d.ts": null,
+                  "lib.es2015.iterable.d.ts": null,
+                  "lib.es2015.promise.d.ts": null,
+                  "lib.es2015.proxy.d.ts": null,
+                  "lib.es2015.reflect.d.ts": null,
+                  "lib.es2015.symbol.d.ts": null,
+                  "lib.es2015.symbol.wellknown.d.ts": null,
+                  "lib.es2016.array.include.d.ts": null,
+                  "lib.es2016.d.ts": null,
+                  "lib.es2016.full.d.ts": null,
+                  "lib.es2016.intl.d.ts": null,
+                  "lib.es2017.arraybuffer.d.ts": null,
+                  "lib.es2017.d.ts": null,
+                  "lib.es2017.date.d.ts": null,
+                  "lib.es2017.full.d.ts": null,
+                  "lib.es2017.intl.d.ts": null,
+                  "lib.es2017.object.d.ts": null,
+                  "lib.es2017.sharedmemory.d.ts": null,
+                  "lib.es2017.string.d.ts": null,
+                  "lib.es2017.typedarrays.d.ts": null,
+                  "lib.es2018.asyncgenerator.d.ts": null,
+                  "lib.es2018.asynciterable.d.ts": null,
+                  "lib.es2018.d.ts": null,
+                  "lib.es2018.full.d.ts": null,
+                  "lib.es2018.intl.d.ts": null,
+                  "lib.es2018.promise.d.ts": null,
+                  "lib.es2018.regexp.d.ts": null,
+                  "lib.es2019.array.d.ts": null,
+                  "lib.es2019.d.ts": null,
+                  "lib.es2019.full.d.ts": null,
+                  "lib.es2019.intl.d.ts": null,
+                  "lib.es2019.object.d.ts": null,
+                  "lib.es2019.string.d.ts": null,
+                  "lib.es2019.symbol.d.ts": null,
+                  "lib.es2020.bigint.d.ts": null,
+                  "lib.es2020.d.ts": null,
+                  "lib.es2020.date.d.ts": null,
+                  "lib.es2020.full.d.ts": null,
+                  "lib.es2020.intl.d.ts": null,
+                  "lib.es2020.number.d.ts": null,
+                  "lib.es2020.promise.d.ts": null,
+                  "lib.es2020.sharedmemory.d.ts": null,
+                  "lib.es2020.string.d.ts": null,
+                  "lib.es2020.symbol.wellknown.d.ts": null,
+                  "lib.es2021.d.ts": null,
+                  "lib.es2021.full.d.ts": null,
+                  "lib.es2021.intl.d.ts": null,
+                  "lib.es2021.promise.d.ts": null,
+                  "lib.es2021.string.d.ts": null,
+                  "lib.es2021.weakref.d.ts": null,
+                  "lib.es2022.array.d.ts": null,
+                  "lib.es2022.d.ts": null,
+                  "lib.es2022.error.d.ts": null,
+                  "lib.es2022.full.d.ts": null,
+                  "lib.es2022.intl.d.ts": null,
+                  "lib.es2022.object.d.ts": null,
+                  "lib.es2022.regexp.d.ts": null,
+                  "lib.es2022.string.d.ts": null,
+                  "lib.es2023.array.d.ts": null,
+                  "lib.es2023.collection.d.ts": null,
+                  "lib.es2023.d.ts": null,
+                  "lib.es2023.full.d.ts": null,
+                  "lib.es2023.intl.d.ts": null,
+                  "lib.es2024.arraybuffer.d.ts": null,
+                  "lib.es2024.collection.d.ts": null,
+                  "lib.es2024.d.ts": null,
+                  "lib.es2024.full.d.ts": null,
+                  "lib.es2024.object.d.ts": null,
+                  "lib.es2024.promise.d.ts": null,
+                  "lib.es2024.regexp.d.ts": null,
+                  "lib.es2024.sharedmemory.d.ts": null,
+                  "lib.es2024.string.d.ts": null,
+                  "lib.es5.d.ts": null,
+                  "lib.es6.d.ts": null,
+                  "lib.esnext.array.d.ts": null,
+                  "lib.esnext.collection.d.ts": null,
+                  "lib.esnext.d.ts": null,
+                  "lib.esnext.decorators.d.ts": null,
+                  "lib.esnext.disposable.d.ts": null,
+                  "lib.esnext.float16.d.ts": null,
+                  "lib.esnext.full.d.ts": null,
+                  "lib.esnext.intl.d.ts": null,
+                  "lib.esnext.iterator.d.ts": null,
+                  "lib.esnext.promise.d.ts": null,
+                  "lib.scripthost.d.ts": null,
+                  "lib.webworker.asynciterable.d.ts": null,
+                  "lib.webworker.d.ts": null,
+                  "lib.webworker.importscripts.d.ts": null,
+                  "lib.webworker.iterable.d.ts": null,
+                  "pl": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "pt-br": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "ru": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "tr": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "tsc.js": null,
+                  "tsserver.js": null,
+                  "tsserverlibrary.d.ts": null,
+                  "tsserverlibrary.js": null,
+                  "typescript.d.ts": null,
+                  "typescript.js": null,
+                  "typesMap.json": null,
+                  "typingsInstaller.js": null,
+                  "watchGuard.js": null,
+                  "zh-cn": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "zh-tw": {
+                    "diagnosticMessages.generated.json": null
+                  },
+                  "_tsc.js": null,
+                  "_tsserver.js": null,
+                  "_typingsInstaller.js": null
+                },
+                "LICENSE.txt": null,
+                "package.json": null,
+                "README.md": null,
+                "SECURITY.md": null,
+                "ThirdPartyNoticeText.txt": null
               },
               "vue": {
                 "compiler-sfc": {
@@ -604,7 +793,8 @@
               "example-v2.vue": null,
               "example-v3.vue": null
             },
-            "README.md": null
+            "README.md": null,
+            "tsconfig.json": null
           }
         },
         "readme": {

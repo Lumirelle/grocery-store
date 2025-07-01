@@ -9,10 +9,7 @@
     "target": "es2022",
     "module": "preserve",
     "lib": [
-      "es2022",
-      "webworker",
-      "dom",
-      "dom.iterable"
+      "es2022"
     ],
     // -- Compatibility
     "allowJs": true,
@@ -34,11 +31,6 @@
     "strict": true,
     "noUncheckedIndexedAccess": true,
 
-    // ↓↓ JSX
-    "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
-
     // ↓↓ Emit
     "noEmit": true,
 
@@ -52,7 +44,6 @@
 
   // ↓↓ Excluded files
   "exclude": [
-    "**/.nuxt/**",
     "**/dist/**",
     "**/build/**",
     "**/node_modules/**"

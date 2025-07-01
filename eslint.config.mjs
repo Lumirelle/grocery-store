@@ -13,3 +13,12 @@ export default antfu({
     '!resources/**/*',
   ],
 })
+  .append({
+    name: 'lumirelle/jsonc/rules',
+    files: [
+      '**/{t,j}sconfig.json',
+    ],
+    rules: {
+      'jsonc/sort-keys': 'off',
+    },
+  })

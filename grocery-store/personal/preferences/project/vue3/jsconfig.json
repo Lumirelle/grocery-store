@@ -30,17 +30,11 @@
     "noUncheckedSideEffectImports": true,
     "noImplicitOverride": true,
     "forceConsistentCasingInFileNames": true,
-    // -- TS Only
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
 
     // ↓↓ JSX
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-
-    // ↓↓ Emit
-    "noEmit": true,
 
     // ↓↓ Paths
     "paths": {

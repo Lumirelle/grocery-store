@@ -176,6 +176,9 @@ importers:
 
   grocery-store/personal/template/project/vue-scss-bem:
     dependencies:
+      typescript:
+        specifier: catalog:dev
+        version: 5.8.3
       vue:
         specifier: catalog:dev
         version: 2.7.16
