@@ -275,7 +275,15 @@ git m hotfix/route-missing "merge: merge hotfix"
 
 你可以使用 `.gitconfig` 来配置 Git 的默认选项，见 [Git Configuration](../../preferences/git/.gitconfig)。
 
-### 19. 总结
+### 19. .gitattributes
+
+通常，我们会使用 `.gitattributes` 来配置 Git 如何识别一个文件：是否是文本，使用什么换行符。只有文本文件才会被 Git Diff 处理。
+
+### 20. .git-blame-ignore-revs
+
+如果你改动了 Linter 或 Formatter 配置，覆盖了许多文件的 Blame 记录，你可以在此文件中指定对应的提交 Hash，Git Blame 将会跳过他们，找到上一个提交记录。
+
+### 21. 总结
 
 分支时效性：
 
