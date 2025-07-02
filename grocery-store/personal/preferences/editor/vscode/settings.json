@@ -171,7 +171,6 @@
   // -- others
   "editor.mouseWheelZoom": true,
   "editor.gotoLocation.multipleDefinitions": "goto",
-  "editor.snippetSuggestions": "top",
   "editor.suggest.showDeprecated": false,
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
