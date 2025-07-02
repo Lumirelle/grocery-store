@@ -1,0 +1,16 @@
+{
+  // cspell:disable
+  // PROFILE_UNIAPP_VUE2 VSCODE EXTENSIONS, BASED ON PROFILE_VUE2
+  "recommendations": [
+    // ↓↓ framework support
+    // -- uniapp
+    "uni-helper.uni-highlight-vscode",
+    "uni-helper.uni-app-schemas-vscode",
+    "uni-helper.uni-app-snippets-vscode",
+    "uni-helper.uni-ui-snippets-vscode"
+
+    // ↓↓ extension count
+    // vscode: {PROFILE_UNIAPP_VUE2: 4 + {PROFILE_VUE2: 61} = 65}
+    // cursor: {PROFILE_UNIAPP_VUE2: 4 + {PROFILE_VUE2: 59} = 63}
+  ]
+}

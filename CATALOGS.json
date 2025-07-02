@@ -114,7 +114,10 @@
               "js": {
                 "extensions.json": null
               },
-              "vue": {
+              "uniapp-vue2": {
+                "extensions.json": null
+              },
+              "uniapp-vue3": {
                 "extensions.json": null
               },
               "vue2": {
