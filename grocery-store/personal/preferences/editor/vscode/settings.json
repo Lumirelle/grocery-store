@@ -176,6 +176,7 @@
   "explorer.confirmDragAndDrop": false,
   "security.workspace.trust.enabled": false,
   "terminal.integrated.persistentSessionReviveProcess": "never",
+  "window.newWindowProfile": "Default",
   "workbench.startupEditor": "none",
 
   // ↓↓ vscode: format & formatter
