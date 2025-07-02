@@ -171,6 +171,8 @@
   // -- others
   "editor.mouseWheelZoom": true,
   "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.showDeprecated": false,
   "explorer.autoOpenDroppedFile": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -356,8 +358,5 @@
   "dotenv.enableAutocloaking": false,
   "turboConsoleLog.quote": "'",
   "turboConsoleLog.logMessagePrefix": "⏳",
-  "turboConsoleLog.includeFilename": true,
-
-  // ↓↓ extensions: extension customization
-  "l13BuiltInExtensions.autoUpdateModifiedBuiltInExtensions": true
+  "turboConsoleLog.includeFilename": true
 }

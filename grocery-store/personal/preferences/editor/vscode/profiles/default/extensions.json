@@ -46,7 +46,6 @@
     "streetsidesoftware.code-spell-checker",
     "davidanson.vscode-markdownlint",
     // -- snippets
-    "jmsv.javascriptsnippetsstandard",
     "bierner.emojisense",
 
     // ↓↓ coding helper
@@ -70,14 +69,10 @@
     "john681611.relativepath",
     "tombonnike.vscode-status-bar-format-toggle",
     "github.copilot", // NOTE: VSCODE
-    "github.copilot-chat", // NOTE: VSCODE
-
-    // ↓↓ extension customization
-    "l13rary.l13-built-in-extensions",
-    "vscode.javascript-modified" // NOTE: modified by extension "l13rary.l13-built-in-extensions", snippets disabled
+    "github.copilot-chat" // NOTE: VSCODE
 
     // ↓↓ extension count
-    // vscode: {PROFILE_DEFAULT: 53 - 3 = 50}
-    // cursor: {PROFILE_DEFAULT: 53 - 5 = 48}
+    // vscode: {PROFILE_DEFAULT: 50 - 3 = 47}
+    // cursor: {PROFILE_DEFAULT: 50 - 5 = 45}
   ]
 }

@@ -8,7 +8,7 @@
     "lokalise.i18n-ally"
 
     // ↓↓ extension count
-    // vscode: {PROFILE_VUE: 2 + {PROFILE_JS: 60} = 62}
-    // cursor: {PROFILE_VUE: 2 + {PROFILE_JS: 58} = 60}
+    // vscode: {PROFILE_VUE: 2 + {PROFILE_JS: 57} = 59}
+    // cursor: {PROFILE_VUE: 2 + {PROFILE_JS: 55} = 57}
   ]
 }
