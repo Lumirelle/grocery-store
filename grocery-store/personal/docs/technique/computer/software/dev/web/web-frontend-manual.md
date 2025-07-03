@@ -81,7 +81,7 @@
 
 - 代码规范：使用 editorconfig + eslint + stylelint
 - 提交规范：使用 simple-git-hook + commitlint
-- 开发环境规范：使用 fnm + corepack + npm/pnpm/yarn
+- 开发环境规范：使用 fnm + corepack + npm|pnpm|yarn + @antfu/ni|@antfu/nip
 - 配置文件：<https://github.com/Lumirelle/grocery-store>
 
 ## 🚀 前端技术发展 / Development of Frontend Techniques <a name="dev-of-frontend"></a>
@@ -108,7 +108,7 @@ React.js、Vue.js 随之诞生，带来了 MVP、MVVM 等前端项目架构，�
 SEO 不友好、网页白屏时间长、界面渲染慢等问题得到缓解，基于 Vue.js、React.js 生态的应用框架 Nuxt.js、Next.js
 诞生，提供了服务端侧渲染（SSR）的解决方案。也因此，衍生出了基于前端技术的全栈开发、跨平台原生开发。
 
-NOTE：现代前端技术的核心可以说是 JS & 浏览器 & node.js。
+NOTE：现代前端技术的核心可以说是 JS & JS Runtime（浏览器 | node.js 等）。
 
 ## 🎭 HTML & CSS & JS <a name="html-css-js"></a>
 
@@ -128,10 +128,13 @@ NOTE：现代前端技术的核心可以说是 JS & 浏览器 & node.js。
 
 ### CSS 框架 <a name="css-framework"></a>
 
-基于原子化 CSS 的概念诞生了如下 CSS 框架：
+基于原子化 CSS 的概念诞生了如下 CSS 框架（预定义好原子 CSS，通过类名来使用）：
 
 - Bootstrap
 - Tailwind
+
+以及基于 JS 实现**按需生成样式**，增强了性能的新生代 CSS 框架：
+
 - UnoCSS
 
 ### JS 框架 <a name="js-framework"></a>
@@ -142,7 +145,7 @@ JS 框架主要有如下：
 
 ### UI 构建框架（及其衍生的应用框架 & 组件库） <a name="ui-framework"></a>
 
-用户界面构建框架：
+基于浏览器环境中 JS 访问 DOM 的能力，诞生了用户界面构建框架；基于 node.js 环境中 JS 操作文件系统、网络系统的能力，诞生了应用框架：
 
 - AngularJS/Angular
 
@@ -167,6 +170,8 @@ JS 框架主要有如下：
 ### TS <a name="ts"></a>
 
 TypeScript 相较于 JavaScript 增加了类型检查，在项目工程化中起到提高可读性、可维护性的作用。
+
+实质上，在非库项目（不对外提供 API），尤其是不支持 EPS 信息自动生成的 Web 中小型项目中，反而不太推荐使用 TS，使用 TS 对它们来说太“重”了。
 
 ### 模块化 <a name="modularization"></a>
 

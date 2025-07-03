@@ -60,6 +60,7 @@
                     }
                   },
                   "ts": {
+                    "ts-basic-manual.md": null,
                     "ts-config-files-manual.md": null
                   },
                   "web-frontend-manual.md": null
