@@ -183,10 +183,7 @@ export async function findGrocery(root: string, collection: GroceryCollection, s
     ignore: IGNORE_GROCERY_WHEN_COPY_PASTE,
   }).map(grocery => normalize(grocery))
 
-  if (matchedGroceryPaths.length === 1) {
-    return Promise.resolve(matchedGroceryPaths[0])
-  }
-  else if (matchedGroceryPaths.length > 1) {
+  if (matchedGroceryPaths.length > 1) {
     const { grocery } = await prompts({
       type: 'select',
       name: 'grocery',
@@ -197,6 +194,9 @@ export async function findGrocery(root: string, collection: GroceryCollection, s
       })),
     })
     return Promise.resolve(grocery)
+  }
+  else if (matchedGroceryPaths.length === 1 && matchedGroceryPaths[0]) {
+    return Promise.resolve(matchedGroceryPaths[0])
   }
 
   return Promise.resolve(null)

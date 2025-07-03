@@ -52,6 +52,10 @@ export function parseArgsToParameters(args: string[]): Parameter[] {
   let parameterPosition = 0
   for (let i = 0; i < args.length; i++) {
     const arg = args[i]
+    if (!arg) {
+      continue
+    }
+
     // specify parameter, arg is a key
     if (arg.startsWith('-')) {
       const type = typeOfParameter(arg)
@@ -61,11 +65,12 @@ export function parseArgsToParameters(args: string[]): Parameter[] {
       }
       // string value parameter, value is the next argument
       else if (type === 'string') {
+        const nextArg = args[i + 1]
         // If this parameter doesn't have a value, throw an error
-        if (i + 1 >= args.length || args[i + 1].startsWith('-')) {
+        if (!nextArg || nextArg.startsWith('-')) {
           throw new MissingParameterValueError(arg)
         }
-        parameters.push({ key: arg, value: args[i + 1] })
+        parameters.push({ key: arg, value: nextArg })
         i++
       }
     }
@@ -98,6 +103,10 @@ function extract(parameters: Parameter[], extractOptions: ExtractOptions): Param
   // Process all parameters
   for (let i = 0; i < parameters.length; i++) {
     const parameter = parameters[i]
+    if (!parameter) {
+      continue
+    }
+
     // Key parameter
     if (parameter.key !== '' && keys.includes(parameter.key)) {
       result = parameter.value
@@ -111,7 +120,7 @@ function extract(parameters: Parameter[], extractOptions: ExtractOptions): Param
   }
 
   // Type conversion
-  const type: ParameterType = typeOfParameter(keys[0])
+  const type: ParameterType = typeOfParameter(keys[0]!)
   if (type === 'string' && result !== null)
     return String(result)
   else if (type === 'boolean')
