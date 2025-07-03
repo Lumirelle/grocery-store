@@ -198,6 +198,9 @@
   "markdown.preview.fontFamily": "'Comic Mono', '猫啃忘形圆', 'Symbols Nerd Font', monospace",
   "markdown.preview.fontSize": 16,
   "fileNestingUpdater.promptOnAutoUpdate": false,
+  "material-icon-theme.files.associations": {
+    ".env.preprod": "Tune"
+  },
 
   // ↓↓ extensions: project
   // -- general
