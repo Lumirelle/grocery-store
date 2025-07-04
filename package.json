@@ -54,7 +54,8 @@
     "release": "bumpp && pnpm publish",
     "typecheck": "tsc",
     "catalogs": "tsx scripts/catalogs.ts",
-    "deprecate": "tsx scripts/deprecate.ts"
+    "deprecate": "tsx scripts/deprecate.ts",
+    "preuninstall": "pnpm gsu"
   },
   "dependencies": {
     "ansis": "catalog:prod",
