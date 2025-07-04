@@ -1,3 +1,8 @@
+> [!Caution]
+> This project is deprecated, please use project [Impurities](https://github.com/Lumirelle/impurities) instead.
+> 
+> I swear, this is the last time I have an obsessive-compulsive disorder attack.
+
 <h1 align="center">
   <a href="https://github.com/Lumirelle/grocery-store" rel="noopener">
 </h1>
