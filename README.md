@@ -1,10 +1,10 @@
 > [!Caution]
-> This project is deprecated, please use project [Impurities](https://github.com/Lumirelle/impurities) instead.
+> This project is deprecated, please use project [Impurities](https://github.com/lumirelle/impurities) instead.
 > 
 > I swear, this is the last time I have an obsessive-compulsive disorder attack.
 
 <h1 align="center">
-  <a href="https://github.com/Lumirelle/grocery-store" rel="noopener">
+  <a href="https://github.com/lumirelle/grocery-store" rel="noopener">
 </h1>
 
 <h3 align="center">Grocery Store</h3>
@@ -13,8 +13,8 @@
 
 [![NPM Version](https://img.shields.io/npm/v/lumirelle-grocery-store)](https://www.npmjs.com/package/lumirelle-grocery-store)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](.)
-[![GitHub Issues](https://img.shields.io/github/issues/Lumirelle/grocery-store.svg)](https://github.com/Lumirelle/grocery-store/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/Lumirelle/grocery-store.svg)](https://github.com/Lumirelle/grocery-store/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/lumirelle/grocery-store.svg)](https://github.com/lumirelle/grocery-store/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/lumirelle/grocery-store.svg)](https://github.com/lumirelle/grocery-store/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -112,4 +112,4 @@ gsp --help
 
 ## ✍️ Authors <a name="authors"></a>
 
-- [@Lumirelle](https://github.com/Lumirelle) - Anything
+- [@lumirelle](https://github.com/lumirelle) - Anything
